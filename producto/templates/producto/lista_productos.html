@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <!-- Título y botón -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="fw-bold">Nuestros Productos</h1>
+        <a href="{% url 'crear_producto' %}" class="btn btn-success rounded-pill px-4">
+            ➕ Agregar producto
+        </a>
+    </div>
+
+    <!-- Grid de productos -->
+    <div class="row g-4">
+        {% for producto in productos %}
+            <div class="col-md-4 col-lg-3">
+                <div class="card h-100 shadow-sm border-0 rounded-4">
+                    {% if producto.imagen %}
+                        <img src="{{ producto.imagen.url }}" class="card-img-top rounded-top-4" alt="{{ producto.nombre }}">
+                    {% else %}
+                        <img src="https://via.placeholder.com/300x200?text=Sin+Imagen" class="card-img-top rounded-top-4" alt="Sin imagen">
+                    {% endif %}
+                    <div class="card-body text-center">
+                        <h5 class="card-title fw-bold">{{ producto.nombre }}</h5>
+                        <p class="text-muted">{{ producto.cantidad }} g</p>
+                        <p class="fs-5 fw-bold text-success">${{ producto.precio }}</p>
+                        <a href="{% url 'detalle_producto' producto.id %}" class="btn btn-outline-success rounded-pill w-100">
+                            Ver detalle
+                        </a>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <p class="text-center text-muted">No hay productos disponibles.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

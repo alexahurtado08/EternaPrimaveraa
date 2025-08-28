@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+    <div class="col-md-6 col-lg-5">
+        <div class="card shadow-lg border-0 rounded-4">
+            
+            <!-- Header -->
+            <div class="card-header text-center fw-bold fs-4 text-dark" 
+                 style="background: linear-gradient(90deg, #FFEE8C, #fff7c2); border-top-left-radius: 1rem; border-top-right-radius: 1rem;">
+                Nuevo Producto
+            </div>
+
+            <!-- Body -->
+            <div class="card-body p-4">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+
+                    {% for field in form %}
+                        <div class="mb-3">
+                            <label for="{{ field.id_for_label }}" class="form-label fw-semibold">
+                                {{ field.label }}
+                            </label>
+                            {{ field }}
+                            {% if field.help_text %}
+                                <div class="form-text">{{ field.help_text }}</div>
+                            {% endif %}
+                            {% for error in field.errors %}
+                                <div class="text-danger small">{{ error }}</div>
+                            {% endfor %}
+                        </div>
+                    {% endfor %}
+
+                    <!-- Botones -->
+                    <div class="d-flex justify-content-between mt-4">
+                        <a href="{% url 'lista_productos' %}" class="btn btn-outline-secondary px-4 rounded-pill">
+                            Cancelar
+                        </a>
+                        <button type="submit" class="btn btn-success px-4 rounded-pill">
+                            Guardar
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Extra CSS para inputs modernos -->
+<style>
+    input, select, textarea {
+        border-radius: 0.6rem !important;
+        border: 1px solid #ccc !important;
+        padding: 10px !important;
+        transition: all 0.2s ease-in-out;
+    }
+
+    input:focus, select:focus, textarea:focus {
+        border-color: #198754 !important; /* Verde Bootstrap */
+        box-shadow: 0 0 5px rgba(25, 135, 84, 0.4) !important;
+    }
+
+    button.btn-success {
+        background: linear-gradient(90deg, #198754, #28a745);
+        border: none;
+        transition: transform 0.2s ease-in-out;
+    }
+
+    button.btn-success:hover {
+        transform: scale(1.05);
+    }
+
+    .card {
+        background-color: #fffdf5; /* un blanco cálido */
+    }
+</style>
+{% endblock %}
