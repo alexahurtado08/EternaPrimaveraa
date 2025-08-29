@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de Reservas{% endblock %}
+
+{% block content %}
+<h2>Lista de Reservas</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Llegada</th>
+            <th>Salida</th>
+            <th>Personas</th>
+            <th>Plan</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for reserva in reservas %}
+        <tr>
+            <td>{{ reserva.id }}</td>
+            <td>{{ reserva.fecha_llegada }}</td>
+            <td>{{ reserva.fecha_salida }}</td>
+            <td>{{ reserva.numero_personas }}</td>
+            <td>{{ reserva.tipo_plan }}</td>
+            <td>
+                <a href="{% url 'editar_reserva' reserva.id %}" class="btn btn-outline-dark">Editar</a>
+                <a href="{% url 'eliminar_reserva' reserva.id %}" class="btn btn-outline-danger">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{% url 'crear_reserva' %}" class="btn btn-outline-success">Crear Reserva</a>
+{% endblock %}
