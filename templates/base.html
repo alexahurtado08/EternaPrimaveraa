@@ -38,15 +38,15 @@
                         <a class="nav-link" href="{% url 'lista_productos' %}">Productos</a>
                     </li>
 
-                    <!-- Reservas -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'lista_productos' %}">Reservas</a>
-                    </li>
-
                     {% if user.is_authenticated %}
                         <!-- Carrito solo si está logueado -->
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'carrito:ver_carrito' %}">Carrito</a>
+                        </li>
+
+                        <!-- Reservas -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'planes' %}">Reservas</a>
                         </li>
 
                         <!-- Cerrar sesión -->
