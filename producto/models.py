@@ -1,6 +1,4 @@
-from django.db import models
-
-# Create your models here.
+#Realizado 
 from django.db import models
 
 # Modelo que representa un producto disponible en el e-commerce.

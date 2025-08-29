@@ -31,4 +31,5 @@ urlpatterns = [
     path('productos/', include('producto.urls')),
     path('', include('pedidos.urls')),
     path('carrito/', include('carrito.urls')),
+    path('reservas/', include('reservas.urls')),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
