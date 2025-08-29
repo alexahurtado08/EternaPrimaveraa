@@ -37,18 +37,28 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'lista_productos' %}">Productos</a>
                     </li>
+
                     <!-- Reservas -->
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'lista_productos' %}">Reservas</a>
                     </li>
-                    <!-- Carrito -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'lista_productos' %}">Carrito</a>
-                    </li>
-                    <!-- Login -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'lista_productos' %}">Cerrar sesión / Login</a>
-                    </li>
+
+                    {% if user.is_authenticated %}
+                        <!-- Carrito solo si está logueado -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'carrito:ver_carrito' %}">Carrito</a>
+                        </li>
+
+                        <!-- Cerrar sesión -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'usuarios:logout_usuario' %}">Cerrar sesión</a>
+                        </li>
+                    {% else %}
+                        <!-- Login solo si no está logueado -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'usuarios:login_usuario' %}">Login</a>
+                        </li>
+                    {% endif %}
                 </ul>
             </div>
         </div>
