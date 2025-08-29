@@ -18,11 +18,17 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from . import views
+from django.contrib.auth import views as auth_views
+from usuarios import views as usuarios_views  # importa la view de login
 
+app_name = 'EternaPrimavera'
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', usuarios_views.login_usuario, name='login'), 
+    path('usuarios/', include('usuarios.urls')),  
+    path('home', views.home, name='home'),   
     path('productos/', include('producto.urls')),
-    path('usuarios/', include('usuarios.urls')), 
     path('', include('pedidos.urls')),
     path('carrito/', include('carrito.urls')),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
