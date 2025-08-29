@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Lista de pedidos</h2>
+<a href="{% url 'crear_pedido' %}">Crear nuevo pedido</a>
+<ul>
+    {% for pedido in pedidos %}
+        <li>
+            <a href="{% url 'detalle_pedido' pedido.id %}">
+                Pedido {{ pedido.id }} - Estado: {{ pedido.estado }} - Total: {{ pedido.total }}
+            </a>
+        </li>
+    {% empty %}
+        <li>No hay pedidos registrados</li>
+    {% endfor %}
+</ul>
+{% endblock %}

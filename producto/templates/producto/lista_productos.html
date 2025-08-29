@@ -24,9 +24,22 @@
                         <h5 class="card-title fw-bold">{{ producto.nombre }}</h5>
                         <p class="text-muted">{{ producto.cantidad }} g</p>
                         <p class="fs-5 fw-bold text-success">${{ producto.precio }}</p>
-                        <a href="{% url 'detalle_producto' producto.id %}" class="btn btn-outline-success rounded-pill w-100">
+
+                        <!-- Botón Ver detalle -->
+                        <a href="{% url 'detalle_producto' producto.id %}" class="btn btn-outline-success rounded-pill w-100 mb-2">
                             Ver detalle
                         </a>
+
+                        <!-- Botón Agregar al carrito -->
+                        <!-- Botón Agregar al carrito -->
+                        <form action="{% url 'carrito:agregar_producto' producto.id %}" method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="cantidad" value="1"> <!-- Puedes cambiar la cantidad predeterminada -->
+                            <button type="submit" class="btn btn-success w-100 rounded-pill">
+                                🛒 Agregar al carrito
+                            </button>
+                        </form>
+                        
                     </div>
                 </div>
             </div>
