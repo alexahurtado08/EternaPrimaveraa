@@ -1,8 +1,5 @@
 from django import forms
-from .models import ItemCarrito
 
-# Formulario para agregar producto al carrito
-class ItemCarritoForm(forms.ModelForm):
-    class Meta:
-        model = ItemCarrito
-        fields = ['cantidad']
+# Form para actualizar cantidad en carrito
+class CantidadItemForm(forms.Form):
+    cantidad = forms.IntegerField(min_value=1, label='Cantidad')

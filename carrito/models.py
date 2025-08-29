@@ -1,33 +1,29 @@
 from django.db import models
-from django.contrib.auth.models import User
 from producto.models import Producto
+from usuarios.models import Usuario
 
+# Cada usuario tiene un carrito
 class Carrito(models.Model):
-    # Si hay usuario logueado, un carrito por usuario
-    usuario = models.OneToOneField(
-        User, on_delete=models.CASCADE, related_name="carrito",
-        null=True, blank=True
-    )
-    # Si NO hay usuario, usamos la sesión
-    session_key = models.CharField(max_length=40, null=True, blank=True, unique=True, db_index=True)
-    creado = models.DateTimeField(auto_now_add=True)
-
-    def total(self):
-        return sum(item.subtotal() for item in self.items.all())
+    usuario = models.OneToOneField(Usuario, on_delete=models.CASCADE)
+    creado_en = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        if self.usuario:
-            return f"Carrito de {self.usuario.username}"
-        return f"Carrito de sesión {self.session_key or 'sin-sesion'}"
+        return f"Carrito de {self.usuario.nombre}"
 
+    # Total del carrito
+    def total_carrito(self):
+        total = sum(item.subtotal() for item in self.items.all())
+        return total
 
+# Cada producto en el carrito
 class ItemCarrito(models.Model):
-    carrito = models.ForeignKey(Carrito, on_delete=models.CASCADE, related_name="items")
+    carrito = models.ForeignKey(Carrito, related_name='items', on_delete=models.CASCADE)
     producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
     cantidad = models.PositiveIntegerField(default=1)
 
+    def __str__(self):
+        return f"{self.producto.nombre} x {self.cantidad}"
+
+    # Subtotal por item
     def subtotal(self):
         return self.producto.precio * self.cantidad
-
-    def __str__(self):
-        return f"{self.cantidad} x {self.producto.nombre}"

@@ -1,18 +1,44 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2>Mi carrito</h2>
-
-<ul>
-    {% for item in carrito.items.all %}
-        <li>
-            {{ item.producto.nombre }} - {{ item.cantidad }} x ${{ item.producto.precio }} = ${{ item.subtotal }}
-            <a href="{% url 'eliminar_producto' item.id %}">Eliminar</a>
-        </li>
-    {% empty %}
-        <li>El carrito está vacío</li>
-    {% endfor %}
-</ul>
-
-<p><strong>Total: ${{ carrito.total }}</strong></p>
+<div class="container mt-4">
+    <h1 class="fw-bold">Mi Carrito</h1>
+    {% if carrito.items.all %}
+        <table class="table table-striped mt-3 align-middle">
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th>Precio por unidad</th>
+                    <th>Subtotal</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in carrito.items.all %}
+                <tr>
+                    <td>{{ item.producto.nombre }}</td>
+                    <td>
+                        <form action="{% url 'carrito:actualizar_cantidad' item.id %}" method="post" class="d-flex">
+                            {% csrf_token %}
+                            <input type="number" name="cantidad" value="{{ item.cantidad }}" min="1" class="form-control me-2" style="width:80px;">
+                            <button type="submit" class="btn btn-primary btn-sm">Actualizar</button>
+                        </form>
+                    </td>
+                    <td>${{ item.producto.precio }}</td>
+                    <td>${{ item.subtotal }}</td>
+                    <td>
+                        <a href="{% url 'carrito:eliminar_item' item.id %}" class="btn btn-danger btn-sm">
+                            Eliminar
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <h4 class="mt-3">Total: ${{ carrito.total_carrito }}</h4>
+    {% else %}
+        <p class="text-muted mt-3">Tu carrito está vacío.</p>
+    {% endif %}
+</div>
 {% endblock %}
