@@ -2,12 +2,19 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>{{ producto.nombre }}</h1>
-<p>{{ producto.descripcion }}</p>
-<p>Cantidad: {{ producto.cantidad }} g</p>
-<p>Precio: ${{ producto.precio }}</p>
-{% if producto.imagen %}
-    <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}">
-{% endif %}
-<a href="{% url 'producto:lista_productos' %}">Volver</a>
+<div class="container mt-4">
+    <h1 class="fw-bold">{{ producto.nombre }}</h1>
+    <p>{{ producto.descripcion }}</p>
+    <p><strong>Cantidad:</strong> {{ producto.cantidad }} g</p>
+    <p><strong>Precio:</strong> ${{ producto.precio }}</p>
+    
+    {% if producto.imagen %}
+        <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}" class="img-fluid rounded shadow-sm mb-3" style="max-width: 400px;">
+    {% endif %}
+
+    <!-- Botón Volver -->
+    <a href="{% url 'producto:lista_productos' %}" class="btn btn-outline-success rounded-pill px-4 mt-3">
+        ⬅ Volver
+    </a>
+</div>
 {% endblock %}
