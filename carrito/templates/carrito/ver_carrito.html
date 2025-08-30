@@ -40,5 +40,6 @@
     {% else %}
         <p class="text-muted mt-3">Tu carrito está vacío.</p>
     {% endif %}
+    <a href="{% url 'pedidos:hacer_pedido' %}" class="btn btn-primary mt-3">Hacer Pedido</a>
 </div>
 {% endblock %}
