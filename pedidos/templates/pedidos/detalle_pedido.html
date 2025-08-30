@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Detalle del Pedido #{{ pedido.id }}</h2>
+
+    <p><strong>Estado:</strong> {{ pedido.estado }}</p>
+    <p><strong>Fecha:</strong> {{ pedido.fecha }}</p>
+    <p><strong>Total:</strong> ${{ pedido.total }}</p>
+
+    <h4>Productos</h4>
+    <ul>
+        {% for item in pedido.items.all %}
+            <li>{{ item.cantidad }} x {{ item.producto.nombre }} - ${{ item.precio }}</li>
+        {% empty %}
+            <li>No hay productos en este pedido.</li>
+        {% endfor %}
+    </ul>
+
+    <!-- Botón para pasar a pago -->
+    <a href="{% url 'pedidos:pagar_pedido' pedido.id %}" class="btn btn-success">Pagar</a>
+    
+    <!-- botones para el admin -->
+    <h3>Pedido {{ pedido.id }} - Estado: {{ pedido.estado }}</h3>
+    <a href="{% url 'pedidos:cambiar_estado_pedido' pedido.id 'procesado' %}" class="btn btn-warning">Procesar</a>
+    <a href="{% url 'pedidos:cambiar_estado_pedido' pedido.id 'entregado' %}" class="btn btn-success">Entregar</a>
+
+    <!-- sección de pago solo si existe -->
+    {% if pedido.pago %}
+        <h3>Pago - Estado: {{ pedido.pago.estado }}</h3>
+        <a href="{% url 'pedidos:cambiar_estado_pago' pedido.pago.id 'pagado' %}" class="btn btn-primary">Marcar como Pagado</a>
+    {% else %}
+        <p><strong>Este pedido aún no tiene pago registrado.</strong></p>
+    {% endif %}
+</div>
+{% endblock %}

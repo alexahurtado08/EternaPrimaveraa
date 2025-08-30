@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Pago {{ pago.id }}</h2>
+<p>Método: {{ pago.metodo }}</p>
+<p>Fecha: {{ pago.fecha }}</p>
+<p>Total: ${{ pago.total }}</p>
+<p>Estado: {{ pago.estado }}</p>
+{% endblock %}
