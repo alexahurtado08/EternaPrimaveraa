@@ -2,6 +2,9 @@
 from django.urls import path
 from . import views
 
+
+app_name = 'reservas'
+
 urlpatterns = [
     # URLs para reservas
     path('', views.lista_reservas, name='lista_reservas'),

@@ -1,21 +1,27 @@
-#Realizado por Mariana Valderrama
+from django.contrib.auth.models import BaseUserManager, AbstractBaseUser, PermissionsMixin
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 
 class UsuarioManager(BaseUserManager):
-    def create_user(self, correo, nombre, contrasena=None, **extra_fields):
+    def create_user(self, correo, nombre, password=None, **extra_fields):
         if not correo:
             raise ValueError("El usuario debe tener un correo electrónico")
         correo = self.normalize_email(correo)
-        user = self.model(correo=correo, nombre=nombre, **extra_fields)
-        user.set_password(contrasena)  # se guarda en hash
-        user.save(using=self._db)
-        return user
+        usuario = self.model(correo=correo, nombre=nombre, **extra_fields)
+        usuario.set_password(password)
+        usuario.save(using=self._db)
+        return usuario
 
-    def create_superuser(self, correo, nombre, contrasena=None, **extra_fields):
+    def create_superuser(self, correo, nombre, password=None, **extra_fields):
         extra_fields.setdefault("is_staff", True)
         extra_fields.setdefault("is_superuser", True)
-        return self.create_user(correo, nombre, contrasena, **extra_fields)
+
+        if extra_fields.get("is_staff") is not True:
+            raise ValueError("El superusuario debe tener is_staff=True.")
+        if extra_fields.get("is_superuser") is not True:
+            raise ValueError("El superusuario debe tener is_superuser=True.")
+
+        return self.create_user(correo, nombre, password, **extra_fields)
+
 
 class Usuario(AbstractBaseUser, PermissionsMixin):
     id = models.AutoField(primary_key=True)
@@ -26,7 +32,7 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
 
-    objects = UsuarioManager()
+    objects = UsuarioManager()   # 👈 Aquí se enlaza
 
     USERNAME_FIELD = "correo"
     REQUIRED_FIELDS = ["nombre"]

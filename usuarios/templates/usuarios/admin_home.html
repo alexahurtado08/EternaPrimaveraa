@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Panel de Administración</h2>
+    <p>Bienvenido, {{ user.nombre }}.</p>
+
+    <h4>Gestión rápida</h4>
+    <ul>
+        <li><a href="{% url 'usuarios:lista_usuarios' %}">👤 Usuarios</a></li>
+        <li><a href="{% url 'producto:lista_productos' %}">📦 Productos</a></li>
+        <li><a href="{% url 'reservas:lista_reservas' %}">📅 Reservas</a></li>
+        <li><a href="{% url 'pedidos:lista_pedidos' %}">🛒 Pedidos</a></li>
+    </ul>
+</div>
+{% endblock %}

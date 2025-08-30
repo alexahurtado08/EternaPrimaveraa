@@ -24,6 +24,7 @@ from usuarios import views as usuarios_views  # importa la view de login
 
 app_name = 'EternaPrimavera'
 urlpatterns = [
+    # rutas usuario final
     path('admin/', admin.site.urls),
     path('', usuarios_views.login_usuario, name='login'), 
     path('usuarios/', include('usuarios.urls')),  
@@ -31,5 +32,6 @@ urlpatterns = [
     path('productos/', include('producto.urls')),
     path('', include('pedidos.urls')),
     path('carrito/', include('carrito.urls')),
-    path('reservas/', include('reservas.urls')),
+    path('reservas/', include(('reservas.urls', 'reservas'), namespace='reservas')),
+
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

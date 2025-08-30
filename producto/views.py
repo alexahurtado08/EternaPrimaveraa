@@ -27,7 +27,7 @@ def crear_producto(request):
         form = ProductoForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('lista_productos')
+            return redirect('producto:lista_productos')
     else:
         form = ProductoForm()
     return render(request, 'producto/formulario_producto.html', {'form': form})

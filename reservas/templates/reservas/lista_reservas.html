@@ -26,12 +26,12 @@
             <td>{{ reserva.numero_personas }}</td>
             <td>{{ reserva.tipo_plan }}</td>
             <td>
-                <a href="{% url 'editar_reserva' reserva.id %}" class="btn btn-outline-dark">Editar</a>
-                <a href="{% url 'eliminar_reserva' reserva.id %}" class="btn btn-outline-danger">Eliminar</a>
+                <a href="{% url 'reservas:editar_reserva' reserva.id %}" class="btn btn-outline-dark">Editar</a>
+                <a href="{% url 'reservas:eliminar_reserva' reserva.id %}" class="btn btn-outline-danger">Eliminar</a>
             </td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
-<a href="{% url 'crear_reserva' %}" class="btn btn-outline-success">Crear Reserva</a>
+<a href="{% url 'reservas:crear_reserva' %}" class="btn btn-outline-success">Crear Reserva</a>
 {% endblock %}

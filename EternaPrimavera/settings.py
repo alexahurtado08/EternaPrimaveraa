@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'producto',
     'pedidos',
     'reservas',
+    
 ]
 
 MIDDLEWARE = [

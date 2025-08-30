@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect
 from .models import Usuario
 from .forms import UsuarioForm, LoginForm
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required, user_passes_test
 
 def registrar_usuario(request):
     if request.method == 'POST':
@@ -18,7 +19,7 @@ def registrar_usuario(request):
             Usuario.objects.create_user(
                 nombre=nombre,
                 correo=correo,
-                contrasena=password,
+                password=password,
                 telefono=telefono,
                 direccion=direccion
             )
@@ -44,7 +45,9 @@ def login_usuario(request):
             user = authenticate(request, correo=correo, password=password)
             if user is not None:
                 login(request, user)
-                # Redirige al home del proyecto principal
+                # 🔹 Redirección condicional
+                if user.is_superuser:
+                    return redirect("usuarios:admin_home")
                 return redirect("home")
             else:
                 form.add_error(None, "Correo o contraseña incorrectos")
@@ -52,7 +55,14 @@ def login_usuario(request):
         form = LoginForm()
     return render(request, "usuarios/login.html", {"form": form})
 
-
 def logout_usuario(request):
     logout(request)
     return redirect("usuarios:login_usuario")
+
+
+
+# ✅ Solo para superusuarios
+@login_required
+@user_passes_test(lambda u: u.is_superuser)
+def admin_home(request):
+    return render(request, "usuarios/admin_home.html")

@@ -7,6 +7,7 @@ from carrito.models import Carrito  # si tienes un modelo de carrito
 from pedidos.models import Pedido, PedidoItem
 from django.utils import timezone
 from django.contrib import messages
+from usuarios.decorators import admin_required
 
 @login_required
 def hacer_pedido(request):
@@ -87,3 +88,7 @@ def cambiar_estado_pago(request, pago_id, nuevo_estado):
     except ValueError as e:
         messages.error(request, str(e))
     return redirect('detalle_pedido', pedido_id=pago.pedido.id)
+
+def lista_pedidos(request):
+    pedidos = Pedido.objects.all()
+    return render(request, 'pedidos/lista_pedidos.html', {'pedidos': pedidos})
