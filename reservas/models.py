@@ -1,3 +1,4 @@
+#Realizado por Mariana Valderrama
 from django.db import models
 
 class Reserva(models.Model):
