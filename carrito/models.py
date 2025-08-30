@@ -1,3 +1,4 @@
+#Realizado por Alexandra Hurtado
 from django.db import models
 from producto.models import Producto
 from usuarios.models import Usuario

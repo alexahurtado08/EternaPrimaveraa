@@ -1,4 +1,4 @@
-#Realizado 
+#Realizado por Alexandra Hurtado
 from django.db import models
 
 # Modelo que representa un producto disponible en el e-commerce.
