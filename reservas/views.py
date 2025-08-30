@@ -2,6 +2,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Reserva
 from .forms import ReservaForm
+from django.contrib.auth.decorators import login_required
 
 def lista_reservas(request):
     """
@@ -10,6 +11,7 @@ def lista_reservas(request):
     reservas = Reserva.objects.all()
     return render(request, 'reservas/lista_reservas.html', {'reservas': reservas})
 
+@login_required(login_url='usuarios:login_usuario')
 def crear_reserva(request):
     """
     Permite crear una nueva reserva usando ReservaForm.
@@ -23,6 +25,7 @@ def crear_reserva(request):
         form = ReservaForm()
     return render(request, 'reservas/crear_reserva.html', {'form': form})
 
+@login_required(login_url='usuarios:login_usuario')
 def editar_reserva(request, reserva_id):
     """
     Edita una reserva existente.
@@ -37,6 +40,7 @@ def editar_reserva(request, reserva_id):
         form = ReservaForm(instance=reserva)
     return render(request, 'reservas/crear_reserva.html', {'form': form})
 
+@login_required(login_url='usuarios:login_usuario')
 def eliminar_reserva(request, reserva_id):
     """
     Elimina una reserva.

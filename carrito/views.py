@@ -11,7 +11,7 @@ def obtener_carrito(usuario):
     return carrito
 
 # Vista para agregar producto al carrito
-@login_required
+@login_required(login_url='usuarios:login_usuario')
 def agregar_producto(request, producto_id):
     producto = get_object_or_404(Producto, id=producto_id)
     carrito = obtener_carrito(request.user)
@@ -27,20 +27,20 @@ def agregar_producto(request, producto_id):
     return redirect("carrito:ver_carrito")
 
 # Vista para ver carrito
-@login_required
+@login_required(login_url='usuarios:login_usuario')
 def ver_carrito(request):
     carrito = obtener_carrito(request.user)
     return render(request, "carrito/ver_carrito.html", {"carrito": carrito})
 
 # Vista para eliminar item del carrito
-@login_required
+@login_required(login_url='usuarios:login_usuario')
 def eliminar_item(request, item_id):
     item = get_object_or_404(ItemCarrito, id=item_id, carrito__usuario=request.user)
     item.delete()
     return redirect("carrito:ver_carrito")
 
 # Vista para actualizar cantidad de un item en el carrito
-@login_required
+@login_required(login_url='usuarios:login_usuario')
 def actualizar_cantidad(request, item_id):
     item = get_object_or_404(ItemCarrito, id=item_id, carrito__usuario=request.user)
 
