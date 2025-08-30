@@ -1,3 +1,4 @@
+#Realizado por Alexandra Hurtado
 from django.db import models
 from django.utils import timezone
 from django.conf import settings   # 👈 IMPORTANTE para el usuario
