@@ -50,13 +50,14 @@
                         <a class="nav-link" href="{% url 'reservas:planes' %}">Reservas</a>
                     </li>
                     {% if user.is_authenticated %}
-                        <!-- Carrito solo si está logueado -->
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'carrito:ver_carrito' %}">Carrito</a>
-                        </li>
+                        {% if not user.is_superuser %}
+                            <!-- Carrito solo si está logueado y NO es superuser -->
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'carrito:ver_carrito' %}">Carrito</a>
+                            </li>
+                        {% endif %}
 
-
-                        <!-- Cerrar sesión -->
+                        <!-- Cerrar sesión siempre que esté logueado -->
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'usuarios:logout_usuario' %}">Cerrar sesión</a>
                         </li>

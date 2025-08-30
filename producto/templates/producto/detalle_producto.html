@@ -9,5 +9,5 @@
 {% if producto.imagen %}
     <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}">
 {% endif %}
-<a href="{% url 'lista_productos' %}">Volver</a>
+<a href="{% url 'producto:lista_productos' %}">Volver</a>
 {% endblock %}

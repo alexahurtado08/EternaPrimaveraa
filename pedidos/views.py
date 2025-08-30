@@ -7,7 +7,7 @@ from carrito.models import Carrito  # si tienes un modelo de carrito
 from pedidos.models import Pedido, PedidoItem
 from django.utils import timezone
 from django.contrib import messages
-from usuarios.decorators import admin_required
+from django.contrib.admin.views.decorators import staff_member_required
 
 @login_required
 def hacer_pedido(request):
@@ -70,16 +70,19 @@ def ver_pago(request, pago_id):
 
 #vistas admin----------------------------------------------------------------------------------------------------
 
+@staff_member_required
 def cambiar_estado_pedido(request, pedido_id, nuevo_estado):
     pedido = get_object_or_404(Pedido, id=pedido_id)
-    try:
-        pedido.cambiar_estado(nuevo_estado)
+    if nuevo_estado in ["Pendiente", "Pagado", "Enviado", "Entregado", "Cancelado"]:
+        pedido.estado = nuevo_estado
+        pedido.save()
         messages.success(request, f"El estado del pedido {pedido.id} cambió a {nuevo_estado}.")
-    except ValueError as e:
-        messages.error(request, str(e))
-    return redirect('ver_pedido', pedido_id=pedido.id)
+    else:
+        messages.error(request, "Estado no válido.")
+    return redirect('pedidos:lista_pedidos')
 
 
+@staff_member_required
 def cambiar_estado_pago(request, pago_id, nuevo_estado):
     pago = get_object_or_404(Pago, id=pago_id)
     try:
