@@ -18,20 +18,12 @@
         {% endfor %}
     </ul>
 
-    <!-- Botón para pasar a pago -->
-    <a href="{% url 'pedidos:pagar_pedido' pedido.id %}" class="btn btn-success">Pagar</a>
     
-    <!-- botones para el admin -->
-    <h3>Pedido {{ pedido.id }} - Estado: {{ pedido.estado }}</h3>
-    <a href="{% url 'pedidos:cambiar_estado_pedido' pedido.id 'procesado' %}" class="btn btn-warning">Procesar</a>
-    <a href="{% url 'pedidos:cambiar_estado_pedido' pedido.id 'entregado' %}" class="btn btn-success">Entregar</a>
-
-    <!-- sección de pago solo si existe -->
-    {% if pedido.pago %}
-        <h3>Pago - Estado: {{ pedido.pago.estado }}</h3>
-        <a href="{% url 'pedidos:cambiar_estado_pago' pedido.pago.id 'pagado' %}" class="btn btn-primary">Marcar como Pagado</a>
-    {% else %}
-        <p><strong>Este pedido aún no tiene pago registrado.</strong></p>
+   {% if pedido.pago %}
+    <h3>Pago - Estado: {{ pedido.pago.estado }}</h3>
+    {% if pedido.pago.estado == "pendiente" %}
+        <a href="{% url 'pedidos:pagar_pedido' pedido.id %}" class="btn btn-success">Ir a Pagar</a>
     {% endif %}
+{% endif %}
 </div>
 {% endblock %}

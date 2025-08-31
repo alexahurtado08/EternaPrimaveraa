@@ -21,7 +21,7 @@ def hacer_pedido(request):
         usuario=request.user,
         fecha=timezone.now(),
         total=sum(item.producto.precio * item.cantidad for item in items),
-        estado="Pendiente"
+        estado="pendiente"   # 👈 minúscula, para coincidir con choices
     )
 
     for item in items:
@@ -32,8 +32,19 @@ def hacer_pedido(request):
             precio=item.producto.precio
         )
     
+    # ✅ Crear el pago pendiente automáticamente
+    Pago.objects.create(
+        pedido=pedido,
+        metodo="efectivo",   # 👈 o puedes dejar que elija después
+        total=pedido.total,
+        estado="pendiente"
+    )
+
     items.delete()
     return redirect("pedidos:detalle_pedido", pedido_id=pedido.id)
+
+
+
 
 
 @login_required
@@ -45,19 +56,17 @@ def detalle_pedido(request, pedido_id):
 @login_required
 def pagar_pedido(request, pedido_id):
     pedido = get_object_or_404(Pedido, id=pedido_id, usuario=request.user)
+    pago = pedido.pago  # ✅ ya existe porque lo creamos en hacer_pedido
     
     if request.method == 'POST':
-        form = PagoForm(request.POST)
+        form = PagoForm(request.POST, instance=pago)  # ✅ editar el mismo pago
         if form.is_valid():
             pago = form.save(commit=False)
-            pago.pedido = pedido
-            pago.total = pedido.total
+            pago.estado = "pagado"  # ✅ marcar como pagado
             pago.save()
-            pedido.estado = 'Pagado'
-            pedido.save()
             return redirect('pedidos:ver_pago', pago_id=pago.id)
     else:
-        form = PagoForm()
+        form = PagoForm(instance=pago)
     
     return render(request, 'pedidos/pagar_pedido.html', {'form': form, 'pedido': pedido})
 
@@ -95,3 +104,8 @@ def cambiar_estado_pago(request, pago_id, nuevo_estado):
 def lista_pedidos(request):
     pedidos = Pedido.objects.all()
     return render(request, 'pedidos/lista_pedidos.html', {'pedidos': pedidos})
+
+@login_required
+def mis_pedidos(request):
+    pedidos = Pedido.objects.filter(usuario=request.user)
+    return render(request, "pedidos/mis_pedidos.html", {"pedidos": pedidos})
