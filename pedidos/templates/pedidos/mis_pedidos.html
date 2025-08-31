@@ -12,6 +12,7 @@
                     <th>Total</th> 
                     <th>Estado del Pedido</th>
                     <th>Estado del Pago</th>
+                    <th>Acción</th>
                 </tr>
             </thead>
             <tbody>
@@ -22,6 +23,15 @@
                     <td>${{ pedido.total }}</td>
                     <td>{{ pedido.estado }}</td>
                     <td>{{ pedido.pago.estado }}</td>
+                    <td>
+                        {% if pedido.pago.estado == "pendiente" %}
+                            <a href="{% url 'pedidos:pagar_pedido' pedido.id %}" class="btn btn-sm btn-success">
+                                Ir a pagar
+                            </a>
+                        {% else %}
+                            ---
+                        {% endif %}
+                    </td>
                 </tr>
                 {% endfor %}
             </tbody>
