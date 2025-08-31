@@ -12,8 +12,8 @@
                 <th>ID</th>
                 <th>Cliente</th>
                 <th>Fecha</th>
-                <th>Estado Pedido</th>
-                <th>Estado Pago</th>  <!-- 🔹 Nueva columna -->
+                <th>Estado del Pedido</th>
+                <th>Estado del Pago</th>
                 <th>Total</th>
                 <th>Acciones</th>
             </tr>
@@ -29,20 +29,21 @@
                     {% if pedido.pago %}
                         {{ pedido.pago.estado }}
                     {% else %}
-                        <span class="text-muted">Sin pago</span>
+                        <span class="text-muted">Sin registro</span>
                     {% endif %}
                 </td>
-                <td>{{ pedido.total }}</td>
+                <td>${{ pedido.total }}</td>
                 <td>
                     {% if user.is_superuser %}
                         <form method="post" action="{% url 'pedidos:cambiar_estado_pedido' pedido.id 'dummy' %}" style="display:inline;">
                             {% csrf_token %}
                             <select name="nuevo_estado" onchange="this.form.action=this.form.action.replace('dummy', this.value); this.form.submit();" class="form-select form-select-sm d-inline w-auto">
                                 <option disabled selected>Cambiar estado</option>
-                                <option value="pendiente">Pendiente</option>
-                                <option value="procesado">Procesado</option>
-                                <option value="entregado">Entregado</option>
-                                <option value="cancelado">Cancelado</option>
+                                <option value="Pendiente">Pendiente</option>
+                                <option value="Pagado">Pagado</option>
+                                <option value="Enviado">Enviado</option>
+                                <option value="Entregado">Entregado</option>
+                                <option value="Cancelado">Cancelado</option>
                             </select>
                         </form>
                     {% endif %}
@@ -50,7 +51,7 @@
             </tr>
             {% empty %}
             <tr>
-                <td colspan="7">No hay pedidos registrados.</td>
+                <td colspan="7" class="text-center">No hay pedidos registrados.</td>
             </tr>
             {% endfor %}
         </tbody>
