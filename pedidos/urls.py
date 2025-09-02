@@ -14,4 +14,5 @@ urlpatterns = [
     path('pedidos/', views.lista_pedidos, name='lista_pedidos'),
     path('mis-pedidos/', views.mis_pedidos, name='mis_pedidos'),
     path("pedido/<int:pedido_id>/pdf/", views.pedido_pdf, name="pedido_pdf"),
+    path("exportar-pedidos-pagados/", views.exportar_pedidos_pagados_excel, name="exportar_pedidos_pagados"),
 ]
