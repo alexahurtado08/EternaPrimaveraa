@@ -5,6 +5,12 @@ from .models import Usuario
 from .forms import UsuarioForm, LoginForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required, user_passes_test
+from django.contrib.admin.views.decorators import staff_member_required
+from django.db.models import Sum, Count
+from django.utils.timezone import now
+from pedidos.models import Pedido, Pago, PedidoItem
+from reservas.models import Reserva
+from producto.models import Producto
 
 def registrar_usuario(request):
     if request.method == 'POST':
@@ -66,3 +72,36 @@ def logout_usuario(request):
 @user_passes_test(lambda u: u.is_superuser)
 def admin_home(request):
     return render(request, "usuarios/admin_home.html")
+
+
+
+@staff_member_required
+def dashboard_admin(request):
+    # Total de usuarios
+    total_usuarios = Usuario.objects.count()
+
+    # Total de productos
+    total_productos = Producto.objects.count()
+
+    # Total de pedidos
+    total_pedidos = Pedido.objects.count()
+
+    # Pedidos por estado (ejemplo: entregado, pendiente, cancelado)
+    pedidos_por_estado = Pedido.objects.values("estado").annotate(total=Count("id"))
+
+    # Pagos recibidos (sumatoria de montos)
+    total_pagos = Pago.objects.aggregate(total=Sum("total"))["total"] or 0
+
+    # Pagos por estado (ejemplo: aprobado, pendiente, rechazado)
+    pagos_por_estado = Pago.objects.values("estado").annotate(total=Count("id"))
+
+    contexto = {
+        "total_usuarios": total_usuarios,
+        "total_productos": total_productos,
+        "total_pedidos": total_pedidos,
+        "pedidos_por_estado": pedidos_por_estado,
+        "total_pagos": total_pagos,
+        "pagos_por_estado": pagos_por_estado,
+    }
+    return render(request, "usuarios/dashboard_admin.html", contexto)
+

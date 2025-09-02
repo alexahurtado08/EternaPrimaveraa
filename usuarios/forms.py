@@ -13,6 +13,10 @@ class UsuarioForm(forms.ModelForm):
             'telefono': forms.TextInput(attrs={'class': 'form-control'}),
             'direccion': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
         }
+    def __init__(self, *args, **kwargs):
+            super().__init__(*args, **kwargs)
+            for field in self.fields.values():
+                field.required = True    
 
 class LoginForm(forms.Form):
     correo = forms.EmailField(label="Correo")

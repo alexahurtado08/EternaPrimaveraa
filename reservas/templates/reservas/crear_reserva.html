@@ -9,6 +9,6 @@
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit" class="btn btn-outline-success">Guardar</button>
-    <a href="{% url 'reservas:lista_reservas' %}" class="btn btn-outline-dark">Cancelar</a>
+    <a href="{% url 'home' %}" class="btn btn-outline-dark">Cancelar</a>
 </form>
 {% endblock %}

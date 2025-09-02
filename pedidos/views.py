@@ -8,6 +8,10 @@ from pedidos.models import Pedido, PedidoItem
 from django.utils import timezone
 from django.contrib import messages
 from django.contrib.admin.views.decorators import staff_member_required
+from django.template.loader import get_template
+from django.http import HttpResponse
+from xhtml2pdf import pisa
+import openpyxl
 
 @login_required
 def hacer_pedido(request):
@@ -109,3 +113,58 @@ def lista_pedidos(request):
 def mis_pedidos(request):
     pedidos = Pedido.objects.filter(usuario=request.user)
     return render(request, "pedidos/mis_pedidos.html", {"pedidos": pedidos})
+
+
+
+@login_required
+def pedido_pdf(request, pedido_id):
+    pedido = get_object_or_404(Pedido, id=pedido_id, usuario=request.user)
+
+    template = get_template("pedidos/pedido_pdf.html")  # 👈 plantilla especial para el PDF
+    html = template.render({"pedido": pedido})
+
+    response = HttpResponse(content_type="application/pdf")
+    response["Content-Disposition"] = f'attachment; filename="pedido_{pedido.id}.pdf"'
+
+    pisa_status = pisa.CreatePDF(html, dest=response)
+
+    if pisa_status.err:
+        return HttpResponse("Error al generar el PDF", status=500)
+    
+    return response
+
+@staff_member_required
+def exportar_pedidos_pagados_excel(request):
+    # Solo pedidos cuyo pago está en estado "pagado"
+    pedidos = Pedido.objects.filter(pago__estado="pagado")
+
+    # Crear libro y hoja
+    wb = openpyxl.Workbook()
+    ws = wb.active
+    ws.title = "Pedidos Pagados"
+
+    # Encabezados
+    ws.append(["ID", "Cliente", "Dirección", "Fecha", "Total", "Estado Pedido", "Productos"])
+
+    # Filas
+    for pedido in pedidos:
+        productos_str = ", ".join(
+            [f"{item.producto} x{item.cantidad}" for item in pedido.items.all()]
+        )
+        ws.append([
+            pedido.id,
+            pedido.usuario.nombre,
+            getattr(pedido.usuario, "direccion", "N/A"),
+            pedido.fecha.strftime("%Y-%m-%d %H:%M"),
+            float(pedido.total),
+            pedido.estado,
+            productos_str
+        ])
+
+    # Respuesta HTTP con el Excel
+    response = HttpResponse(
+        content_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    )
+    response["Content-Disposition"] = 'attachment; filename="pedidos_pagados.xlsx"'
+    wb.save(response)
+    return response

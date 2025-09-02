@@ -27,8 +27,8 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
     id = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=100)
     correo = models.EmailField(unique=True)
-    telefono = models.CharField(max_length=15, blank=True, null=True)
-    direccion = models.TextField(blank=True, null=True)
+    telefono = models.CharField(max_length=15, blank=False, null=False)
+    direccion = models.TextField(blank=False, null=False)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
 
