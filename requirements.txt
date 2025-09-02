@@ -1,2 +1,5 @@
 Django
 Pillow
+openpyxl
+xhtml2pdf
+faker
