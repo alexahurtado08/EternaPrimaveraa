@@ -8,6 +8,9 @@ from pedidos.models import Pedido, PedidoItem
 from django.utils import timezone
 from django.contrib import messages
 from django.contrib.admin.views.decorators import staff_member_required
+from django.template.loader import get_template
+from django.http import HttpResponse
+from xhtml2pdf import pisa
 
 @login_required
 def hacer_pedido(request):
@@ -109,3 +112,22 @@ def lista_pedidos(request):
 def mis_pedidos(request):
     pedidos = Pedido.objects.filter(usuario=request.user)
     return render(request, "pedidos/mis_pedidos.html", {"pedidos": pedidos})
+
+
+
+@login_required
+def pedido_pdf(request, pedido_id):
+    pedido = get_object_or_404(Pedido, id=pedido_id, usuario=request.user)
+
+    template = get_template("pedidos/pedido_pdf.html")  # 👈 plantilla especial para el PDF
+    html = template.render({"pedido": pedido})
+
+    response = HttpResponse(content_type="application/pdf")
+    response["Content-Disposition"] = f'attachment; filename="pedido_{pedido.id}.pdf"'
+
+    pisa_status = pisa.CreatePDF(html, dest=response)
+
+    if pisa_status.err:
+        return HttpResponse("Error al generar el PDF", status=500)
+    
+    return response

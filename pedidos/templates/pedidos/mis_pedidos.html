@@ -31,7 +31,9 @@
                                 Ir a pagar
                             </a>
                         {% else %}
-                            ---
+                            <a href="{% url 'pedidos:pedido_pdf' pedido.id %}" class="btn btn-sm btn-primary">
+                                Descargar PDF
+                            </a>
                         {% endif %}
                     </td>
                 </tr>

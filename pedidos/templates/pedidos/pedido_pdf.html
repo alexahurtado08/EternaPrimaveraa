@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { font-family: DejaVu Sans, sans-serif; font-size: 12px; }
+        h2 { text-align: center; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th, td { border: 1px solid black; padding: 5px; text-align: center; }
+    </style>
+</head>
+<body>
+    <h2>Detalle del Pedido #{{ pedido.id }}</h2>
+    <p><b>Usuario:</b> {{ pedido.usuario.username }}</p>
+    <p><b>Dirección:</b> {{ pedido.usuario.direccion }}</p>
+    <p><b>Fecha:</b> {{ pedido.fecha }}</p>
+    <p><b>Total:</b> ${{ pedido.total }}</p>
+    <p><b>Estado Pedido:</b> {{ pedido.estado }}</p>
+    <p><b>Estado Pago:</b> {{ pedido.pago.estado }}</p>
+
+    <h3>Productos</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Producto</th>
+                <th>Cantidad</th>
+                <th>Precio</th>
+                <th>Subtotal</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in pedido.items.all %}
+            <tr>
+                <td>{{ item.producto }}</td>
+                <td>{{ item.cantidad }}</td>
+                <td>${{ item.precio }}</td>
+                <td>${{ item.subtotal }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
