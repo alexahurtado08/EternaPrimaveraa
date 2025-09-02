@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Reserva Confirmada{% endblock %}
+
+{% block content %}
+<div class="container mt-5 text-center">
+    <h2 class="text-success">✅ Tu reserva fue hecha con éxito</h2>
+    <p>Nos pondremos en contacto contigo si es necesario. ¡Gracias por confiar en nosotros!</p>
+    
+    <a href="{% url 'home' %}" class="btn btn-outline-dark mt-3">
+        Volver al inicio
+    </a>
+</div>
+{% endblock %}
