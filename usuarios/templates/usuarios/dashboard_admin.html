@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4">📊 Panel de Administración</h2>
+
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card text-center shadow-sm">
+                <div class="card-body">
+                    <h5>Usuarios</h5>
+                    <h3>{{ total_usuarios }}</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card text-center shadow-sm">
+                <div class="card-body">
+                    <h5>Productos</h5>
+                    <h3>{{ total_productos }}</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card text-center shadow-sm">
+                <div class="card-body">
+                    <h5>Pedidos</h5>
+                    <h3>{{ total_pedidos }}</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card text-center shadow-sm">
+                <div class="card-body">
+                    <h5>Total Pagos</h5>
+                    <h3>${{ total_pagos }}</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-6">
+            <canvas id="pedidosChart"></canvas>
+        </div>
+        <div class="col-md-6">
+            <canvas id="pagosChart"></canvas>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Pedidos por estado
+    const pedidosData = {
+        labels: [{% for p in pedidos_por_estado %}"{{ p.estado }}",{% endfor %}],
+        datasets: [{
+            label: "Pedidos",
+            data: [{% for p in pedidos_por_estado %}{{ p.total }},{% endfor %}],
+            backgroundColor: ["#36A2EB", "#FFCE56", "#FF6384"]
+        }]
+    };
+
+    new Chart(document.getElementById("pedidosChart"), {
+        type: "pie",
+        data: pedidosData,
+        options: {
+            plugins: {
+                title: {
+                    display: true,
+                    text: "📦 Pedidos por Estado",
+                    font: { size: 18 }
+                }
+            }
+        }
+    });
+
+    // Pagos por estado
+    const pagosData = {
+        labels: [{% for p in pagos_por_estado %}"{{ p.estado }}",{% endfor %}],
+        datasets: [{
+            label: "Pagos",
+            data: [{% for p in pagos_por_estado %}{{ p.total }},{% endfor %}],
+            backgroundColor: ["#4BC0C0", "#9966FF", "#FF9F40"]
+        }]
+    };
+
+    new Chart(document.getElementById("pagosChart"), {
+        type: "bar",
+        data: pagosData,
+        options: {
+            plugins: {
+                title: {
+                    display: true,
+                    text: "💰 Pagos por Estado",
+                    font: { size: 18 }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+{% endblock %}
