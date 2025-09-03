@@ -59,8 +59,8 @@ del db.sqlite3
 
  - Linux / Mac
 ```bash
-python3 -m venv env # Para crear
-source env/bin/activate # Para activar
+rm db.sqlite3
+
 ```
 ---
 
