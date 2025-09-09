@@ -94,24 +94,25 @@ sqlite3 db.sqlite3 < datos.sql
 
 ```
 ---
-# acceso al panel de administrador:
-   ---
+# Acceso al panel de administrador
+---
 
 ### 👤 Crear superusuario en Django
 Para acceder al panel de administración de Django, es necesario crear un **superusuario**:
+
 1. Ejecuta el siguiente comando:
    ```bash
    python manage.py createsuperuser
-   ```
+
 2. Completa los datos que te pedirá en consola:
    
- Email address (correo electrónico) 
+  - Email address (correo electrónico) 
 
- Username (usuario) → ej: admin
+  - Username (usuario) → ej: admin
 
- Password (contraseña) → escribe una contraseña segura
+  - Password (contraseña) → escribe una contraseña segura
 
- Password (again) → repite la contraseña
+  - Password (again) → repite la contraseña
 
  3. ejecuta runserver
     
@@ -119,6 +120,7 @@ Para acceder al panel de administración de Django, es necesario crear un **supe
    python manage.py runserver
 
 ```
-4. Realiza el login con tu correo y contraseña de superusuario
+4. Ingresa a http://127.0.0.1:8000
+    Realiza el login con tu correo y contraseña de superusuario
   
 
