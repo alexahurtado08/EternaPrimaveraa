@@ -94,10 +94,10 @@ sqlite3 db.sqlite3 < datos.sql
 
 ```
 ---
-4. acceso al panel de administrador:
+# acceso al panel de administrador:
    ---
 
-## 👤 Crear superusuario en Django
+### 👤 Crear superusuario en Django
 Para acceder al panel de administración de Django, es necesario crear un **superusuario**:
 
 1. Ejecuta el siguiente comando:
