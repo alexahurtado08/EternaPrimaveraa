@@ -105,12 +105,20 @@ Para acceder al panel de administración de Django, es necesario crear un **supe
    ```
 2. Completa los datos que te pedirá en consola:
    
-Email address (correo electrónico) 
+ Email address (correo electrónico) 
 
-Username (usuario) → ej: admin
+ Username (usuario) → ej: admin
 
-Password (contraseña) → escribe una contraseña segura
+ Password (contraseña) → escribe una contraseña segura
 
-Password (again) → repite la contraseña
+ Password (again) → repite la contraseña
+
+ 3. ejecuta runserver
+    
+```bash
+   python manage.py runserver
+
+```
+4. Realiza el login con tu correo y contraseña de superusuario
   
 
