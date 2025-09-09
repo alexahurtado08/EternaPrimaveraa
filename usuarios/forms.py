@@ -2,21 +2,32 @@
 from django import forms
 from .models import Usuario
 
+# usuarios/forms.py
+# Realizado por Mariana Valderrama
+from django import forms
+from .models import Usuario
+
 class UsuarioForm(forms.ModelForm):
+    password = forms.CharField(
+        widget=forms.PasswordInput(attrs={'class': 'form-control'}),
+        label="Contraseña"
+    )
+
     class Meta:
         model = Usuario
         fields = ['nombre', 'correo', 'password', 'telefono', 'direccion']
         widgets = {
             'nombre': forms.TextInput(attrs={'class': 'form-control'}),
             'correo': forms.EmailInput(attrs={'class': 'form-control'}),
-            'password': forms.PasswordInput(attrs={'class': 'form-control'}),
             'telefono': forms.TextInput(attrs={'class': 'form-control'}),
             'direccion': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
         }
+
     def __init__(self, *args, **kwargs):
-            super().__init__(*args, **kwargs)
-            for field in self.fields.values():
-                field.required = True    
+        super().__init__(*args, **kwargs)
+        for field in self.fields.values():
+            field.required = True
+   
 
 class LoginForm(forms.Form):
     correo = forms.EmailField(label="Correo")

@@ -86,10 +86,15 @@ def ver_pago(request, pago_id):
 @staff_member_required
 def cambiar_estado_pedido(request, pedido_id, nuevo_estado):
     pedido = get_object_or_404(Pedido, id=pedido_id)
-    if nuevo_estado in ["Pendiente", "Pagado", "Enviado", "Entregado", "Cancelado"]:
+    valores_validos = [estado[0] for estado in Pedido.ESTADOS]  # ['pendiente', 'procesado', 'entregado']
+
+    if nuevo_estado in valores_validos:
         pedido.estado = nuevo_estado
         pedido.save()
-        messages.success(request, f"El estado del pedido {pedido.id} cambió a {nuevo_estado}.")
+        messages.success(
+            request,
+            f"El estado del pedido {pedido.id} cambió a {pedido.get_estado_display()}."
+        )
     else:
         messages.error(request, "Estado no válido.")
     return redirect('pedidos:lista_pedidos')

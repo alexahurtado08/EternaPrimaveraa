@@ -1,0 +1,28 @@
+<!-- Realizado por Mariana Valderrama -->
+{% extends 'base.html' %}
+
+{% block title %}
+    {% if es_edicion %}Editar Reserva{% else %}Crear Reserva{% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="fw-bold">
+        {% if es_edicion %}Editar Reserva{% else %}Crear Reserva{% endif %}
+    </h2>
+
+    <form method="post" class="mt-3">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <div class="mt-3">
+            <button type="submit" class="btn btn-success">
+                {% if es_edicion %}Actualizar{% else %}Guardar{% endif %}
+            </button>
+            <a href="{% url 'reservas:lista_reservas' %}" class="btn btn-outline-dark">
+                Cancelar
+            </a>
+        </div>
+    </form>
+</div>
+{% endblock %}
