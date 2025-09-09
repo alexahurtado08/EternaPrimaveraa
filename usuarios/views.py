@@ -16,24 +16,21 @@ def registrar_usuario(request):
     if request.method == 'POST':
         form = UsuarioForm(request.POST)
         if form.is_valid():
-            nombre = form.cleaned_data['nombre']
-            correo = form.cleaned_data['correo']
-            password = form.cleaned_data['password']
-            telefono = form.cleaned_data.get('telefono', '')
-            direccion = form.cleaned_data.get('direccion', '')
+            # Crear el usuario pero sin guardarlo aún
+            usuario = form.save(commit=False)
+            
+            # Encriptar la contraseña
+            usuario.set_password(form.cleaned_data['password'])
+            
+            # Guardar en DB
+            usuario.save()
 
-            Usuario.objects.create_user(
-                nombre=nombre,
-                correo=correo,
-                password=password,
-                telefono=telefono,
-                direccion=direccion
-            )
-            # <-- Aquí usamos el namespace completo
             return redirect('usuarios:login_usuario')
     else:
         form = UsuarioForm()
+    
     return render(request, 'usuarios/registrar_usuario.html', {'form': form})
+
 
 
 

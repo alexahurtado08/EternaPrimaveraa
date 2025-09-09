@@ -49,10 +49,15 @@
             <td>{{ reserva.fecha_salida }}</td>
             <td>{{ reserva.numero_personas }}</td>
             <td>{{ reserva.tipo_plan }}</td>
-            <td>
-                <a href="{% url 'reservas:editar_reserva' reserva.id %}" class="btn btn-outline-dark">Editar</a>
-                <a href="{% url 'reservas:eliminar_reserva' reserva.id %}" class="btn btn-outline-danger">Eliminar</a>
-            </td>
+           {% if user.is_staff %}
+                <a href="{% url 'reservas:editar_reserva' reserva.id %}" class="btn btn-primary btn-sm">
+                    Editar
+                </a>
+                <a href="{% url 'reservas:eliminar_reserva' reserva.id %}" class="btn btn-danger btn-sm">
+                    Eliminar
+                </a>
+            {% endif %}
+
         </tr>
         {% empty %}
         <tr>
@@ -62,5 +67,5 @@
     </tbody>
 </table>
 
-<a href="{% url 'reservas:crear_reserva' %}" class="btn btn-outline-success">Crear Reserva</a>
+<a href="{% url 'reservas:manejar_reserva' %}" class="btn btn-outline-success">Crear Reserva</a>
 {% endblock %}

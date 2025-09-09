@@ -40,7 +40,7 @@
                 </td>
 
                 <td>{{ pedido.fecha }}</td>
-                <td>{{ pedido.estado }}</td>
+                <td>{{ pedido.get_estado_display }}</td>
                 <td>
                     {% if pedido.pago %}
                         {{ pedido.pago.estado }}
@@ -53,13 +53,13 @@
                     {% if user.is_superuser %}
                         <form method="post" action="{% url 'pedidos:cambiar_estado_pedido' pedido.id 'dummy' %}" style="display:inline;">
                             {% csrf_token %}
-                            <select name="nuevo_estado" onchange="this.form.action=this.form.action.replace('dummy', this.value); this.form.submit();" class="form-select form-select-sm d-inline w-auto">
+                            <select name="nuevo_estado"
+                                    onchange="this.form.action=this.form.action.replace('dummy', this.value); this.form.submit();"
+                                    class="form-select form-select-sm d-inline w-auto">
                                 <option disabled selected>Cambiar estado</option>
-                                <option value="Pendiente">Pendiente</option>
-                                <option value="Pagado">Pagado</option>
-                                <option value="Enviado">Enviado</option>
-                                <option value="Entregado">Entregado</option>
-                                <option value="Cancelado">Cancelado</option>
+                                {% for valor, label in pedido.ESTADOS %}
+                                    <option value="{{ valor }}">{{ label }}</option>
+                                {% endfor %}
                             </select>
                         </form>
                     {% endif %}
