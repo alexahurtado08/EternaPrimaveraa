@@ -4,70 +4,169 @@
 {% block title %}Lista de Reservas{% endblock %}
 
 {% block content %}
-<h2>Lista de Reservas</h2>
+<style>
+    /* Colores dorados elegantes */
+    .btn-gold {
+        background: linear-gradient(135deg, #f7c948, #f0ad00);
+        border: none;
+        color: #fff !important;
+        font-weight: 600;
+        box-shadow: 0 3px 10px rgba(240, 173, 0, 0.3);
+        transition: all 0.3s ease;
+    }
 
-<!-- FORMULARIO DE FILTROS -->
-<form method="get" class="mb-4">
-    <div class="row">
-        <div class="col-md-3">
-            <input type="date" name="fecha_llegada" class="form-control" 
-                   value="{{ request.GET.fecha_llegada }}" placeholder="Fecha de llegada">
-        </div>
-        
-        <div class="col-md-2">
-            <input type="number" name="personas" class="form-control" 
-                   value="{{ request.GET.personas }}" placeholder="Personas">
-        </div>
+    .btn-gold:hover {
+        background: linear-gradient(135deg, #ffce3a, #e6a800);
+        box-shadow: 0 5px 15px rgba(240, 173, 0, 0.5);
+        transform: translateY(-2px);
+    }
 
-        <div class="col-md-2">
-            <input type="text" name="plan" class="form-control" 
-                   value="{{ request.GET.plan }}" placeholder="Tipo de plan">
-        </div>
+    .btn-outline-gold {
+        border: 2px solid #f0ad00;
+        color: #f0ad00 !important;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
 
-        <div class="col-md-2">
-            <button type="submit" class="btn btn-outline-primary w-100">Filtrar</button>
+    .btn-outline-gold:hover {
+        background: linear-gradient(135deg, #f7c948, #f0ad00);
+        color: #fff !important;
+        box-shadow: 0 4px 10px rgba(240, 173, 0, 0.4);
+        transform: translateY(-2px);
+    }
+
+    /* Estilos de la página */
+    h2 {
+        color: #d4a017;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        text-align: center;
+    }
+
+    form {
+        background: #fffdf4;
+        border-radius: 1rem;
+        padding: 1rem 1.5rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    input.form-control {
+        border-radius: 0.6rem;
+        border: 1px solid #e3c652;
+        transition: all 0.2s ease-in-out;
+    }
+
+    input.form-control:focus {
+        border-color: #f0ad00;
+        box-shadow: 0 0 6px rgba(240, 173, 0, 0.3);
+    }
+
+    /* Tabla elegante */
+    .table {
+        border-radius: 1rem;
+        overflow: hidden;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+        background: #fff;
+    }
+
+    thead {
+        background: linear-gradient(90deg, #fff4b8, #ffea80);
+        color: #4a3c00;
+        font-weight: 600;
+    }
+
+    tbody tr:hover {
+        background-color: #fffbe6;
+        transition: all 0.2s ease;
+    }
+
+    td, th {
+        vertical-align: middle !important;
+    }
+
+    /* Espaciado inferior */
+    .btn-container {
+        text-align: center;
+        margin-top: 2rem;
+    }
+</style>
+
+<div class="container mt-5 mb-5">
+    <h2>Lista de Reservas</h2>
+
+    <!-- FORMULARIO DE FILTROS -->
+    <form method="get" class="mb-4">
+        <div class="row g-3 align-items-end">
+            <div class="col-md-3">
+                <label class="form-label fw-semibold text-secondary">Fecha de llegada</label>
+                <input type="date" name="fecha_llegada" class="form-control" 
+                       value="{{ request.GET.fecha_llegada }}">
+            </div>
+            
+            <div class="col-md-2">
+                <label class="form-label fw-semibold text-secondary">Personas</label>
+                <input type="number" name="personas" class="form-control" 
+                       value="{{ request.GET.personas }}">
+            </div>
+
+            <div class="col-md-3">
+                <label class="form-label fw-semibold text-secondary">Tipo de plan</label>
+                <input type="text" name="plan" class="form-control" 
+                       value="{{ request.GET.plan }}">
+            </div>
+
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-gold w-100">Filtrar</button>
+            </div>
         </div>
+    </form>
+
+    <!-- TABLA DE RESERVAS -->
+    <div class="table-responsive">
+        <table class="table text-center align-middle">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Llegada</th>
+                    <th>Salida</th>
+                    <th>Personas</th>
+                    <th>Plan</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for reserva in reservas %}
+                <tr>
+                    <td>{{ reserva.id }}</td>
+                    <td>{{ reserva.fecha_llegada }}</td>
+                    <td>{{ reserva.fecha_salida }}</td>
+                    <td>{{ reserva.numero_personas }}</td>
+                    <td>{{ reserva.tipo_plan }}</td>
+                    <td>
+                        {% if user.is_staff %}
+                            <a href="{% url 'reservas:editar_reserva' reserva.id %}" 
+                               class="btn btn-outline-gold btn-sm me-2">Editar</a>
+                            <a href="{% url 'reservas:eliminar_reserva' reserva.id %}" 
+                               class="btn btn-outline-danger btn-sm">Eliminar</a>
+                        {% else %}
+                            <span class="text-muted">No disponible</span>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="6" class="text-center text-muted">No hay reservas que coincidan con los filtros.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
-</form>
 
-<!-- TABLA DE RESERVAS -->
-<table class="table table-striped text-center">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Llegada</th>
-            <th>Salida</th>
-            <th>Personas</th>
-            <th>Plan</th>
-            <th>Acciones</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for reserva in reservas %}
-        <tr>
-            <td>{{ reserva.id }}</td>
-            <td>{{ reserva.fecha_llegada }}</td>
-            <td>{{ reserva.fecha_salida }}</td>
-            <td>{{ reserva.numero_personas }}</td>
-            <td>{{ reserva.tipo_plan }}</td>
-            <td>
-                {% if user.is_staff %}
-                    <a href="{% url 'reservas:editar_reserva' reserva.id %}" 
-                       class="btn btn-primary btn-sm me-2">Editar</a>
-                    <a href="{% url 'reservas:eliminar_reserva' reserva.id %}" 
-                       class="btn btn-danger btn-sm">Eliminar</a>
-                {% else %}
-                    <span class="text-muted">No disponible</span>
-                {% endif %}
-            </td>
-        </tr>
-        {% empty %}
-        <tr>
-            <td colspan="6" class="text-center">No hay reservas que coincidan con los filtros.</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
-
-<a href="{% url 'reservas:manejar_reserva' %}" class="btn btn-outline-success">Crear Reserva</a>
+    <!-- Botón crear -->
+    <div class="btn-container">
+        <a href="{% url 'reservas:manejar_reserva' %}" class="btn btn-gold px-4 rounded-pill">
+            Crear Reserva
+        </a>
+    </div>
+</div>
 {% endblock %}

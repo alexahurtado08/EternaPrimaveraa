@@ -6,23 +6,38 @@
 {% endblock %}
 
 {% block content %}
-<div class="container mt-4">
-    <h2 class="fw-bold">
-        {% if es_edicion %}Editar Reserva{% else %}Crear Reserva{% endif %}
-    </h2>
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+    <div class="col-md-6 col-lg-5">
+        <div class="card shadow-lg border-0 rounded-4">
+            
+            <!-- Encabezado -->
+            <div class="card-header text-center fw-bold fs-4 text-dark" 
+                 style="background: linear-gradient(90deg, #FFEE8C, #fff7c2); border-top-left-radius: 1rem; border-top-right-radius: 1rem;">
+                {% if es_edicion %}Editar Reserva{% else %}Nueva Reserva{% endif %}
+            </div>
 
-    <form method="post" class="mt-3">
-        {% csrf_token %}
-        {{ form.as_p }}
+            <!-- Cuerpo del formulario -->
+            <div class="card-body p-4">
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
 
-        <div class="mt-3">
-            <button type="submit" class="btn btn-success">
-                {% if es_edicion %}Actualizar{% else %}Guardar{% endif %}
-            </button>
-            <a href="{% url 'reservas:lista_reservas' %}" class="btn btn-outline-dark">
-                Cancelar
-            </a>
+                    <div class="d-flex justify-content-between mt-4">
+                        <a href="{% url 'reservas:lista_reservas' %}" 
+                           class="btn rounded-pill px-4 fw-semibold"
+                           style="background: #fff8dc; border: 1px solid #e0c75f; color: #6c5c00; transition: 0.3s;">
+                            Cancelar
+                        </a>
+                        
+                        <button type="submit" 
+                                class="btn rounded-pill px-4 fw-semibold"
+                                style="background: linear-gradient(90deg, #f5d442, #f0b90b); border: none; color: #3a2e00; transition: 0.3s;">
+                            {% if es_edicion %}Actualizar{% else %}Guardar{% endif %}
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
-    </form>
+    </div>
 </div>
 {% endblock %}
