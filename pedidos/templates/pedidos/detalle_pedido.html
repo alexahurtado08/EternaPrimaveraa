@@ -2,31 +2,63 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container mt-4">
-    <h2>Detalle del Pedido #{{ pedido.id }}</h2>
-    <p><strong>Cliente:</strong> {{ pedido.usuario.nombre }}</p>
-    <p><strong>Dirección:</strong> {{ pedido.usuario.direccion }}</p>
+<div class="container mt-5 d-flex justify-content-center">
+    <div class="card shadow-lg rounded-4 w-100" style="max-width: 700px; background-color: #fffdf3;">
+        
+        <!-- Header de la card -->
+        <div class="card-header text-center fw-bold fs-4 text-dark" 
+             style="background: linear-gradient(90deg, #FFEE8C, #fff7c2); border-top-left-radius: 1rem; border-top-right-radius: 1rem;">
+            Detalle del Pedido #{{ pedido.id }}
+        </div>
 
+        <!-- Cuerpo de la card -->
+        <div class="card-body p-4">
+            <!-- Información del pedido -->
+            <p><strong>Cliente:</strong> {{ pedido.usuario.nombre }}</p>
+            <p><strong>Dirección:</strong> {{ pedido.usuario.direccion }}</p>
+            <p><strong>Estado:</strong> {{ pedido.estado }}</p>
+            <p><strong>Fecha:</strong> {{ pedido.fecha }}</p>
+            <p class="fw-bold"><strong>Total:</strong> ${{ pedido.total }}</p>
 
-    <p><strong>Estado:</strong> {{ pedido.estado }}</p>
-    <p><strong>Fecha:</strong> {{ pedido.fecha }}</p>
-    <p><strong>Total:</strong> ${{ pedido.total }}</p>
+            <!-- Productos -->
+            <h5 class="mt-4 fw-semibold">Productos</h5>
+            <ul class="list-group mb-4">
+                {% for item in pedido.items.all %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0">
+                        {{ item.cantidad }} x {{ item.producto.nombre }}
+                        <span class="fw-semibold">${{ item.precio }}</span>
+                    </li>
+                {% empty %}
+                    <li class="list-group-item border-0 px-0 text-muted">No hay productos en este pedido.</li>
+                {% endfor %}
+            </ul>
 
-    <h4>Productos</h4>
-    <ul>
-        {% for item in pedido.items.all %}
-            <li>{{ item.cantidad }} x {{ item.producto.nombre }} - ${{ item.precio }}</li>
-        {% empty %}
-            <li>No hay productos en este pedido.</li>
-        {% endfor %}
-    </ul>
+            <!-- Información de pago -->
+            {% if pedido.pago %}
+                <h5 class="fw-semibold">Pago - Estado:</h5>
+                {% if pedido.pago.estado|lower == "pendiente" %}
+                    <span class="fw-semibold" style="color: #f7a500;">{{ pedido.pago.estado|capfirst }}</span>
+                    <div class="mt-3">
+                        <a href="{% url 'pedidos:pagar_pedido' pedido.id %}" 
+                           class="btn rounded-pill px-4 fw-semibold"
+                           style="background: linear-gradient(90deg, #f5d442, #f0b90b); border: none; color: #3a2e00; transition: 0.3s;">
+                            Ir a Pagar
+                        </a>
+                    </div>
+                {% else %}
+                    <span class="fw-semibold text-success">{{ pedido.pago.estado|capfirst }}</span>
+                {% endif %}
+            {% endif %}
 
-    
-   {% if pedido.pago %}
-    <h3>Pago - Estado: {{ pedido.pago.estado }}</h3>
-    {% if pedido.pago.estado == "pendiente" %}
-        <a href="{% url 'pedidos:pagar_pedido' pedido.id %}" class="btn btn-success">Ir a Pagar</a>
-    {% endif %}
-{% endif %}
+            <!-- Botón de regreso a productos -->
+            <div class="mt-4">
+                <a href="{% url 'producto:lista_productos' %}" 
+                   class="btn rounded-pill px-4 fw-semibold"
+                   style="background: #fff8dc; border: 1px solid #e0c75f; color: #6c5c00; transition: 0.3s;">
+                    Volver a Productos
+                </a>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}

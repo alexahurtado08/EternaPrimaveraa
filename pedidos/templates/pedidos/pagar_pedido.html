@@ -1,10 +1,37 @@
 <!-- Realizado por Alexandra Hurtado -->
 {% extends "base.html" %}
+
 {% block content %}
-<h2>Pagar Pedido {{ pedido.id }}</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-success">Pagar</button>
-</form>
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+    <div class="card shadow-lg rounded-4 w-100" style="max-width: 500px; background-color: #fffdf3;">
+        
+        <!-- Header -->
+        <div class="card-header text-center fw-bold fs-4 text-dark" 
+             style="background: linear-gradient(90deg, #FFEE8C, #fff7c2); border-top-left-radius: 1rem; border-top-right-radius: 1rem;">
+            Pagar Pedido #{{ pedido.id }}
+        </div>
+
+        <!-- Body -->
+        <div class="card-body p-4">
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+
+                <div class="d-flex justify-content-between mt-4">
+                    <a href="{% url 'pedidos:detalle_pedido' pedido.id %}" 
+                       class="btn rounded-pill px-4 fw-semibold"
+                       style="background: #fff8dc; border: 1px solid #e0c75f; color: #6c5c00; transition: 0.3s;">
+                        Cancelar
+                    </a>
+
+                    <button type="submit" 
+                            class="btn rounded-pill px-4 fw-semibold"
+                            style="background: linear-gradient(90deg, #f5d442, #f0b90b); border: none; color: #3a2e00; transition: 0.3s;">
+                        Pagar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock %}

@@ -1,9 +1,48 @@
 <!-- Realizado por Alexandra Hurtado -->
 {% extends "base.html" %}
+
 {% block content %}
-<h2>Pago {{ pago.id }}</h2>
-<p>Método: {{ pago.metodo }}</p>
-<p>Fecha: {{ pago.fecha }}</p>
-<p>Total: ${{ pago.total }}</p>
-<p>Estado: {{ pago.estado }}</p>
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+    <div class="card shadow-lg rounded-4 w-100" style="max-width: 500px; background-color: #fffdf3;">
+        
+        <!-- Header -->
+        <div class="card-header text-center fw-bold fs-4 text-dark" 
+             style="background: linear-gradient(90deg, #FFEE8C, #fff7c2); border-top-left-radius: 1rem; border-top-right-radius: 1rem;">
+            Detalle de Pago #{{ pago.id }}
+        </div>
+
+        <!-- Body -->
+        <div class="card-body p-4">
+            <p><strong>Método de pago:</strong> {{ pago.metodo }}</p>
+            <p><strong>Fecha:</strong> {{ pago.fecha }}</p>
+            <p><strong>Total:</strong> ${{ pago.total }}</p>
+            
+            <!-- Estado con badge dinámico -->
+            <p><strong>Estado:</strong> 
+                {% if pago.estado|lower == "pendiente" %}
+                    <span class="fw-semibold px-3 py-1 rounded-pill" style="background-color: #f7a500; color: #fff;">
+                        {{ pago.estado|capfirst }}
+                    </span>
+                {% elif pago.estado|lower == "pagado" or pago.estado|lower == "completado" %}
+                    <span class="fw-semibold px-3 py-1 rounded-pill" style="background-color: #2e7d32; color: #fff;">
+                        {{ pago.estado|capfirst }}
+                    </span>
+                {% else %}
+                    <span class="fw-semibold px-3 py-1 rounded-pill" style="background-color: #ccc; color: #333;">
+                        {{ pago.estado|capfirst }}
+                    </span>
+                {% endif %}
+            </p>
+
+            <!-- Botón regresar al home -->
+            <div class="mt-4 text-center">
+                <a href="{% url 'home' %}" 
+                   class="btn rounded-pill px-4 fw-semibold"
+                   style="background: linear-gradient(90deg, #f5d442, #f0b90b); border: none; color: #3a2e00; transition: 0.3s;">
+                    Volver al inicio
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
