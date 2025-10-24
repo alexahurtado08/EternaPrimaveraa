@@ -2,45 +2,57 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container mt-4">
-    <h1 class="fw-bold">Mi Carrito</h1>
+<div class="container mt-5">
+    <h1 class="fw-bold mb-4">Mi Carrito</h1>
+
     {% if carrito.items.all %}
-        <table class="table table-striped mt-3 align-middle">
-            <thead>
-                <tr>
-                    <th>Producto</th>
-                    <th>Cantidad</th>
-                    <th>Precio por unidad</th>
-                    <th>Subtotal</th>
-                    <th>Acción</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for item in carrito.items.all %}
-                <tr>
-                    <td>{{ item.producto.nombre }}</td>
-                    <td>
-                        <form action="{% url 'carrito:actualizar_cantidad' item.id %}" method="post" class="d-flex">
-                            {% csrf_token %}
-                            <input type="number" name="cantidad" value="{{ item.cantidad }}" min="1" class="form-control me-2" style="width:80px;">
-                            <button type="submit" class="btn btn-primary btn-sm">Actualizar</button>
-                        </form>
-                    </td>
-                    <td>${{ item.producto.precio }}</td>
-                    <td>${{ item.subtotal }}</td>
-                    <td>
-                        <a href="{% url 'carrito:eliminar_item' item.id %}" class="btn btn-danger btn-sm">
-                            Eliminar
-                        </a>
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-        <h4 class="mt-3">Total: ${{ carrito.total_carrito }}</h4>
+        <div class="row g-4">
+            {% for item in carrito.items.all %}
+                <div class="col-md-6 col-lg-4">
+                    <div class="card shadow-sm rounded-4 h-100" style="background-color: #fffdf3;">
+                        {% if item.producto.imagen %}
+                            <img src="{{ item.producto.imagen.url }}" class="card-img-top rounded-top-4" 
+                                 alt="{{ item.producto.nombre }}" style="height: 180px; object-fit: cover;">
+                        {% endif %}
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title fw-bold">{{ item.producto.nombre }}</h5>
+                            <p class="mb-1"><strong>Precio:</strong> ${{ item.producto.precio }}</p>
+                            <p class="mb-2"><strong>Subtotal:</strong> ${{ item.subtotal }}</p>
+
+                            <!-- Formulario de cantidad -->
+                            <form action="{% url 'carrito:actualizar_cantidad' item.id %}" method="post" class="d-flex mb-3">
+                                {% csrf_token %}
+                                <input type="number" name="cantidad" value="{{ item.cantidad }}" min="1" 
+                                       class="form-control me-2" style="width:80px;">
+                                <button type="submit" class="btn rounded-pill fw-semibold"
+                                        style="background: linear-gradient(90deg, #f5d442, #f0b90b); border: none; color: #3a2e00;">
+                                    Actualizar
+                                </button>
+                            </form>
+
+                            <!-- Botón eliminar -->
+                            <a href="{% url 'carrito:eliminar_item' item.id %}" 
+                               class="btn rounded-pill fw-semibold mt-auto"
+                               style="background: #fff8dc; border: 1px solid #e0c75f; color: #6c5c00; transition: 0.3s;">
+                                Eliminar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <!-- Total y botón de pedido -->
+        <div class="mt-4 text-end">
+            <h4 class="fw-bold">Total: ${{ carrito.total_carrito }}</h4>
+            <a href="{% url 'pedidos:hacer_pedido' %}" 
+               class="btn rounded-pill px-4 fw-semibold mt-2"
+               style="background: linear-gradient(90deg, #f5d442, #f0b90b); border: none; color: #3a2e00;">
+                Hacer Pedido
+            </a>
+        </div>
     {% else %}
-        <p class="text-muted mt-3">Tu carrito está vacío.</p>
+        <p class="text-center text-muted mt-5">Tu carrito está vacío.</p>
     {% endif %}
-    <a href="{% url 'pedidos:hacer_pedido' %}" class="btn btn-primary mt-3">Hacer Pedido</a>
 </div>
 {% endblock %}
