@@ -2,12 +2,57 @@
 {% extends "base.html" %}
 
 {% block content %}
+<style>
+    /* 🎨 Estilos personalizados */
+    .btn-gold {
+        background: linear-gradient(135deg, #f7c948, #f0ad00);
+        border: none;
+        color: #fff !important;
+        font-weight: 600;
+        box-shadow: 0 3px 10px rgba(240, 173, 0, 0.3);
+        transition: all 0.3s ease;
+    }
+
+    .btn-gold:hover {
+        background: linear-gradient(135deg, #ffce3a, #e6a800);
+        box-shadow: 0 5px 15px rgba(240, 173, 0, 0.5);
+        transform: translateY(-2px);
+    }
+
+    .btn-outline-gold {
+        border: 2px solid #f0ad00;
+        color: #f0ad00 !important;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .btn-outline-gold:hover {
+        background: linear-gradient(135deg, #f7c948, #f0ad00);
+        color: #fff !important;
+        box-shadow: 0 4px 10px rgba(240, 173, 0, 0.4);
+        transform: translateY(-2px);
+    }
+
+    .card {
+        transition: all 0.3s ease;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+        color: #d4a017;
+    }
+</style>
+
 <div class="container mt-4">
     <!-- Título y botón -->
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h1 class="fw-bold">Nuestros Productos</h1>
         {% if user.is_authenticated and user.is_superuser %}
-            <a href="{% url 'producto:crear_producto' %}" class="btn btn-success rounded-pill px-4">
+            <a href="{% url 'producto:crear_producto' %}" class="btn btn-gold rounded-pill px-4">
                 ➕ Agregar producto
             </a>
         {% endif %}
@@ -32,13 +77,13 @@
                     <div class="card-body d-flex flex-column text-center">
                         <h5 class="card-title fw-bold text-truncate">{{ producto.nombre }}</h5>
                         <p class="text-muted mb-1">{{ producto.cantidad }} g</p>
-                        <p class="fs-5 fw-bold text-success">${{ producto.precio }}</p>
+                        <p class="fs-5 fw-bold text-warning">${{ producto.precio }}</p>
 
                         <!-- Espacio flexible para alinear botones abajo -->
                         <div class="mt-auto">
                             <!-- Botón Ver detalle -->
                             <a href="{% url 'producto:detalle_producto' producto.id %}" 
-                               class="btn btn-outline-success rounded-pill w-100 mb-2">
+                               class="btn btn-outline-gold rounded-pill w-100 mb-2">
                                 Ver detalle
                             </a>
 
@@ -46,7 +91,7 @@
                             <form action="{% url 'carrito:agregar_producto' producto.id %}" method="post">
                                 {% csrf_token %}
                                 <input type="hidden" name="cantidad" value="1">
-                                <button type="submit" class="btn btn-success w-100 rounded-pill">
+                                <button type="submit" class="btn btn-gold w-100 rounded-pill">
                                     🛒 Agregar al carrito
                                 </button>
                             </form>

@@ -2,19 +2,96 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container mt-4">
-    <h1 class="fw-bold">{{ producto.nombre }}</h1>
-    <p>{{ producto.descripcion }}</p>
-    <p><strong>Cantidad:</strong> {{ producto.cantidad }} g</p>
-    <p><strong>Precio:</strong> ${{ producto.precio }}</p>
-    
-    {% if producto.imagen %}
-        <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}" class="img-fluid rounded shadow-sm mb-3" style="max-width: 400px;">
-    {% endif %}
+<style>
+    /* Estilos dorados coherentes */
+    .btn-gold {
+        background: linear-gradient(135deg, #f7c948, #f0ad00);
+        border: none;
+        color: #fff !important;
+        font-weight: 600;
+        box-shadow: 0 3px 10px rgba(240, 173, 0, 0.3);
+        transition: all 0.3s ease;
+    }
 
-    <!-- Botón Volver -->
-    <a href="{% url 'producto:lista_productos' %}" class="btn btn-outline-success rounded-pill px-4 mt-3">
-        ⬅ Volver
-    </a>
+    .btn-gold:hover {
+        background: linear-gradient(135deg, #ffce3a, #e6a800);
+        box-shadow: 0 5px 15px rgba(240, 173, 0, 0.5);
+        transform: translateY(-2px);
+    }
+
+    .btn-outline-gold {
+        border: 2px solid #f0ad00;
+        color: #f0ad00 !important;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .btn-outline-gold:hover {
+        background: linear-gradient(135deg, #f7c948, #f0ad00);
+        color: #fff !important;
+        box-shadow: 0 4px 10px rgba(240, 173, 0, 0.4);
+        transform: translateY(-2px);
+    }
+
+    h1 {
+        color: #d4a017;
+        font-weight: 700;
+        margin-bottom: 0.8rem;
+    }
+
+    .detalle-producto {
+        background: #fffdf4;
+        border-radius: 1rem;
+        padding: 2rem;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+    }
+
+    .detalle-producto:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .detalle-producto p {
+        font-size: 1.05rem;
+        color: #333;
+        line-height: 1.6;
+    }
+
+    .detalle-producto strong {
+        color: #7a6000;
+    }
+
+    img {
+        border-radius: 0.8rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+    }
+
+    img:hover {
+        transform: scale(1.02);
+    }
+</style>
+
+<div class="container mt-5 mb-5">
+    <div class="detalle-producto mx-auto" style="max-width: 600px;">
+        <h1>{{ producto.nombre }}</h1>
+        <p>{{ producto.descripcion }}</p>
+        <p><strong>Cantidad:</strong> {{ producto.cantidad }} g</p>
+        <p><strong>Precio:</strong> ${{ producto.precio }}</p>
+        
+        {% if producto.imagen %}
+            <div class="text-center my-4">
+                <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}" 
+                     class="img-fluid" style="max-width: 400px;">
+            </div>
+        {% endif %}
+
+        <div class="text-center mt-4">
+            <a href="{% url 'producto:lista_productos' %}" class="btn btn-outline-gold rounded-pill px-4">
+                Volver
+            </a>
+        </div>
+    </div>
 </div>
 {% endblock %}

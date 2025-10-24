@@ -2,13 +2,86 @@
 {% extends "base.html" %}
 
 {% block content %}
+<style>
+    /* 🎨 Botones en tonos dorados */
+    .btn-gold {
+        background: linear-gradient(135deg, #f7c948, #f0ad00);
+        border: none;
+        color: #fff !important;
+        font-weight: 600;
+        box-shadow: 0 3px 10px rgba(240, 173, 0, 0.3);
+        transition: all 0.3s ease;
+    }
+
+    .btn-gold:hover {
+        background: linear-gradient(135deg, #ffce3a, #e6a800);
+        box-shadow: 0 5px 15px rgba(240, 173, 0, 0.5);
+        transform: translateY(-2px);
+    }
+
+    .btn-outline-gold {
+        border: 2px solid #f0ad00;
+        color: #f0ad00 !important;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .btn-outline-gold:hover {
+        background: linear-gradient(135deg, #f7c948, #f0ad00);
+        color: #fff !important;
+        box-shadow: 0 4px 10px rgba(240, 173, 0, 0.4);
+        transform: translateY(-2px);
+    }
+
+    /* 🪶 Tarjeta elegante */
+    .card {
+        border: none;
+        border-radius: 1rem;
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
+
+    .card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    /* 🌅 Encabezado dorado */
+    .card-header {
+        background: linear-gradient(90deg, #ffea80, #f9d74b);
+        color: #5a4400;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+    }
+
+    /* 🧾 Campos del formulario */
+    label.form-label {
+        color: #4a3c00;
+    }
+
+    input.form-control, select.form-select, textarea.form-control {
+        border-radius: 0.6rem;
+        border: 1px solid #e3c652;
+        transition: all 0.2s ease-in-out;
+    }
+
+    input.form-control:focus, select.form-select:focus, textarea.form-control:focus {
+        border-color: #f0ad00;
+        box-shadow: 0 0 6px rgba(240, 173, 0, 0.3);
+    }
+
+    /* 💛 Fondo general más cálido */
+    body {
+        background-color: #fffdf4;
+    }
+</style>
+
 <div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
     <div class="col-md-6 col-lg-5">
         <div class="card shadow-lg border-0 rounded-4">
             
             <!-- Header -->
-            <div class="card-header text-center fw-bold fs-4 text-dark" 
-                 style="background: linear-gradient(90deg, #FFEE8C, #fff7c2); border-top-left-radius: 1rem; border-top-right-radius: 1rem;">
+            <div class="card-header text-center fw-bold fs-4">
                 Nuevo Producto
             </div>
 
@@ -34,10 +107,10 @@
 
                     <!-- Botones -->
                     <div class="d-flex justify-content-between mt-4">
-                        <a href="{% url 'producto:lista_productos' %}" class="btn btn-outline-secondary px-4 rounded-pill">
+                        <a href="{% url 'producto:lista_productos' %}" class="btn btn-outline-gold px-4 rounded-pill">
                             Cancelar
                         </a>
-                        <button type="submit" class="btn btn-success px-4 rounded-pill">
+                        <button type="submit" class="btn btn-gold px-4 rounded-pill">
                             Guardar
                         </button>
                     </div>
@@ -46,6 +119,4 @@
         </div>
     </div>
 </div>
-
-
 {% endblock %}
