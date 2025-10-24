@@ -43,33 +43,42 @@
 
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <!-- Productos -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'producto:lista_productos' %}">Productos</a>
-                    </li>
-                      <!-- Reservas -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'reservas:lista_reservas' %}">Reservas</a>
-                    </li>
+
                     {% if user.is_authenticated %}
+                        <!-- Siempre visible para usuarios logueados -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'producto:lista_productos' %}">Productos</a>
+                        </li>
+
+                        <!-- Reservas -->
+                        <li class="nav-item">
+                            {% if user.is_superuser %}
+                                <!-- Superuser -> lista_reservas -->
+                                <a class="nav-link" href="{% url 'reservas:lista_reservas' %}">Reservas</a>
+                            {% else %}
+                                <!-- Usuario normal -> planes -->
+                                <a class="nav-link" href="{% url 'reservas:planes' %}">Reservas</a>
+                            {% endif %}
+                        </li>
+
                         {% if not user.is_superuser %}
-                            <!-- Carrito solo si está logueado y NO es superuser -->
+                            <!-- Carrito -->
                             <li class="nav-item">
                                 <a class="nav-link" href="{% url 'carrito:ver_carrito' %}">Carrito</a>
                             </li>
-                               <!-- Mis pedidos -->
+                            <!-- Mis pedidos -->
                             <li class="nav-item">
                                 <a class="nav-link" href="{% url 'pedidos:mis_pedidos' %}">Mis pedidos</a>
                             </li>
                         {% endif %}
-                      
 
-                        <!-- Cerrar sesión siempre que esté logueado -->
+                        <!-- Cerrar sesión -->
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'usuarios:logout_usuario' %}">Cerrar sesión</a>
                         </li>
+
                     {% else %}
-                        <!-- Login solo si no está logueado -->
+                        <!-- Si no está logueado solo mostrar login -->
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'usuarios:login_usuario' %}">Login</a>
                         </li>
