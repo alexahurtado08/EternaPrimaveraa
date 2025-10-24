@@ -93,10 +93,26 @@ def logout_usuario(request):
 @user_passes_test(lambda u: u.is_superuser)
 def admin_home(request):
     """
-    Página inicial del superusuario.
-    Solo accesible para superusuarios.
+    Página inicial del superusuario con dashboard incluido.
     """
-    return render(request, "usuarios/admin_home.html")
+    total_usuarios = Usuario.objects.count()
+    total_productos = Producto.objects.count()
+    total_pedidos = Pedido.objects.count()
+
+    pedidos_por_estado = Pedido.objects.values("estado").annotate(total=Count("id"))
+    pagos_por_estado = Pago.objects.values("estado").annotate(total=Count("id"))
+    total_pagos = Pago.objects.aggregate(total=Sum("total"))["total"] or 0
+
+    contexto = {
+        "total_usuarios": total_usuarios,
+        "total_productos": total_productos,
+        "total_pedidos": total_pedidos,
+        "pedidos_por_estado": pedidos_por_estado,
+        "total_pagos": total_pagos,
+        "pagos_por_estado": pagos_por_estado,
+    }
+    return render(request, "usuarios/admin_home.html", contexto)
+
 
 
 # -------------------------------
