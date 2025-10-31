@@ -2,6 +2,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Producto
 from .forms import ProductoForm
+from django.http import JsonResponse
 
 # ---------------- Vistas de Productos ---------------- #
 
@@ -26,26 +27,11 @@ def crear_producto(request):
             return redirect('producto:lista_productos')
     else:
         form = ProductoForm()
-    return render(request, 'producto/formulario_producto.html', {'form': form, 'accion': 'Crear Producto'})
+    
+    # Renderiza la plantilla con el formulario
+    return render(request, 'producto/formulario_producto.html', {'form': form})
 
-
-# Vista para editar un producto existente
-def editar_producto(request, producto_id):
-    producto = get_object_or_404(Producto, id=producto_id)
-    if request.method == 'POST':
-        form = ProductoForm(request.POST, request.FILES, instance=producto)
-        if form.is_valid():
-            form.save()
-            return redirect('producto:lista_productos')
-    else:
-        form = ProductoForm(instance=producto)
-    return render(request, 'producto/formulario_producto.html', {'form': form, 'accion': 'Editar Producto'})
-
-
-# Vista para eliminar un producto
-def eliminar_producto(request, producto_id):
-    producto = get_object_or_404(Producto, id=producto_id)
-    if request.method == 'POST':
-        producto.delete()
-        return redirect('producto:lista_productos')
-    return render(request, 'producto/confirmar_eliminar.html', {'producto': producto})
+def api_productos(request):
+    productos = Producto.objects.all().values('id', 'nombre', 'precio', 'cantidad')
+    data = list(productos)
+    return JsonResponse({'productos': data})
