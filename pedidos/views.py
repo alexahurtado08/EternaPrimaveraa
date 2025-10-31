@@ -8,10 +8,10 @@ from pedidos.models import Pedido, PedidoItem
 from django.utils import timezone
 from django.contrib import messages
 from django.contrib.admin.views.decorators import staff_member_required
-from django.template.loader import get_template
 from django.http import HttpResponse
-from xhtml2pdf import pisa
-import openpyxl
+from .services.pdf_report_generator import PDFReportGenerator
+from .services.excel_report_generator import ExcelReportGenerator
+
 
 # ---------------- Vistas de usuario ---------------- #
 
@@ -129,58 +129,19 @@ def mis_pedidos(request):
 
 # ---------------- Exportaciones ---------------- #
 
-# Generar un PDF con el detalle de un pedido
+
 @login_required
 def pedido_pdf(request, pedido_id):
     pedido = get_object_or_404(Pedido, id=pedido_id, usuario=request.user)
 
-    template = get_template("pedidos/pedido_pdf.html")  # Plantilla para el PDF
-    html = template.render({"pedido": pedido})
+    report_generator = PDFReportGenerator()
+    context = {"pedido": pedido}
+    return report_generator.generate("pedidos/pedido_pdf.html", context, f"pedido_{pedido.id}")
 
-    response = HttpResponse(content_type="application/pdf")
-    response["Content-Disposition"] = f'attachment; filename="pedido_{pedido.id}.pdf"'
 
-    # Crear el PDF con xhtml2pdf
-    pisa_status = pisa.CreatePDF(html, dest=response)
-
-    if pisa_status.err:
-        return HttpResponse("Error al generar el PDF", status=500)
-    
-    return response
-
-# Exportar pedidos pagados a un archivo Excel
 @staff_member_required
 def exportar_pedidos_pagados_excel(request):
-    # Filtrar solo pedidos cuyo pago está marcado como pagado
     pedidos = Pedido.objects.filter(pago__estado="pagado")
 
-    # Crear libro y hoja de Excel
-    wb = openpyxl.Workbook()
-    ws = wb.active
-    ws.title = "Pedidos Pagados"
-
-    # Encabezados de la tabla
-    ws.append(["ID", "Cliente", "Dirección", "Fecha", "Total", "Estado Pedido", "Productos"])
-
-    # Agregar cada pedido como fila
-    for pedido in pedidos:
-        productos_str = ", ".join(
-            [f"{item.producto} x{item.cantidad}" for item in pedido.items.all()]
-        )
-        ws.append([
-            pedido.id,
-            pedido.usuario.nombre,
-            getattr(pedido.usuario, "direccion", "N/A"),  # Dirección opcional
-            pedido.fecha.strftime("%Y-%m-%d %H:%M"),
-            float(pedido.total),
-            pedido.estado,
-            productos_str
-        ])
-
-    # Respuesta HTTP con el archivo Excel
-    response = HttpResponse(
-        content_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-    )
-    response["Content-Disposition"] = 'attachment; filename="pedidos_pagados.xlsx"'
-    wb.save(response)
-    return response
+    report_generator = ExcelReportGenerator()
+    return report_generator.generate(pedidos, "pedidos_pagados")
