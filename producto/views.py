@@ -3,6 +3,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import user_passes_test
 from .models import Producto
 from .forms import ProductoForm
+from django.http import JsonResponse
 
 
 # ---------------- Vistas de Productos ---------------- #
@@ -54,3 +55,9 @@ def eliminar_producto(request, producto_id):
         producto.delete()
         return redirect('producto:lista_productos')
     return render(request, 'producto/confirmar_eliminar.html', {'producto': producto})
+
+
+def api_productos(request):
+    productos = Producto.objects.all().values('id', 'nombre', 'precio', 'cantidad')
+    data = list(productos)
+    return JsonResponse({'productos': data})

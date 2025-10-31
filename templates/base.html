@@ -85,9 +85,9 @@
                         </li>
                     {% endif %}
                     <li class="nav-item">
-                        {% if temperatura %}
+                        {% if clima_data.temperatura %}
                             <span class="nav-link fw-semibold">
-                                🌤️ {{ ciudad }}: {{ temperatura }}°C, {{ descripcion }}
+                                🌤️ {{ clima_data.ciudad }}: {{ clima_data.temperatura }}°C, {{ clima_data.descripcion }}
                             </span>
                         {% else %}
                             <span class="nav-link fw-semibold">Clima no disponible</span>
