@@ -3,7 +3,6 @@
 
 {% block content %}
 <style>
-    /* 🎨 Estilos personalizados */
     .btn-gold {
         background: linear-gradient(135deg, #f7c948, #f0ad00);
         border: none;
@@ -12,43 +11,40 @@
         box-shadow: 0 3px 10px rgba(240, 173, 0, 0.3);
         transition: all 0.3s ease;
     }
-
     .btn-gold:hover {
         background: linear-gradient(135deg, #ffce3a, #e6a800);
         box-shadow: 0 5px 15px rgba(240, 173, 0, 0.5);
         transform: translateY(-2px);
     }
-
     .btn-outline-gold {
         border: 2px solid #f0ad00;
         color: #f0ad00 !important;
         font-weight: 600;
         transition: all 0.3s ease;
     }
-
     .btn-outline-gold:hover {
         background: linear-gradient(135deg, #f7c948, #f0ad00);
         color: #fff !important;
         box-shadow: 0 4px 10px rgba(240, 173, 0, 0.4);
         transform: translateY(-2px);
     }
-
     .card {
         transition: all 0.3s ease;
+        border: none;
+        border-radius: 1rem;
+        overflow: hidden;
     }
-
     .card:hover {
         transform: translateY(-5px);
         box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
     }
-
     h1 {
         color: #d4a017;
     }
 </style>
 
 <div class="container mt-4">
-    <!-- Título y botón -->
+    <!-- Título y botón para superusuario -->
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h1 class="fw-bold">Nuestros Productos</h1>
         {% if user.is_authenticated and user.is_superuser %}
@@ -79,22 +75,37 @@
                         <p class="text-muted mb-1">{{ producto.cantidad }} g</p>
                         <p class="fs-5 fw-bold text-warning">${{ producto.precio }}</p>
 
-                        <!-- Espacio flexible para alinear botones abajo -->
                         <div class="mt-auto">
-                            <!-- Botón Ver detalle -->
+                            <!-- Ver detalle -->
                             <a href="{% url 'producto:detalle_producto' producto.id %}" 
                                class="btn btn-outline-gold rounded-pill w-100 mb-2">
                                 Ver detalle
                             </a>
 
-                            <!-- Botón Agregar al carrito -->
-                            <form action="{% url 'carrito:agregar_producto' producto.id %}" method="post">
-                                {% csrf_token %}
-                                <input type="hidden" name="cantidad" value="1">
-                                <button type="submit" class="btn btn-gold w-100 rounded-pill">
-                                    🛒 Agregar al carrito
-                                </button>
-                            </form>
+                            <!-- Mostrar "Agregar al carrito" solo si NO es superusuario -->
+                            {% if not user.is_superuser %}
+                                <form action="{% url 'carrito:agregar_producto' producto.id %}" method="post">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="cantidad" value="1">
+                                    <button type="submit" class="btn btn-gold w-100 rounded-pill mb-2">
+                                        🛒 Agregar al carrito
+                                    </button>
+                                </form>
+                            {% endif %}
+
+                            <!-- ✨ Botones solo para superusuario -->
+                            {% if user.is_authenticated and user.is_superuser %}
+                                <a href="{% url 'producto:editar_producto' producto.id %}" 
+                                   class="btn btn-outline-gold w-100 rounded-pill mb-2">
+                                    Editar
+                                </a>
+
+                                <a href="{% url 'producto:eliminar_producto' producto.id %}" 
+                                   class="btn btn-outline-danger w-100 rounded-pill"
+                                   style="border: 2px solid #d9534f; color: #d9534f; font-weight: 600;">
+                                    Eliminar
+                                </a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
