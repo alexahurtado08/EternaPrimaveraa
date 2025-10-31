@@ -1,0 +1,75 @@
+<!-- Realizado por Alexandra Hurtado -->
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    .btn-gold {
+        background: linear-gradient(135deg, #f7c948, #f0ad00);
+        border: none;
+        color: #fff !important;
+        font-weight: 600;
+        box-shadow: 0 3px 10px rgba(240, 173, 0, 0.3);
+        transition: all 0.3s ease;
+    }
+    .btn-gold:hover {
+        background: linear-gradient(135deg, #ffce3a, #e6a800);
+        box-shadow: 0 5px 15px rgba(240, 173, 0, 0.5);
+        transform: translateY(-2px);
+    }
+    .btn-outline-danger {
+        border: 2px solid #d9534f;
+        color: #d9534f !important;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+    .btn-outline-danger:hover {
+        background: #d9534f;
+        color: #fff !important;
+        box-shadow: 0 4px 10px rgba(217, 83, 79, 0.4);
+        transform: translateY(-2px);
+    }
+    .confirm-box {
+        background: #fff;
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        max-width: 500px;
+        margin: 80px auto;
+    }
+    .confirm-box img {
+        width: 120px;
+        margin-bottom: 20px;
+    }
+    h2 {
+        color: #d4a017;
+        font-weight: bold;
+        margin-bottom: 15px;
+    }
+    p {
+        color: #555;
+        margin-bottom: 30px;
+    }
+</style>
+
+<div class="container">
+    <div class="confirm-box">
+        <img src="https://cdn-icons-png.flaticon.com/512/484/484662.png" alt="Advertencia">
+        <h2>¿Estás seguro de eliminar este producto?</h2>
+        <p class="mb-4">Una vez eliminado, no podrás recuperarlo.</p>
+
+        <h5 class="fw-bold text-dark">{{ producto.nombre }}</h5>
+        <p class="text-muted">{{ producto.descripcion|truncatechars:80 }}</p>
+
+        <form method="post" class="mt-4">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-outline-danger rounded-pill px-4 me-2">
+                 Sí, eliminar
+            </button>
+            <a href="{% url 'producto:lista_productos' %}" class="btn btn-gold rounded-pill px-4">
+                 Cancelar
+            </a>
+        </form>
+    </div>
+</div>
+{% endblock %}
