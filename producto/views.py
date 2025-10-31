@@ -2,6 +2,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Producto
 from .forms import ProductoForm
+from django.http import JsonResponse
 
 # ---------------- Vistas de Productos ---------------- #
 
@@ -34,3 +35,8 @@ def crear_producto(request):
     
     # Renderiza la plantilla con el formulario
     return render(request, 'producto/formulario_producto.html', {'form': form})
+
+def api_productos(request):
+    productos = Producto.objects.all().values('id', 'nombre', 'precio', 'cantidad')
+    data = list(productos)
+    return JsonResponse({'productos': data})
