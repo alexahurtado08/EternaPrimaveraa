@@ -1,8 +1,13 @@
 <!-- Realizado por Mariana Valderrama -->
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block title %}
-    {% if es_edicion %}Editar Reserva{% else %}Crear Reserva{% endif %}
+    {% if es_edicion %}
+        {% trans "Editar Reserva" %}
+    {% else %}
+        {% trans "Crear Reserva" %}
+    {% endif %}
 {% endblock %}
 
 {% block content %}
@@ -13,7 +18,11 @@
             <!-- Encabezado -->
             <div class="card-header text-center fw-bold fs-4 text-dark" 
                  style="background: linear-gradient(90deg, #FFEE8C, #fff7c2); border-top-left-radius: 1rem; border-top-right-radius: 1rem;">
-                {% if es_edicion %}Editar Reserva{% else %}Nueva Reserva{% endif %}
+                {% if es_edicion %}
+                    {% trans "Editar Reserva" %}
+                {% else %}
+                    {% trans "Nueva Reserva" %}
+                {% endif %}
             </div>
 
             <!-- Cuerpo del formulario -->
@@ -26,13 +35,17 @@
                         <a href="{% url 'reservas:lista_reservas' %}" 
                            class="btn rounded-pill px-4 fw-semibold"
                            style="background: #fff8dc; border: 1px solid #e0c75f; color: #6c5c00; transition: 0.3s;">
-                            Cancelar
+                            {% trans "Cancelar" %}
                         </a>
                         
                         <button type="submit" 
                                 class="btn rounded-pill px-4 fw-semibold"
                                 style="background: linear-gradient(90deg, #f5d442, #f0b90b); border: none; color: #3a2e00; transition: 0.3s;">
-                            {% if es_edicion %}Actualizar{% else %}Guardar{% endif %}
+                            {% if es_edicion %}
+                                {% trans "Actualizar" %}
+                            {% else %}
+                                {% trans "Guardar" %}
+                            {% endif %}
                         </button>
                     </div>
                 </form>

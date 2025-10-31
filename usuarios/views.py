@@ -1,5 +1,5 @@
-# Realizado por Mariana Valderrama
 # usuarios/views.py
+# Realizado por Mariana Valderrama
 
 from django.shortcuts import render, redirect
 from .models import Usuario
@@ -8,6 +8,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.admin.views.decorators import staff_member_required
 from django.db.models import Sum, Count
+from django.utils.translation import gettext as _  # ✅ Traducción
+from django.contrib import messages
 from pedidos.models import Pedido, Pago
 from producto.models import Producto
 
@@ -18,31 +20,38 @@ from producto.models import Producto
 def registrar_usuario(request):
     """
     Vista para registrar un nuevo usuario.
-    - Se encripta la contraseña antes de guardar.
-    - Tras el registro, se redirige al login.
     """
     if request.method == 'POST':
         form = UsuarioForm(request.POST)
         if form.is_valid():
-            usuario = form.save(commit=False)  # no guardar aún
-            usuario.set_password(form.cleaned_data['password'])  # encriptar
-            usuario.save()  # guardar en DB
+            usuario = form.save(commit=False)
+            usuario.set_password(form.cleaned_data['password'])
+            usuario.save()
+            messages.success(request, _("Registro completado correctamente."))
             return redirect('usuarios:login_usuario')
+        else:
+            messages.error(request, _("Por favor, corrige los errores en el formulario."))
     else:
         form = UsuarioForm()
     
-    return render(request, 'usuarios/registrar_usuario.html', {'form': form})
+    return render(request, 'usuarios/registrar_usuario.html', {
+        'form': form,
+        'titulo': _("Registro de usuario"),
+    })
 
 
 # -------------------------------
-# Listado de usuarios (vista simple)
+# Listado de usuarios
 # -------------------------------
 def lista_usuarios(request):
     """
-    Vista para mostrar todos los usuarios registrados.
+    Muestra todos los usuarios registrados.
     """
     usuarios = Usuario.objects.all()
-    return render(request, 'usuarios/lista_usuarios.html', {'usuarios': usuarios})
+    return render(request, 'usuarios/lista_usuarios.html', {
+        'usuarios': usuarios,
+        'titulo': _("Lista de usuarios"),
+    })
 
 
 # -------------------------------
@@ -50,10 +59,7 @@ def lista_usuarios(request):
 # -------------------------------
 def login_usuario(request):
     """
-    Vista para iniciar sesión:
-    - Autentica con correo y contraseña.
-    - Si es superusuario → redirige al panel admin.
-    - Si es usuario normal → redirige al home.
+    Vista para iniciar sesión.
     """
     if request.method == "POST":
         form = LoginForm(request.POST)
@@ -64,15 +70,19 @@ def login_usuario(request):
 
             if user is not None:
                 login(request, user)
-                if user.is_superuser:  # redirección condicional
+                messages.success(request, _("Inicio de sesión exitoso."))
+                if user.is_superuser:
                     return redirect("usuarios:admin_home")
                 return redirect("home")
             else:
-                form.add_error(None, "❌ Correo o contraseña incorrectos")
+                form.add_error(None, _("❌ Correo o contraseña incorrectos."))
     else:
         form = LoginForm()
 
-    return render(request, "usuarios/login.html", {"form": form})
+    return render(request, "usuarios/login.html", {
+        "form": form,
+        "titulo": _("Iniciar sesión"),
+    })
 
 
 # -------------------------------
@@ -80,9 +90,10 @@ def login_usuario(request):
 # -------------------------------
 def logout_usuario(request):
     """
-    Cierra la sesión del usuario y lo redirige al login.
+    Cierra la sesión y redirige al login.
     """
     logout(request)
+    messages.info(request, _("Sesión cerrada correctamente."))
     return redirect("usuarios:login_usuario")
 
 
@@ -104,6 +115,8 @@ def admin_home(request):
     total_pagos = Pago.objects.aggregate(total=Sum("total"))["total"] or 0
 
     contexto = {
+        "titulo": _("Panel de administración"),
+        "descripcion": _("Resumen general del sistema."),
         "total_usuarios": total_usuarios,
         "total_productos": total_productos,
         "total_pedidos": total_pedidos,
@@ -114,35 +127,25 @@ def admin_home(request):
     return render(request, "usuarios/admin_home.html", contexto)
 
 
-
 # -------------------------------
 # Dashboard administrativo
 # -------------------------------
 @staff_member_required
 def dashboard_admin(request):
     """
-    Panel de control para staff:
-    - Muestra métricas generales:
-        * Total de usuarios
-        * Total de productos
-        * Total de pedidos
-        * Pedidos agrupados por estado
-        * Pagos totales
-        * Pagos agrupados por estado
+    Panel de control para personal administrativo.
     """
-    # Totales básicos
     total_usuarios = Usuario.objects.count()
     total_productos = Producto.objects.count()
     total_pedidos = Pedido.objects.count()
 
-    # Agrupaciones
     pedidos_por_estado = Pedido.objects.values("estado").annotate(total=Count("id"))
     pagos_por_estado = Pago.objects.values("estado").annotate(total=Count("id"))
-
-    # Suma total de pagos recibidos
     total_pagos = Pago.objects.aggregate(total=Sum("total"))["total"] or 0
 
     contexto = {
+        "titulo": _("Dashboard administrativo"),
+        "descripcion": _("Métricas generales de usuarios, productos y pedidos."),
         "total_usuarios": total_usuarios,
         "total_productos": total_productos,
         "total_pedidos": total_pedidos,

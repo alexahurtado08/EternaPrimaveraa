@@ -1,5 +1,6 @@
 <!-- Realizado por Alexandra Hurtado -->
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block content %}
 <div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
@@ -8,7 +9,9 @@
         <!-- Header -->
         <div class="card-header text-center fw-bold fs-4 text-dark" 
              style="background: linear-gradient(90deg, #FFEE8C, #fff7c2); border-top-left-radius: 1rem; border-top-right-radius: 1rem;">
-            Pagar Pedido #{{ pedido.id }}
+            {% blocktranslate with pedido_id=pedido.id %}
+                Pagar Pedido #{{ pedido_id }}
+            {% endblocktranslate %}
         </div>
 
         <!-- Body -->
@@ -21,13 +24,13 @@
                     <a href="{% url 'pedidos:detalle_pedido' pedido.id %}" 
                        class="btn rounded-pill px-4 fw-semibold"
                        style="background: #fff8dc; border: 1px solid #e0c75f; color: #6c5c00; transition: 0.3s;">
-                        Cancelar
+                        {% trans "Cancelar" %}
                     </a>
 
                     <button type="submit" 
                             class="btn rounded-pill px-4 fw-semibold"
                             style="background: linear-gradient(90deg, #f5d442, #f0b90b); border: none; color: #3a2e00; transition: 0.3s;">
-                        Pagar
+                        {% trans "Pagar" %}
                     </button>
                 </div>
             </form>

@@ -1,4 +1,5 @@
 <!-- Realizado por Alexandra Hurtado -->
+{% load i18n %}
 {% extends "base.html" %}
 
 {% block content %}
@@ -8,17 +9,19 @@
         <!-- Header -->
         <div class="card-header text-center fw-bold fs-4 text-dark" 
              style="background: linear-gradient(90deg, #FFEE8C, #fff7c2); border-top-left-radius: 1rem; border-top-right-radius: 1rem;">
-            Detalle de Pago #{{ pago.id }}
+            {% blocktranslate with pago_id=pago.id %}
+                Detalle de Pago #{{ pago_id }}
+            {% endblocktranslate %}
         </div>
 
         <!-- Body -->
         <div class="card-body p-4">
-            <p><strong>Método de pago:</strong> {{ pago.metodo }}</p>
-            <p><strong>Fecha:</strong> {{ pago.fecha }}</p>
-            <p><strong>Total:</strong> ${{ pago.total }}</p>
+            <p><strong>{% trans "Método de pago:" %}</strong> {{ pago.metodo }}</p>
+            <p><strong>{% trans "Fecha:" %}</strong> {{ pago.fecha }}</p>
+            <p><strong>{% trans "Total:" %}</strong> ${{ pago.total }}</p>
             
             <!-- Estado con badge dinámico -->
-            <p><strong>Estado:</strong> 
+            <p><strong>{% trans "Estado:" %}</strong> 
                 {% if pago.estado|lower == "pendiente" %}
                     <span class="fw-semibold px-3 py-1 rounded-pill" style="background-color: #f7a500; color: #fff;">
                         {{ pago.estado|capfirst }}
@@ -39,7 +42,7 @@
                 <a href="{% url 'home' %}" 
                    class="btn rounded-pill px-4 fw-semibold"
                    style="background: linear-gradient(90deg, #f5d442, #f0b90b); border: none; color: #3a2e00; transition: 0.3s;">
-                    Volver al inicio
+                    {% trans "Volver al inicio" %}
                 </a>
             </div>
         </div>

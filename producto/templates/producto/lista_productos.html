@@ -1,5 +1,6 @@
 <!-- Realizado por Alexandra Hurtado -->
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block content %}
 <style>
@@ -46,10 +47,10 @@
 <div class="container mt-4">
     <!-- Título y botón para superusuario -->
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h1 class="fw-bold">Nuestros Productos</h1>
+        <h1 class="fw-bold">{% trans "Nuestros Productos" %}</h1>
         {% if user.is_authenticated and user.is_superuser %}
             <a href="{% url 'producto:crear_producto' %}" class="btn btn-gold rounded-pill px-4">
-                ➕ Agregar producto
+                ➕ {% trans "Agregar producto" %}
             </a>
         {% endif %}
     </div>
@@ -64,9 +65,9 @@
                         <img src="{{ producto.imagen.url }}" class="card-img-top rounded-top-4 img-fluid" 
                              alt="{{ producto.nombre }}" style="height: 200px; object-fit: cover;">
                     {% else %}
-                        <img src="https://via.placeholder.com/300x200?text=Sin+Imagen" 
+                        <img src="https://via.placeholder.com/300x200?text={% trans 'Sin Imagen' %}" 
                              class="card-img-top rounded-top-4 img-fluid" 
-                             alt="Sin imagen" style="height: 200px; object-fit: cover;">
+                             alt="{% trans 'Sin imagen' %}" style="height: 200px; object-fit: cover;">
                     {% endif %}
 
                     <!-- Contenido -->
@@ -79,7 +80,7 @@
                             <!-- Ver detalle -->
                             <a href="{% url 'producto:detalle_producto' producto.id %}" 
                                class="btn btn-outline-gold rounded-pill w-100 mb-2">
-                                Ver detalle
+                                {% trans "Ver detalle" %}
                             </a>
 
                             <!-- Mostrar "Agregar al carrito" solo si NO es superusuario -->
@@ -88,7 +89,7 @@
                                     {% csrf_token %}
                                     <input type="hidden" name="cantidad" value="1">
                                     <button type="submit" class="btn btn-gold w-100 rounded-pill mb-2">
-                                        🛒 Agregar al carrito
+                                        🛒 {% trans "Agregar al carrito" %}
                                     </button>
                                 </form>
                             {% endif %}
@@ -97,13 +98,13 @@
                             {% if user.is_authenticated and user.is_superuser %}
                                 <a href="{% url 'producto:editar_producto' producto.id %}" 
                                    class="btn btn-outline-gold w-100 rounded-pill mb-2">
-                                    Editar
+                                    {% trans "Editar" %}
                                 </a>
 
                                 <a href="{% url 'producto:eliminar_producto' producto.id %}" 
                                    class="btn btn-outline-danger w-100 rounded-pill"
                                    style="border: 2px solid #d9534f; color: #d9534f; font-weight: 600;">
-                                    Eliminar
+                                    {% trans "Eliminar" %}
                                 </a>
                             {% endif %}
                         </div>
@@ -111,7 +112,7 @@
                 </div>
             </div>
         {% empty %}
-            <p class="text-center text-muted">No hay productos disponibles.</p>
+            <p class="text-center text-muted">{% trans "No hay productos disponibles." %}</p>
         {% endfor %}
     </div>
 </div>

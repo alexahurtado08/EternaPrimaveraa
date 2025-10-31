@@ -1,14 +1,15 @@
 <!-- Realizado por Alexandra Hurtado -->
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block content %}
-<h2>Eliminar producto del carrito</h2>
-<p>¿Seguro que quieres eliminar {{ item.producto.nombre }} del carrito?</p>
+<h2>{% trans "Eliminar producto del carrito" %}</h2>
+<p>{% blocktrans with nombre=item.producto.nombre %}¿Seguro que quieres eliminar {{ nombre }} del carrito?{% endblocktrans %}</p>
 
 <form method="post">
     {% csrf_token %}
-    <button type="submit">Sí, eliminar</button>
+    <button type="submit">{% trans "Sí, eliminar" %}</button>
 </form>
 
-<a href="{% url 'ver_carrito' %}">Cancelar</a>
+<a href="{% url 'ver_carrito' %}">{% trans "Cancelar" %}</a>
 {% endblock %}

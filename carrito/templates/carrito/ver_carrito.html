@@ -1,9 +1,10 @@
 <!-- Realizado por Alexandra Hurtado -->
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block content %}
 <div class="container mt-5">
-    <h1 class="fw-bold mb-4">Mi Carrito</h1>
+    <h1 class="fw-bold mb-4">{% trans "Mi Carrito" %}</h1>
 
     {% if carrito.items.all %}
         <div class="row g-4">
@@ -16,8 +17,8 @@
                         {% endif %}
                         <div class="card-body d-flex flex-column">
                             <h5 class="card-title fw-bold">{{ item.producto.nombre }}</h5>
-                            <p class="mb-1"><strong>Precio:</strong> ${{ item.producto.precio }}</p>
-                            <p class="mb-2"><strong>Subtotal:</strong> ${{ item.subtotal }}</p>
+                            <p class="mb-1"><strong>{% trans "Precio" %}:</strong> ${{ item.producto.precio }}</p>
+                            <p class="mb-2"><strong>{% trans "Subtotal" %}:</strong> ${{ item.subtotal }}</p>
 
                             <!-- Formulario de cantidad -->
                             <form action="{% url 'carrito:actualizar_cantidad' item.id %}" method="post" class="d-flex mb-3">
@@ -26,7 +27,7 @@
                                        class="form-control me-2" style="width:80px;">
                                 <button type="submit" class="btn rounded-pill fw-semibold"
                                         style="background: linear-gradient(90deg, #f5d442, #f0b90b); border: none; color: #3a2e00;">
-                                    Actualizar
+                                    {% trans "Actualizar" %}
                                 </button>
                             </form>
 
@@ -34,7 +35,7 @@
                             <a href="{% url 'carrito:eliminar_item' item.id %}" 
                                class="btn rounded-pill fw-semibold mt-auto"
                                style="background: #fff8dc; border: 1px solid #e0c75f; color: #6c5c00; transition: 0.3s;">
-                                Eliminar
+                                {% trans "Eliminar" %}
                             </a>
                         </div>
                     </div>
@@ -44,15 +45,15 @@
 
         <!-- Total y botón de pedido -->
         <div class="mt-4 text-end">
-            <h4 class="fw-bold">Total: ${{ carrito.total_carrito }}</h4>
+            <h4 class="fw-bold">{% trans "Total" %}: ${{ carrito.total_carrito }}</h4>
             <a href="{% url 'pedidos:hacer_pedido' %}" 
                class="btn rounded-pill px-4 fw-semibold mt-2"
                style="background: linear-gradient(90deg, #f5d442, #f0b90b); border: none; color: #3a2e00;">
-                Hacer Pedido
+                {% trans "Hacer Pedido" %}
             </a>
         </div>
     {% else %}
-        <p class="text-center text-muted mt-5">Tu carrito está vacío.</p>
+        <p class="text-center text-muted mt-5">{% trans "Tu carrito está vacío." %}</p>
     {% endif %}
 </div>
 {% endblock %}

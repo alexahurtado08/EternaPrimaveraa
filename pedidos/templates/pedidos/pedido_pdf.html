@@ -1,6 +1,6 @@
-
 <!-- Realizado por Alexandra Hurtado -->
- <!DOCTYPE html>
+{% load i18n %}
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -12,22 +12,27 @@
     </style>
 </head>
 <body>
-    <h2>Detalle del Pedido #{{ pedido.id }}</h2>
-    <p><b>Usuario:</b> {{ pedido.usuario.username }}</p>
-    <p><b>Dirección:</b> {{ pedido.usuario.direccion }}</p>
-    <p><b>Fecha:</b> {{ pedido.fecha }}</p>
-    <p><b>Total:</b> ${{ pedido.total }}</p>
-    <p><b>Estado Pedido:</b> {{ pedido.estado }}</p>
-    <p><b>Estado Pago:</b> {{ pedido.pago.estado }}</p>
+    <h2>
+        {% blocktranslate with pedido_id=pedido.id %}
+            Detalle del Pedido #{{ pedido_id }}
+        {% endblocktranslate %}
+    </h2>
 
-    <h3>Productos</h3>
+    <p><b>{% trans "Usuario:" %}</b> {{ pedido.usuario.username }}</p>
+    <p><b>{% trans "Dirección:" %}</b> {{ pedido.usuario.direccion }}</p>
+    <p><b>{% trans "Fecha:" %}</b> {{ pedido.fecha }}</p>
+    <p><b>{% trans "Total:" %}</b> ${{ pedido.total }}</p>
+    <p><b>{% trans "Estado Pedido:" %}</b> {{ pedido.estado }}</p>
+    <p><b>{% trans "Estado Pago:" %}</b> {{ pedido.pago.estado }}</p>
+
+    <h3>{% trans "Productos" %}</h3>
     <table>
         <thead>
             <tr>
-                <th>Producto</th>
-                <th>Cantidad</th>
-                <th>Precio</th>
-                <th>Subtotal</th>
+                <th>{% trans "Producto" %}</th>
+                <th>{% trans "Cantidad" %}</th>
+                <th>{% trans "Precio" %}</th>
+                <th>{% trans "Subtotal" %}</th>
             </tr>
         </thead>
         <tbody>

@@ -1,4 +1,5 @@
 <!-- Realizado por Mariana Valderrama -->
+{% load i18n %}
 
 <div class="dashboard-container">
 
@@ -7,7 +8,7 @@
         <div class="col-6 col-md-3">
             <div class="card text-center border-0 shadow-sm h-100 small-card">
                 <div class="card-body">
-                    <h6 class="text-muted">Usuarios</h6>
+                    <h6 class="text-muted">{% trans "Usuarios" %}</h6>
                     <h4 class="fw-bold text-primary">{{ total_usuarios }}</h4>
                 </div>
             </div>
@@ -16,7 +17,7 @@
         <div class="col-6 col-md-3">
             <div class="card text-center border-0 shadow-sm h-100 small-card">
                 <div class="card-body">
-                    <h6 class="text-muted">Productos</h6>
+                    <h6 class="text-muted">{% trans "Productos" %}</h6>
                     <h4 class="fw-bold text-success">{{ total_productos }}</h4>
                 </div>
             </div>
@@ -25,7 +26,7 @@
         <div class="col-6 col-md-3">
             <div class="card text-center border-0 shadow-sm h-100 small-card">
                 <div class="card-body">
-                    <h6 class="text-muted">Pedidos</h6>
+                    <h6 class="text-muted">{% trans "Pedidos" %}</h6>
                     <h4 class="fw-bold text-warning">{{ total_pedidos }}</h4>
                 </div>
             </div>
@@ -34,7 +35,7 @@
         <div class="col-6 col-md-3">
             <div class="card text-center border-0 shadow-sm h-100 small-card">
                 <div class="card-body">
-                    <h6 class="text-muted">Total Pagos</h6>
+                    <h6 class="text-muted">{% trans "Total Pagos" %}</h6>
                     <h4 class="fw-bold text-danger">${{ total_pagos }}</h4>
                 </div>
             </div>
@@ -66,7 +67,7 @@
     const pedidosData = {
         labels: [{% for p in pedidos_por_estado %}"{{ p.estado }}",{% endfor %}],
         datasets: [{
-            label: "Pedidos",
+            label: "{% trans 'Pedidos' %}",
             data: [{% for p in pedidos_por_estado %}{{ p.total }},{% endfor %}],
             backgroundColor: ["#36A2EB", "#FFCE56", "#FF6384"],
             borderWidth: 1
@@ -80,7 +81,7 @@
             plugins: {
                 title: {
                     display: true,
-                    text: "📦 Pedidos por Estado",
+                    text: "{% trans '📦 Pedidos por Estado' %}",
                     font: { size: 16 }
                 },
                 legend: { position: "bottom" }
@@ -91,7 +92,7 @@
     const pagosData = {
         labels: [{% for p in pagos_por_estado %}"{{ p.estado }}",{% endfor %}],
         datasets: [{
-            label: "Pagos",
+            label: "{% trans 'Pagos' %}",
             data: [{% for p in pagos_por_estado %}{{ p.total }},{% endfor %}],
             backgroundColor: ["#4BC0C0", "#9966FF", "#FF9F40"],
             borderWidth: 1
@@ -105,7 +106,7 @@
             plugins: {
                 title: {
                     display: true,
-                    text: "💰 Pagos por Estado",
+                    text: "{% trans '💰 Pagos por Estado' %}",
                     font: { size: 16 }
                 },
                 legend: { display: false }

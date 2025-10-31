@@ -1,7 +1,8 @@
 <!-- Realizado por Mariana Valderrama -->
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Lista de Reservas{% endblock %}
+{% block title %}{% trans "Lista de Reservas" %}{% endblock %}
 
 {% block content %}
 <style>
@@ -92,31 +93,31 @@
 </style>
 
 <div class="container mt-5 mb-5">
-    <h2>Lista de Reservas</h2>
+    <h2>{% trans "Lista de Reservas" %}</h2>
 
     <!-- FORMULARIO DE FILTROS -->
     <form method="get" class="mb-4">
         <div class="row g-3 align-items-end">
             <div class="col-md-3">
-                <label class="form-label fw-semibold text-secondary">Fecha de llegada</label>
+                <label class="form-label fw-semibold text-secondary">{% trans "Fecha de llegada" %}</label>
                 <input type="date" name="fecha_llegada" class="form-control" 
                        value="{{ request.GET.fecha_llegada }}">
             </div>
             
             <div class="col-md-2">
-                <label class="form-label fw-semibold text-secondary">Personas</label>
+                <label class="form-label fw-semibold text-secondary">{% trans "Personas" %}</label>
                 <input type="number" name="personas" class="form-control" 
                        value="{{ request.GET.personas }}">
             </div>
 
             <div class="col-md-3">
-                <label class="form-label fw-semibold text-secondary">Tipo de plan</label>
+                <label class="form-label fw-semibold text-secondary">{% trans "Tipo de plan" %}</label>
                 <input type="text" name="plan" class="form-control" 
                        value="{{ request.GET.plan }}">
             </div>
 
             <div class="col-md-2">
-                <button type="submit" class="btn btn-gold w-100">Filtrar</button>
+                <button type="submit" class="btn btn-gold w-100">{% trans "Filtrar" %}</button>
             </div>
         </div>
     </form>
@@ -126,12 +127,12 @@
         <table class="table text-center align-middle">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Llegada</th>
-                    <th>Salida</th>
-                    <th>Personas</th>
-                    <th>Plan</th>
-                    <th>Acciones</th>
+                    <th>{% trans "ID" %}</th>
+                    <th>{% trans "Llegada" %}</th>
+                    <th>{% trans "Salida" %}</th>
+                    <th>{% trans "Personas" %}</th>
+                    <th>{% trans "Plan" %}</th>
+                    <th>{% trans "Acciones" %}</th>
                 </tr>
             </thead>
             <tbody>
@@ -145,17 +146,19 @@
                     <td>
                         {% if user.is_staff %}
                             <a href="{% url 'reservas:editar_reserva' reserva.id %}" 
-                               class="btn btn-outline-gold btn-sm me-2">Editar</a>
+                               class="btn btn-outline-gold btn-sm me-2">{% trans "Editar" %}</a>
                             <a href="{% url 'reservas:eliminar_reserva' reserva.id %}" 
-                               class="btn btn-outline-danger btn-sm">Eliminar</a>
+                               class="btn btn-outline-danger btn-sm">{% trans "Eliminar" %}</a>
                         {% else %}
-                            <span class="text-muted">No disponible</span>
+                            <span class="text-muted">{% trans "No disponible" %}</span>
                         {% endif %}
                     </td>
                 </tr>
                 {% empty %}
                 <tr>
-                    <td colspan="6" class="text-center text-muted">No hay reservas que coincidan con los filtros.</td>
+                    <td colspan="6" class="text-center text-muted">
+                        {% trans "No hay reservas que coincidan con los filtros." %}
+                    </td>
                 </tr>
                 {% endfor %}
             </tbody>
@@ -165,7 +168,7 @@
     <!-- Botón crear -->
     <div class="btn-container">
         <a href="{% url 'reservas:manejar_reserva' %}" class="btn btn-gold px-4 rounded-pill">
-            Crear Reserva
+            {% trans "Crear Reserva" %}
         </a>
     </div>
 </div>

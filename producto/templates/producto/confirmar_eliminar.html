@@ -1,4 +1,5 @@
 <!-- Realizado por Alexandra Hurtado -->
+{% load i18n %}
 {% extends "base.html" %}
 
 {% block content %}
@@ -54,9 +55,10 @@
 
 <div class="container">
     <div class="confirm-box">
-        <img src="https://cdn-icons-png.flaticon.com/512/484/484662.png" alt="Advertencia">
-        <h2>¿Estás seguro de eliminar este producto?</h2>
-        <p class="mb-4">Una vez eliminado, no podrás recuperarlo.</p>
+        <img src="https://cdn-icons-png.flaticon.com/512/484/484662.png" alt="{% trans 'Advertencia' %}">
+        
+        <h2>{% trans "¿Estás seguro de eliminar este producto?" %}</h2>
+        <p class="mb-4">{% trans "Una vez eliminado, no podrás recuperarlo." %}</p>
 
         <h5 class="fw-bold text-dark">{{ producto.nombre }}</h5>
         <p class="text-muted">{{ producto.descripcion|truncatechars:80 }}</p>
@@ -64,10 +66,10 @@
         <form method="post" class="mt-4">
             {% csrf_token %}
             <button type="submit" class="btn btn-outline-danger rounded-pill px-4 me-2">
-                 Sí, eliminar
+                {% trans "Sí, eliminar" %}
             </button>
             <a href="{% url 'producto:lista_productos' %}" class="btn btn-gold rounded-pill px-4">
-                 Cancelar
+                {% trans "Cancelar" %}
             </a>
         </form>
     </div>

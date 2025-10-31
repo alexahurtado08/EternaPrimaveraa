@@ -1,23 +1,26 @@
 <!-- Realizado por Mariana Valderrama -->
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block content %}
 <div class="container my-5">
-    <h2 class="text-center mb-4 fw-bold">Planes de Experiencia Apícola</h2>
+    <h2 class="text-center mb-4 fw-bold">{% trans "Planes de Experiencia Apícola" %}</h2>
 
     <div class="row g-4">
         <!-- Plan Básico -->
         <div class="col-md-4">
             <div class="card h-100 shadow-sm border-0" style="background-color: #FFF9D9;">
                 <div class="card-body text-center">
-                    <h4 class="card-title fw-bold">Plan Básico</h4>
+                    <h4 class="card-title fw-bold">{% trans "Plan Básico" %}</h4>
                     <p class="card-text">
+                        {% blocktrans %}
                         Duración: 1 día <br>
                         Recorrido guiado por la finca y demostración de recolección de miel.<br>
                         Degustación de miel artesanal.
+                        {% endblocktrans %}
                     </p>
-                    <p class="fw-bold">Precio: $70.000 por persona</p>
-                    <a href="{% url 'reservas:manejar_reserva' %}" class="btn btn-dark">Reservar</a>
+                    <p class="fw-bold">{% trans "Precio: $70.000 por persona" %}</p>
+                    <a href="{% url 'reservas:manejar_reserva' %}" class="btn btn-dark">{% trans "Reservar" %}</a>
                 </div>
             </div>
         </div>
@@ -26,14 +29,16 @@
         <div class="col-md-4">
             <div class="card h-100 shadow-sm border-0" style="background-color: #FFEE8C;">
                 <div class="card-body text-center">
-                    <h4 class="card-title fw-bold">Plan Premium</h4>
+                    <h4 class="card-title fw-bold">{% trans "Plan Premium" %}</h4>
                     <p class="card-text">
+                        {% blocktrans %}
                         Duración: 2 días<br>
                         Incluye recorrido completo, taller práctico de apicultura y almuerzo campestre y cena tipo picnic.<br>
                         Hospedaje básico en habitación. Degustación de productos derivados de la miel.
+                        {% endblocktrans %}
                     </p>
-                    <p class="fw-bold">Precio: $180.000 por persona</p>
-                    <a href="{% url 'reservas:manejar_reserva' %}" class="btn btn-dark">Reservar</a>
+                    <p class="fw-bold">{% trans "Precio: $180.000 por persona" %}</p>
+                    <a href="{% url 'reservas:manejar_reserva' %}" class="btn btn-dark">{% trans "Reservar" %}</a>
                 </div>
             </div>
         </div>
@@ -42,15 +47,17 @@
         <div class="col-md-4">
             <div class="card h-100 shadow-sm border-0" style="background-color: #FFE25C;">
                 <div class="card-body text-center">
-                    <h4 class="card-title fw-bold">Plan VIP</h4>
+                    <h4 class="card-title fw-bold">{% trans "Plan VIP" %}</h4>
                     <p class="card-text">
+                        {% blocktrans %}
                         Duración: 3 días<br>
                         Experiencia inmersiva con hospedaje rural en cabañas, acceso a colmenas privadas,
                         taller avanzado de apicultura. Incluye almuerzo, cena especial y desayuno campestre.<br>
                         Kit de regalo con productos de la finca.
+                        {% endblocktrans %}
                     </p>
-                    <p class="fw-bold">Precio: $300.000 por persona</p>
-                    <a href="{% url 'reservas:manejar_reserva' %}"  class="btn btn-dark">Reservar</a>
+                    <p class="fw-bold">{% trans "Precio: $300.000 por persona" %}</p>
+                    <a href="{% url 'reservas:manejar_reserva' %}" class="btn btn-dark">{% trans "Reservar" %}</a>
                 </div>
             </div>
         </div>

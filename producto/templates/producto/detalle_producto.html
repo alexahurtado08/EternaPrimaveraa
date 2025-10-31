@@ -1,5 +1,6 @@
 <!-- Realizado por Alexandra Hurtado -->
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block content %}
 <style>
@@ -77,8 +78,8 @@
     <div class="detalle-producto mx-auto" style="max-width: 600px;">
         <h1>{{ producto.nombre }}</h1>
         <p>{{ producto.descripcion }}</p>
-        <p><strong>Cantidad:</strong> {{ producto.cantidad }} g</p>
-        <p><strong>Precio:</strong> ${{ producto.precio }}</p>
+        <p><strong>{% trans "Cantidad" %}:</strong> {{ producto.cantidad }} g</p>
+        <p><strong>{% trans "Precio" %}:</strong> ${{ producto.precio }}</p>
         
         {% if producto.imagen %}
             <div class="text-center my-4">
@@ -89,7 +90,7 @@
 
         <div class="text-center mt-4">
             <a href="{% url 'producto:lista_productos' %}" class="btn btn-outline-gold rounded-pill px-4">
-                Volver
+                {% trans "Volver" %}
             </a>
         </div>
     </div>

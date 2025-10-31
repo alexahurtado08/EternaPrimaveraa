@@ -1,12 +1,15 @@
 <!-- Realizado por Alexandra Hurtado -->
 <!DOCTYPE html>
-<html lang="es">
+{% load i18n %}
+
+{% get_current_language as LANGUAGE_CODE %}
+<html lang="{{ LANGUAGE_CODE }}">
 <head>
-    {% load static %}
+    {% load static i18n %}
     <link rel="stylesheet" href="{% static 'css/forms.css' %}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eterna Primavera</title>
+    <title>{% trans "Eterna Primavera" %}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
@@ -23,6 +26,15 @@
         .navbar .nav-link:hover {
             color: #333 !important; /* Un gris oscuro al pasar el mouse */
         }
+        /* Selector de idioma */
+        .language-form select {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 2px 6px;
+            background-color: #fff;
+            color: #000;
+            font-size: 0.9rem;
+        }
     </style>
 </head>
 <body>
@@ -35,9 +47,9 @@
                         {% else %}
                             {% url 'home' %}
                         {% endif %}">
-                    <img src="{% static 'img/logoEterna.png' %}" alt="Logo" width="40" height="40" class="me-2">
-                    Eterna Primavera
-                </a>
+                <img src="{% static 'img/logoEterna.png' %}" alt="{% trans 'Logo' %}" width="40" height="40" class="me-2">
+                {% trans "Eterna Primavera" %}
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -48,51 +60,70 @@
                     {% if user.is_authenticated %}
                         <!-- Siempre visible para usuarios logueados -->
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'producto:lista_productos' %}">Productos</a>
+                            <a class="nav-link" href="{% url 'producto:lista_productos' %}">{% trans "Productos" %}</a>
                         </li>
 
                         <!-- Reservas -->
                         <li class="nav-item">
                             {% if user.is_superuser %}
                                 <!-- Superuser -> lista_reservas -->
-                                <a class="nav-link" href="{% url 'reservas:lista_reservas' %}">Reservas</a>
+                                <a class="nav-link" href="{% url 'reservas:lista_reservas' %}">{% trans "Reservas" %}</a>
                             {% else %}
                                 <!-- Usuario normal -> planes -->
-                                <a class="nav-link" href="{% url 'reservas:planes' %}">Reservas</a>
+                                <a class="nav-link" href="{% url 'reservas:planes' %}">{% trans "Reservas" %}</a>
                             {% endif %}
                         </li>
 
                         {% if not user.is_superuser %}
                             <!-- Carrito -->
                             <li class="nav-item">
-                                <a class="nav-link" href="{% url 'carrito:ver_carrito' %}">Carrito</a>
+                                <a class="nav-link" href="{% url 'carrito:ver_carrito' %}">{% trans "Carrito" %}</a>
                             </li>
                             <!-- Mis pedidos -->
                             <li class="nav-item">
-                                <a class="nav-link" href="{% url 'pedidos:mis_pedidos' %}">Mis pedidos</a>
+                                <a class="nav-link" href="{% url 'pedidos:mis_pedidos' %}">{% trans "Mis pedidos" %}</a>
                             </li>
                         {% endif %}
 
                         <!-- Cerrar sesión -->
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'usuarios:logout_usuario' %}">Cerrar sesión</a>
+                            <a class="nav-link" href="{% url 'usuarios:logout_usuario' %}">{% trans "Cerrar sesión" %}</a>
                         </li>
 
                     {% else %}
                         <!-- Si no está logueado solo mostrar login -->
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'usuarios:login_usuario' %}">Login</a>
+                            <a class="nav-link" href="{% url 'usuarios:login_usuario' %}">{% trans "Iniciar sesión" %}</a>
                         </li>
                     {% endif %}
+
                     <li class="nav-item">
                         {% if clima_data.temperatura %}
                             <span class="nav-link fw-semibold">
-                                🌤️ {{ clima_data.ciudad }}: {{ clima_data.temperatura }}°C, {{ clima_data.descripcion }}
+                                🌤 {{ clima_data.ciudad }}: {{ clima_data.temperatura }}°C, {{ clima_data.descripcion }}
                             </span>
                         {% else %}
-                            <span class="nav-link fw-semibold">Clima no disponible</span>
+                            <span class="nav-link fw-semibold">{% trans "Clima no disponible" %}</span>
                         {% endif %}
                     </li>
+
+                    <!-- 🌍 Selector de idioma -->
+                    <li class="nav-item d-flex align-items-center ms-2">
+                        <form action="{% url 'set_language' %}" method="post" class="language-form">
+                            {% csrf_token %}
+                            <input name="next" type="hidden" value="{{ request.path }}">
+                            <select name="language" onchange="this.form.submit()">
+                                {% get_current_language as LANGUAGE_CODE %}
+                                {% get_available_languages as LANGUAGES %}
+                                {% for lang_code, lang_name in LANGUAGES %}
+                                    <option value="{{ lang_code }}" {% if LANGUAGE_CODE == lang_code %}selected{% endif %}>
+                                        {{ lang_name }}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </form>
+                    </li>
+
                 </ul>
             </div>
         </div>
@@ -106,7 +137,7 @@
 
     <!-- Footer -->
     <footer class="text-center py-3 mt-4">
-        <p class="mb-0">Eterna Primavera &copy; 2025</p>
+        <p class="mb-0">{% trans "Eterna Primavera" %} &copy; 2025</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

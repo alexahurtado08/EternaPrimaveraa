@@ -1,7 +1,8 @@
 <!-- Realizado por Mariana Valderrama -->
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Reserva Confirmada{% endblock %}
+{% block title %}{% trans "Reserva Confirmada" %}{% endblock %}
 
 {% block content %}
 <div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
@@ -14,18 +15,20 @@
         </div>
 
         <!-- Mensaje principal -->
-        <h2 class="fw-bold text-dark mb-3">¡Reserva Confirmada!</h2>
+        <h2 class="fw-bold text-dark mb-3">{% trans "¡Reserva Confirmada!" %}</h2>
         <p class="fs-5 text-muted">
+            {% blocktrans %}
             Tu reserva ha sido registrada exitosamente.<br>
             Nos pondremos en contacto contigo si es necesario. <br>
             ¡Gracias por confiar en nosotros!
+            {% endblocktrans %}
         </p>
 
         <!-- Botón de regreso -->
         <a href="{% url 'home' %}" 
            class="btn rounded-pill px-4 mt-4 fw-semibold"
            style="background: linear-gradient(90deg, #f5d442, #f0b90b); border: none; color: #3a2e00; transition: 0.3s;">
-            Volver al inicio
+            {% trans "Volver al inicio" %}
         </a>
     </div>
 </div>

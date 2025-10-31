@@ -1,8 +1,7 @@
-
 # Realizado por Mariana Valderrama
-
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
+from django.utils.translation import gettext_lazy as _
 from .models import Usuario
 
 @admin.register(Usuario)
@@ -16,9 +15,9 @@ class UsuarioAdmin(UserAdmin):
     # Campos visibles al editar un usuario
     fieldsets = (
         (None, {"fields": ("correo", "password")}),
-        ("Información personal", {"fields": ("nombre", "telefono", "direccion")}),
-        ("Permisos", {"fields": ("is_active", "is_staff", "is_superuser", "groups", "user_permissions")}),
-        ("Fechas importantes", {"fields": ("last_login",)}),
+        (_("Información personal"), {"fields": ("nombre", "telefono", "direccion")}),
+        (_("Permisos"), {"fields": ("is_active", "is_staff", "is_superuser", "groups", "user_permissions")}),
+        (_("Fechas importantes"), {"fields": ("last_login",)}),
     )
 
     # Campos visibles al crear un usuario desde el admin

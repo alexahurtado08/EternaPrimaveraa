@@ -1,18 +1,19 @@
 <!-- Realizado por Alexandra Hurtado -->
 {% extends "base.html" %}
+{% load i18n %}
 
-{% block title %}Lista de Pedidos{% endblock %}
+{% block title %}{% trans "Lista de Pedidos" %}{% endblock %}
 
 {% block content %}
 <div class="container mt-5 mb-5">
     <!-- Encabezado -->
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2 class="fw-bold text-dark">Lista de Pedidos</h2>
+        <h2 class="fw-bold text-dark">{% trans "Lista de Pedidos" %}</h2>
         {% if user.is_staff %}
             <a href="{% url 'pedidos:exportar_pedidos_pagados' %}" 
                class="btn rounded-pill fw-semibold"
                style="background: linear-gradient(90deg, #f5d442, #f0b90b); border: none; color: #3a2e00;">
-                Descargar pedidos pagados
+                {% trans "Descargar pedidos pagados" %}
             </a>
         {% endif %}
     </div>
@@ -23,15 +24,15 @@
                style="background: #fffdf3; border-radius: 1rem; overflow: hidden;">
             <thead style="background: linear-gradient(90deg, #fff7c2, #ffec8b); color: #3a2e00;">
                 <tr>
-                    <th>ID</th>
-                    <th>Cliente</th>
-                    <th>Dirección</th>
-                    <th>Productos</th>
-                    <th>Fecha</th>
-                    <th>Estado del Pedido</th>
-                    <th>Estado del Pago</th>
-                    <th>Total</th>
-                    <th>Acciones</th>
+                    <th>{% trans "ID" %}</th>
+                    <th>{% trans "Cliente" %}</th>
+                    <th>{% trans "Dirección" %}</th>
+                    <th>{% trans "Productos" %}</th>
+                    <th>{% trans "Fecha" %}</th>
+                    <th>{% trans "Estado del Pedido" %}</th>
+                    <th>{% trans "Estado del Pago" %}</th>
+                    <th>{% trans "Total" %}</th>
+                    <th>{% trans "Acciones" %}</th>
                 </tr>
             </thead>
             <tbody>
@@ -42,7 +43,9 @@
                     <td>{{ pedido.usuario.direccion }}</td>
                     <td class="text-start">
                         {% for item in pedido.items.all %}
-                            <span class="d-block small">{{ item.producto }} (x{{ item.cantidad }})</span>
+                            {% blocktrans with producto=item.producto cantidad=item.cantidad %}
+                                {{ producto }} (x{{ cantidad }})
+                            {% endblocktrans %}
                         {% endfor %}
                     </td>
                     <td>{{ pedido.fecha }}</td>
@@ -66,7 +69,7 @@
                                 <span class="fw-semibold text-muted">{{ pedido.pago.estado }}</span>
                             {% endif %}
                         {% else %}
-                            <span class="text-muted">Sin registro</span>
+                            <span class="text-muted">{% trans "Sin registro" %}</span>
                         {% endif %}
                     </td>
 
@@ -81,20 +84,22 @@
                                         onchange="this.form.action=this.form.action.replace('dummy', this.value); this.form.submit();"
                                         class="form-select form-select-sm rounded-pill"
                                         style="border: 1px solid #f5d442; background-color: #fffdf3; color: #3a2e00;">
-                                    <option disabled selected>Cambiar</option>
+                                    <option disabled selected>{% trans "Cambiar" %}</option>
                                     {% for valor, label in pedido.ESTADOS %}
                                         <option value="{{ valor }}">{{ label }}</option>
                                     {% endfor %}
                                 </select>
                             </form>
                         {% else %}
-                            <span class="text-muted">No disponible</span>
+                            <span class="text-muted">{% trans "No disponible" %}</span>
                         {% endif %}
                     </td>
                 </tr>
                 {% empty %}
                 <tr>
-                    <td colspan="9" class="text-center py-4 text-muted">No hay pedidos registrados.</td>
+                    <td colspan="9" class="text-center py-4 text-muted">
+                        {% trans "No hay pedidos registrados." %}
+                    </td>
                 </tr>
                 {% endfor %}
             </tbody>

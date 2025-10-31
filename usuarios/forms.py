@@ -1,5 +1,6 @@
 # Realizado por Mariana Valderrama
 from django import forms
+from django.utils.translation import gettext_lazy as _
 from .models import Usuario
 
 
@@ -15,13 +16,28 @@ class UsuarioForm(forms.ModelForm):
     # Campo de contraseña con widget tipo PasswordInput (oculta texto ingresado)
     password = forms.CharField(
         widget=forms.PasswordInput(attrs={'class': 'form-control'}),
-        label="Contraseña"
+        label=_("Contraseña")
     )
 
     class Meta:
         model = Usuario
         # Campos que se mostrarán en el formulario
         fields = ['nombre', 'correo', 'password', 'telefono', 'direccion']
+
+        # Etiquetas traducibles
+        labels = {
+            'nombre': _('Nombre completo'),
+            'correo': _('Correo electrónico'),
+            'telefono': _('Número de teléfono'),
+            'direccion': _('Dirección de residencia'),
+        }
+
+        # Textos de ayuda traducibles
+        help_texts = {
+            'correo': _('Introduce una dirección de correo válida.'),
+            'telefono': _('Ejemplo: +57 3001234567'),
+        }
+
         # Widgets personalizados para dar estilo con Bootstrap
         widgets = {
             'nombre': forms.TextInput(attrs={'class': 'form-control'}),
@@ -48,8 +64,11 @@ class LoginForm(forms.Form):
     Formulario simple de inicio de sesión.
     No depende directamente del modelo Usuario.
     """
-    correo = forms.EmailField(label="Correo")
+    correo = forms.EmailField(
+        label=_("Correo electrónico"),
+        widget=forms.EmailInput(attrs={'class': 'form-control'})
+    )
     password = forms.CharField(
-        widget=forms.PasswordInput,
-        label="Contraseña"
+        widget=forms.PasswordInput(attrs={'class': 'form-control'}),
+        label=_("Contraseña")
     )

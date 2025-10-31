@@ -1,23 +1,24 @@
 <!-- Realizado por Mariana Valderrama -->
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block content %}
 <div class="container mt-5">
     <div class="card shadow-lg rounded-4">
         <!-- Cabecera de la tarjeta -->
         <div class="card-header bg-light text-dark fw-bold fs-4">
-            Lista de Usuarios
+            {% trans "Lista de Usuarios" %}
         </div>
         <div class="card-body">
             <table class="table table-striped table-hover align-middle text-center">
                 <!-- Cabecera de la tabla -->
                 <thead class="table-light">
                     <tr>
-                        <th>ID</th>
-                        <th>Nombre</th>
-                        <th>Correo</th>
-                        <th>Teléfono</th>
-                        <th>Dirección</th>
+                        <th>{% trans "ID" %}</th>
+                        <th>{% trans "Nombre" %}</th>
+                        <th>{% trans "Correo" %}</th>
+                        <th>{% trans "Teléfono" %}</th>
+                        <th>{% trans "Dirección" %}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -31,7 +32,7 @@
                     </tr>
                     {% empty %}
                     <tr>
-                        <td colspan="5" class="text-muted">No hay usuarios registrados.</td>
+                        <td colspan="5" class="text-muted">{% trans "No hay usuarios registrados." %}</td>
                     </tr>
                     {% endfor %}
                 </tbody>

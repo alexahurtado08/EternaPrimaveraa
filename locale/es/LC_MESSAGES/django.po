@@ -1,0 +1,2500 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-31 13:21-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? "
+"1 : 2;\n"
+
+#: .\EternaPrimavera\settings.py:120
+msgid "Español"
+msgstr ""
+
+#: .\EternaPrimavera\settings.py:121
+msgid "English"
+msgstr ""
+
+#: .\EternaPrimavera\views.py:25
+#: .\pedidos\templates\pedidos\lista_pedidos.html:94
+#: .\reservas\templates\reservas\lista_reservas.html:153
+msgid "No disponible"
+msgstr ""
+
+#: .\EternaPrimavera\views.py:30
+msgid "Error al obtener el clima"
+msgstr ""
+
+#: .\carrito\admin.py:20 .\templates\base.html:68
+msgid "Carrito"
+msgstr ""
+
+#: .\carrito\admin.py:21
+msgid "Carritos"
+msgstr ""
+
+#: .\carrito\admin.py:35
+msgid "Item del carrito"
+msgstr ""
+
+#: .\carrito\admin.py:36
+msgid "Items del carrito"
+msgstr ""
+
+#: .\carrito\forms.py:9 .\pedidos\templates\pedidos\pedido_pdf.html:33
+#: .\producto\forms.py:14
+#: .\producto\templates\producto\detalle_producto.html:81
+msgid "Cantidad"
+msgstr ""
+
+#: .\carrito\forms.py:10
+msgid "Ingresa la cantidad deseada (mínimo 1)."
+msgstr ""
+
+#: .\carrito\models.py:10 .\pedidos\models.py:22 .\usuarios\models.py:86
+msgid "usuario"
+msgstr ""
+
+#: .\carrito\models.py:12
+msgid "fecha de creación"
+msgstr ""
+
+#: .\carrito\models.py:15 .\carrito\models.py:32
+msgid "carrito"
+msgstr ""
+
+#: .\carrito\models.py:16
+msgid "carritos"
+msgstr ""
+
+#: .\carrito\models.py:20
+#, python-format
+msgid "Carrito de %(usuario)s"
+msgstr ""
+
+#: .\carrito\models.py:34 .\pedidos\models.py:53 .\producto\models.py:32
+msgid "producto"
+msgstr ""
+
+#: .\carrito\models.py:36 .\pedidos\models.py:55
+msgid "cantidad"
+msgstr ""
+
+#: .\carrito\models.py:39
+msgid "ítem del carrito"
+msgstr ""
+
+#: .\carrito\models.py:40
+msgid "ítems del carrito"
+msgstr ""
+
+#: .\carrito\models.py:44 .\pedidos\models.py:69
+#, python-format
+msgid "%(producto)s x %(cantidad)d"
+msgstr ""
+
+#: .\carrito\templates\carrito\agregar_producto.html:6
+#: .\carrito\templates\carrito\agregar_producto.html:11
+msgid "Agregar"
+msgstr ""
+
+#: .\carrito\templates\carrito\agregar_producto.html:6
+msgid "al carrito"
+msgstr ""
+
+#: .\carrito\templates\carrito\agregar_producto.html:14
+msgid "Volver al carrito"
+msgstr ""
+
+#: .\carrito\templates\carrito\eliminar_producto.html:6
+msgid "Eliminar producto del carrito"
+msgstr ""
+
+#: .\carrito\templates\carrito\eliminar_producto.html:7
+#, python-format
+msgid "¿Seguro que quieres eliminar %(nombre)s del carrito?"
+msgstr ""
+
+#: .\carrito\templates\carrito\eliminar_producto.html:11
+#: .\producto\templates\producto\confirmar_eliminar.html:69
+msgid "Sí, eliminar"
+msgstr ""
+
+#: .\carrito\templates\carrito\eliminar_producto.html:14
+#: .\pedidos\templates\pedidos\pagar_pedido.html:27
+#: .\producto\templates\producto\confirmar_eliminar.html:72
+#: .\producto\templates\producto\formulario_producto.html:112
+#: .\reservas\templates\reservas\form_reserva.html:38
+#: .\usuarios\templates\usuarios\registrar_usuario.html:35
+msgid "Cancelar"
+msgstr ""
+
+#: .\carrito\templates\carrito\ver_carrito.html:7
+msgid "Mi Carrito"
+msgstr ""
+
+#: .\carrito\templates\carrito\ver_carrito.html:20
+#: .\pedidos\templates\pedidos\pedido_pdf.html:34 .\producto\forms.py:15
+#: .\producto\templates\producto\detalle_producto.html:82
+msgid "Precio"
+msgstr ""
+
+#: .\carrito\templates\carrito\ver_carrito.html:21
+#: .\pedidos\templates\pedidos\pedido_pdf.html:35
+msgid "Subtotal"
+msgstr ""
+
+#: .\carrito\templates\carrito\ver_carrito.html:30
+#: .\reservas\templates\reservas\form_reserva.html:45
+msgid "Actualizar"
+msgstr ""
+
+#: .\carrito\templates\carrito\ver_carrito.html:38
+#: .\producto\templates\producto\lista_productos.html:107
+#: .\reservas\templates\reservas\lista_reservas.html:151
+msgid "Eliminar"
+msgstr ""
+
+#: .\carrito\templates\carrito\ver_carrito.html:48
+#: .\pedidos\services\excel_report_generator.py:21
+#: .\pedidos\templates\pedidos\detalle_pedido.html:22
+#: .\pedidos\templates\pedidos\lista_pedidos.html:34
+msgid "Total"
+msgstr ""
+
+#: .\carrito\templates\carrito\ver_carrito.html:52
+msgid "Hacer Pedido"
+msgstr ""
+
+#: .\carrito\templates\carrito\ver_carrito.html:56 .\pedidos\views.py:27
+msgid "Tu carrito está vacío."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\contrib\messages\apps.py:16
+msgid "Messages"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\contrib\sitemaps\apps.py:8
+msgid "Site Maps"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\contrib\staticfiles\apps.py:9
+msgid "Static Files"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\contrib\syndication\apps.py:7
+msgid "Syndication"
+msgstr ""
+
+#. Translators: String used to replace omitted page numbers in elided page
+#. range generated by paginators, e.g. [1, 2, '…', 5, 6, 7, '…', 9, 10].
+#: .\env\Lib\site-packages\django\core\paginator.py:30
+msgid "…"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\core\paginator.py:32
+msgid "That page number is not an integer"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\core\paginator.py:33
+msgid "That page number is less than 1"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\core\paginator.py:34
+msgid "That page contains no results"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\core\validators.py:22
+msgid "Enter a valid value."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\core\validators.py:70
+msgid "Enter a valid domain name."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\core\validators.py:153
+#: .\env\Lib\site-packages\django\forms\fields.py:775
+msgid "Enter a valid URL."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\core\validators.py:200
+msgid "Enter a valid integer."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\core\validators.py:211
+msgid "Enter a valid email address."
+msgstr ""
+
+#. Translators: "letters" means latin letters: a-z and A-Z.
+#: .\env\Lib\site-packages\django\core\validators.py:289
+msgid ""
+"Enter a valid “slug” consisting of letters, numbers, underscores or hyphens."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\core\validators.py:297
+msgid ""
+"Enter a valid “slug” consisting of Unicode letters, numbers, underscores, or "
+"hyphens."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\core\validators.py:309
+#: .\env\Lib\site-packages\django\core\validators.py:318
+#: .\env\Lib\site-packages\django\core\validators.py:332
+#: .\env\Lib\site-packages\django\db\models\fields\__init__.py:2220
+#, python-format
+msgid "Enter a valid %(protocol)s address."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\core\validators.py:311
+msgid "IPv4"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\core\validators.py:320
+#: .\env\Lib\site-packages\django\utils\ipv6.py:43
+msgid "IPv6"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\core\validators.py:334
+msgid "IPv4 or IPv6"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\core\validators.py:375
+msgid "Enter only digits separated by commas."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\core\validators.py:381
+#, python-format
+msgid "Ensure this value is %(limit_value)s (it is %(show_value)s)."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\core\validators.py:416
+#, python-format
+msgid "Ensure this value is less than or equal to %(limit_value)s."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\core\validators.py:425
+#, python-format
+msgid "Ensure this value is greater than or equal to %(limit_value)s."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\core\validators.py:434
+#, python-format
+msgid "Ensure this value is a multiple of step size %(limit_value)s."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\core\validators.py:441
+#, python-format
+msgid ""
+"Ensure this value is a multiple of step size %(limit_value)s, starting from "
+"%(offset)s, e.g. %(offset)s, %(valid_value1)s, %(valid_value2)s, and so on."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\core\validators.py:473
+#, python-format
+msgid ""
+"Ensure this value has at least %(limit_value)d character (it has "
+"%(show_value)d)."
+msgid_plural ""
+"Ensure this value has at least %(limit_value)d characters (it has "
+"%(show_value)d)."
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\env\Lib\site-packages\django\core\validators.py:491
+#, python-format
+msgid ""
+"Ensure this value has at most %(limit_value)d character (it has "
+"%(show_value)d)."
+msgid_plural ""
+"Ensure this value has at most %(limit_value)d characters (it has "
+"%(show_value)d)."
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\env\Lib\site-packages\django\core\validators.py:514
+#: .\env\Lib\site-packages\django\forms\fields.py:366
+#: .\env\Lib\site-packages\django\forms\fields.py:405
+msgid "Enter a number."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\core\validators.py:516
+#, python-format
+msgid "Ensure that there are no more than %(max)s digit in total."
+msgid_plural "Ensure that there are no more than %(max)s digits in total."
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\env\Lib\site-packages\django\core\validators.py:521
+#, python-format
+msgid "Ensure that there are no more than %(max)s decimal place."
+msgid_plural "Ensure that there are no more than %(max)s decimal places."
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\env\Lib\site-packages\django\core\validators.py:526
+#, python-format
+msgid ""
+"Ensure that there are no more than %(max)s digit before the decimal point."
+msgid_plural ""
+"Ensure that there are no more than %(max)s digits before the decimal point."
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\env\Lib\site-packages\django\core\validators.py:597
+#, python-format
+msgid ""
+"File extension “%(extension)s” is not allowed. Allowed extensions are: "
+"%(allowed_extensions)s."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\core\validators.py:659
+msgid "Null characters are not allowed."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\db\models\base.py:1600
+#: .\env\Lib\site-packages\django\forms\models.py:908
+msgid "and"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\db\models\base.py:1602
+#, python-format
+msgid "%(model_name)s with this %(field_labels)s already exists."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\db\models\constraints.py:22
+#, python-format
+msgid "Constraint “%(name)s” is violated."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\db\models\fields\__init__.py:134
+#, python-format
+msgid "Value %(value)r is not a valid choice."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\db\models\fields\__init__.py:135
+msgid "This field cannot be null."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\db\models\fields\__init__.py:136
+msgid "This field cannot be blank."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\db\models\fields\__init__.py:137
+#, python-format
+msgid "%(model_name)s with this %(field_label)s already exists."
+msgstr ""
+
+#. Translators: The 'lookup_type' is one of 'date', 'year' or
+#. 'month'. Eg: "Title must be unique for pub_date year"
+#: .\env\Lib\site-packages\django\db\models\fields\__init__.py:141
+#, python-format
+msgid ""
+"%(field_label)s must be unique for %(date_field_label)s %(lookup_type)s."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\db\models\fields\__init__.py:180
+#, python-format
+msgid "Field of type: %(field_type)s"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\db\models\fields\__init__.py:1162
+#, python-format
+msgid "“%(value)s” value must be either True or False."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\db\models\fields\__init__.py:1163
+#, python-format
+msgid "“%(value)s” value must be either True, False, or None."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\db\models\fields\__init__.py:1165
+msgid "Boolean (Either True or False)"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\db\models\fields\__init__.py:1215
+#, python-format
+msgid "String (up to %(max_length)s)"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\db\models\fields\__init__.py:1217
+msgid "String (unlimited)"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\db\models\fields\__init__.py:1326
+msgid "Comma-separated integers"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\db\models\fields\__init__.py:1427
+#, python-format
+msgid ""
+"“%(value)s” value has an invalid date format. It must be in YYYY-MM-DD "
+"format."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\db\models\fields\__init__.py:1431
+#: .\env\Lib\site-packages\django\db\models\fields\__init__.py:1566
+#, python-format
+msgid ""
+"“%(value)s” value has the correct format (YYYY-MM-DD) but it is an invalid "
+"date."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\db\models\fields\__init__.py:1435
+msgid "Date (without time)"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\db\models\fields\__init__.py:1562
+#, python-format
+msgid ""
+"“%(value)s” value has an invalid format. It must be in YYYY-MM-DD HH:MM[:ss[."
+"uuuuuu]][TZ] format."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\db\models\fields\__init__.py:1570
+#, python-format
+msgid ""
+"“%(value)s” value has the correct format (YYYY-MM-DD HH:MM[:ss[.uuuuuu]]"
+"[TZ]) but it is an invalid date/time."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\db\models\fields\__init__.py:1575
+msgid "Date (with time)"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\db\models\fields\__init__.py:1702
+#, python-format
+msgid "“%(value)s” value must be a decimal number."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\db\models\fields\__init__.py:1704
+msgid "Decimal number"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\db\models\fields\__init__.py:1864
+#, python-format
+msgid ""
+"“%(value)s” value has an invalid format. It must be in [DD] [[HH:]MM:]ss[."
+"uuuuuu] format."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\db\models\fields\__init__.py:1868
+msgid "Duration"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\db\models\fields\__init__.py:1920
+msgid "Email address"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\db\models\fields\__init__.py:1945
+msgid "File path"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\db\models\fields\__init__.py:2023
+#, python-format
+msgid "“%(value)s” value must be a float."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\db\models\fields\__init__.py:2025
+msgid "Floating point number"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\db\models\fields\__init__.py:2065
+#, python-format
+msgid "“%(value)s” value must be an integer."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\db\models\fields\__init__.py:2067
+msgid "Integer"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\db\models\fields\__init__.py:2163
+msgid "Big (8 byte) integer"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\db\models\fields\__init__.py:2180
+msgid "Small integer"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\db\models\fields\__init__.py:2188
+msgid "IPv4 address"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\db\models\fields\__init__.py:2219
+msgid "IP address"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\db\models\fields\__init__.py:2310
+#: .\env\Lib\site-packages\django\db\models\fields\__init__.py:2311
+#, python-format
+msgid "“%(value)s” value must be either None, True or False."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\db\models\fields\__init__.py:2313
+msgid "Boolean (Either True, False or None)"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\db\models\fields\__init__.py:2364
+msgid "Positive big integer"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\db\models\fields\__init__.py:2379
+msgid "Positive integer"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\db\models\fields\__init__.py:2394
+msgid "Positive small integer"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\db\models\fields\__init__.py:2410
+#, python-format
+msgid "Slug (up to %(max_length)s)"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\db\models\fields\__init__.py:2446
+msgid "Text"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\db\models\fields\__init__.py:2526
+#, python-format
+msgid ""
+"“%(value)s” value has an invalid format. It must be in HH:MM[:ss[.uuuuuu]] "
+"format."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\db\models\fields\__init__.py:2530
+#, python-format
+msgid ""
+"“%(value)s” value has the correct format (HH:MM[:ss[.uuuuuu]]) but it is an "
+"invalid time."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\db\models\fields\__init__.py:2534
+msgid "Time"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\db\models\fields\__init__.py:2642
+msgid "URL"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\db\models\fields\__init__.py:2666
+msgid "Raw binary data"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\db\models\fields\__init__.py:2731
+#, python-format
+msgid "“%(value)s” is not a valid UUID."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\db\models\fields\__init__.py:2733
+msgid "Universally unique identifier"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\db\models\fields\files.py:244
+msgid "File"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\db\models\fields\files.py:420
+msgid "Image"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\db\models\fields\json.py:24
+msgid "A JSON object"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\db\models\fields\json.py:26
+msgid "Value must be valid JSON."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\db\models\fields\related.py:979
+#, python-format
+msgid "%(model)s instance with %(field)s %(value)r is not a valid choice."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\db\models\fields\related.py:982
+msgid "Foreign Key (type determined by related field)"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\db\models\fields\related.py:1276
+msgid "One-to-one relationship"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\db\models\fields\related.py:1333
+#, python-format
+msgid "%(from)s-%(to)s relationship"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\db\models\fields\related.py:1335
+#, python-format
+msgid "%(from)s-%(to)s relationships"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\db\models\fields\related.py:1383
+msgid "Many-to-many relationship"
+msgstr ""
+
+#. Translators: If found as last label character, these punctuation
+#. characters will prevent the default label_suffix to be appended to the label
+#: .\env\Lib\site-packages\django\forms\boundfield.py:185
+msgid ":?.!"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\forms\fields.py:95
+msgid "This field is required."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\forms\fields.py:315
+msgid "Enter a whole number."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\forms\fields.py:486
+#: .\env\Lib\site-packages\django\forms\fields.py:1267
+msgid "Enter a valid date."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\forms\fields.py:509
+#: .\env\Lib\site-packages\django\forms\fields.py:1268
+msgid "Enter a valid time."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\forms\fields.py:536
+msgid "Enter a valid date/time."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\forms\fields.py:570
+msgid "Enter a valid duration."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\forms\fields.py:571
+#, python-brace-format
+msgid "The number of days must be between {min_days} and {max_days}."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\forms\fields.py:640
+msgid "No file was submitted. Check the encoding type on the form."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\forms\fields.py:641
+msgid "No file was submitted."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\forms\fields.py:642
+msgid "The submitted file is empty."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\forms\fields.py:644
+#, python-format
+msgid "Ensure this filename has at most %(max)d character (it has %(length)d)."
+msgid_plural ""
+"Ensure this filename has at most %(max)d characters (it has %(length)d)."
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\env\Lib\site-packages\django\forms\fields.py:649
+msgid "Please either submit a file or check the clear checkbox, not both."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\forms\fields.py:717
+msgid ""
+"Upload a valid image. The file you uploaded was either not an image or a "
+"corrupted image."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\forms\fields.py:889
+#: .\env\Lib\site-packages\django\forms\fields.py:975
+#: .\env\Lib\site-packages\django\forms\models.py:1592
+#, python-format
+msgid "Select a valid choice. %(value)s is not one of the available choices."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\forms\fields.py:977
+#: .\env\Lib\site-packages\django\forms\fields.py:1096
+#: .\env\Lib\site-packages\django\forms\models.py:1590
+msgid "Enter a list of values."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\forms\fields.py:1097
+msgid "Enter a complete value."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\forms\fields.py:1339
+msgid "Enter a valid UUID."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\forms\fields.py:1369
+msgid "Enter a valid JSON."
+msgstr ""
+
+#. Translators: This is the default suffix added to form field labels
+#: .\env\Lib\site-packages\django\forms\forms.py:97
+msgid ":"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\forms\forms.py:239
+#, python-format
+msgid "(Hidden field %(name)s) %(error)s"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\forms\formsets.py:61
+#, python-format
+msgid ""
+"ManagementForm data is missing or has been tampered with. Missing fields: "
+"%(field_names)s. You may need to file a bug report if the issue persists."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\forms\formsets.py:65
+#, python-format
+msgid "Please submit at most %(num)d form."
+msgid_plural "Please submit at most %(num)d forms."
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\env\Lib\site-packages\django\forms\formsets.py:70
+#, python-format
+msgid "Please submit at least %(num)d form."
+msgid_plural "Please submit at least %(num)d forms."
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\env\Lib\site-packages\django\forms\formsets.py:484
+#: .\env\Lib\site-packages\django\forms\formsets.py:491
+msgid "Order"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\forms\formsets.py:499
+msgid "Delete"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\forms\models.py:901
+#, python-format
+msgid "Please correct the duplicate data for %(field)s."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\forms\models.py:906
+#, python-format
+msgid "Please correct the duplicate data for %(field)s, which must be unique."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\forms\models.py:913
+#, python-format
+msgid ""
+"Please correct the duplicate data for %(field_name)s which must be unique "
+"for the %(lookup)s in %(date_field)s."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\forms\models.py:922
+msgid "Please correct the duplicate values below."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\forms\models.py:1359
+msgid "The inline value did not match the parent instance."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\forms\models.py:1450
+msgid "Select a valid choice. That choice is not one of the available choices."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\forms\models.py:1594
+#, python-format
+msgid "“%(pk)s” is not a valid value."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\forms\utils.py:229
+#, python-format
+msgid ""
+"%(datetime)s couldn’t be interpreted in time zone %(current_timezone)s; it "
+"may be ambiguous or it may not exist."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\forms\widgets.py:527
+msgid "Clear"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\forms\widgets.py:528
+msgid "Currently"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\forms\widgets.py:529
+msgid "Change"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\forms\widgets.py:866
+msgid "Unknown"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\forms\widgets.py:867
+msgid "Yes"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\forms\widgets.py:868
+msgid "No"
+msgstr ""
+
+#. Translators: Please do not add spaces around commas.
+#: .\env\Lib\site-packages\django\template\defaultfilters.py:873
+msgid "yes,no,maybe"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\template\defaultfilters.py:903
+#: .\env\Lib\site-packages\django\template\defaultfilters.py:920
+#, python-format
+msgid "%(size)d byte"
+msgid_plural "%(size)d bytes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\env\Lib\site-packages\django\template\defaultfilters.py:922
+#, python-format
+msgid "%s KB"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\template\defaultfilters.py:924
+#, python-format
+msgid "%s MB"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\template\defaultfilters.py:926
+#, python-format
+msgid "%s GB"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\template\defaultfilters.py:928
+#, python-format
+msgid "%s TB"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\template\defaultfilters.py:930
+#, python-format
+msgid "%s PB"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\dateformat.py:74
+msgid "p.m."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\dateformat.py:75
+msgid "a.m."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\dateformat.py:80
+msgid "PM"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\dateformat.py:81
+msgid "AM"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\dateformat.py:153
+msgid "midnight"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\dateformat.py:155
+msgid "noon"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\dates.py:7
+msgid "Monday"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\dates.py:8
+msgid "Tuesday"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\dates.py:9
+msgid "Wednesday"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\dates.py:10
+msgid "Thursday"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\dates.py:11
+msgid "Friday"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\dates.py:12
+msgid "Saturday"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\dates.py:13
+msgid "Sunday"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\dates.py:16
+msgid "Mon"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\dates.py:17
+msgid "Tue"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\dates.py:18
+msgid "Wed"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\dates.py:19
+msgid "Thu"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\dates.py:20
+msgid "Fri"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\dates.py:21
+msgid "Sat"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\dates.py:22
+msgid "Sun"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\dates.py:25
+msgid "January"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\dates.py:26
+msgid "February"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\dates.py:27
+msgid "March"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\dates.py:28
+msgid "April"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\dates.py:29
+msgid "May"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\dates.py:30
+msgid "June"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\dates.py:31
+msgid "July"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\dates.py:32
+msgid "August"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\dates.py:33
+msgid "September"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\dates.py:34
+msgid "October"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\dates.py:35
+msgid "November"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\dates.py:36
+msgid "December"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\dates.py:39
+msgid "jan"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\dates.py:40
+msgid "feb"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\dates.py:41
+msgid "mar"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\dates.py:42
+msgid "apr"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\dates.py:43
+msgid "may"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\dates.py:44
+msgid "jun"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\dates.py:45
+msgid "jul"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\dates.py:46
+msgid "aug"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\dates.py:47
+msgid "sep"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\dates.py:48
+msgid "oct"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\dates.py:49
+msgid "nov"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\dates.py:50
+msgid "dec"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\dates.py:53
+msgctxt "abbrev. month"
+msgid "Jan."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\dates.py:54
+msgctxt "abbrev. month"
+msgid "Feb."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\dates.py:55
+msgctxt "abbrev. month"
+msgid "March"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\dates.py:56
+msgctxt "abbrev. month"
+msgid "April"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\dates.py:57
+msgctxt "abbrev. month"
+msgid "May"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\dates.py:58
+msgctxt "abbrev. month"
+msgid "June"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\dates.py:59
+msgctxt "abbrev. month"
+msgid "July"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\dates.py:60
+msgctxt "abbrev. month"
+msgid "Aug."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\dates.py:61
+msgctxt "abbrev. month"
+msgid "Sept."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\dates.py:62
+msgctxt "abbrev. month"
+msgid "Oct."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\dates.py:63
+msgctxt "abbrev. month"
+msgid "Nov."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\dates.py:64
+msgctxt "abbrev. month"
+msgid "Dec."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\dates.py:67
+msgctxt "alt. month"
+msgid "January"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\dates.py:68
+msgctxt "alt. month"
+msgid "February"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\dates.py:69
+msgctxt "alt. month"
+msgid "March"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\dates.py:70
+msgctxt "alt. month"
+msgid "April"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\dates.py:71
+msgctxt "alt. month"
+msgid "May"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\dates.py:72
+msgctxt "alt. month"
+msgid "June"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\dates.py:73
+msgctxt "alt. month"
+msgid "July"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\dates.py:74
+msgctxt "alt. month"
+msgid "August"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\dates.py:75
+msgctxt "alt. month"
+msgid "September"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\dates.py:76
+msgctxt "alt. month"
+msgid "October"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\dates.py:77
+msgctxt "alt. month"
+msgid "November"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\dates.py:78
+msgctxt "alt. month"
+msgid "December"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\ipv6.py:20
+msgid "This is not a valid IPv6 address."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\text.py:76
+#, python-format
+msgctxt "String to return when truncating text"
+msgid "%(truncated_text)s…"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\text.py:287
+msgid "or"
+msgstr ""
+
+#. Translators: This string is used as a separator between list elements
+#: .\env\Lib\site-packages\django\utils\text.py:306
+#: .\env\Lib\site-packages\django\utils\timesince.py:135
+msgid ", "
+msgstr ""
+
+#: .\env\Lib\site-packages\django\utils\timesince.py:8
+#, python-format
+msgid "%(num)d year"
+msgid_plural "%(num)d years"
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\env\Lib\site-packages\django\utils\timesince.py:9
+#, python-format
+msgid "%(num)d month"
+msgid_plural "%(num)d months"
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\env\Lib\site-packages\django\utils\timesince.py:10
+#, python-format
+msgid "%(num)d week"
+msgid_plural "%(num)d weeks"
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\env\Lib\site-packages\django\utils\timesince.py:11
+#, python-format
+msgid "%(num)d day"
+msgid_plural "%(num)d days"
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\env\Lib\site-packages\django\utils\timesince.py:12
+#, python-format
+msgid "%(num)d hour"
+msgid_plural "%(num)d hours"
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\env\Lib\site-packages\django\utils\timesince.py:13
+#, python-format
+msgid "%(num)d minute"
+msgid_plural "%(num)d minutes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\env\Lib\site-packages\django\views\csrf.py:29
+msgid "Forbidden"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\views\csrf.py:30
+msgid "CSRF verification failed. Request aborted."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\views\csrf.py:34
+msgid ""
+"You are seeing this message because this HTTPS site requires a “Referer "
+"header” to be sent by your web browser, but none was sent. This header is "
+"required for security reasons, to ensure that your browser is not being "
+"hijacked by third parties."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\views\csrf.py:40
+msgid ""
+"If you have configured your browser to disable “Referer” headers, please re-"
+"enable them, at least for this site, or for HTTPS connections, or for “same-"
+"origin” requests."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\views\csrf.py:45
+msgid ""
+"If you are using the <meta name=\"referrer\" content=\"no-referrer\"> tag or "
+"including the “Referrer-Policy: no-referrer” header, please remove them. The "
+"CSRF protection requires the “Referer” header to do strict referer checking. "
+"If you’re concerned about privacy, use alternatives like <a "
+"rel=\"noreferrer\" …> for links to third-party sites."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\views\csrf.py:54
+msgid ""
+"You are seeing this message because this site requires a CSRF cookie when "
+"submitting forms. This cookie is required for security reasons, to ensure "
+"that your browser is not being hijacked by third parties."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\views\csrf.py:60
+msgid ""
+"If you have configured your browser to disable cookies, please re-enable "
+"them, at least for this site, or for “same-origin” requests."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\views\csrf.py:66
+msgid "More information is available with DEBUG=True."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\views\generic\dates.py:44
+msgid "No year specified"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\views\generic\dates.py:64
+#: .\env\Lib\site-packages\django\views\generic\dates.py:115
+#: .\env\Lib\site-packages\django\views\generic\dates.py:214
+msgid "Date out of range"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\views\generic\dates.py:94
+msgid "No month specified"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\views\generic\dates.py:147
+msgid "No day specified"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\views\generic\dates.py:194
+msgid "No week specified"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\views\generic\dates.py:353
+#: .\env\Lib\site-packages\django\views\generic\dates.py:384
+#, python-format
+msgid "No %(verbose_name_plural)s available"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\views\generic\dates.py:680
+#, python-format
+msgid ""
+"Future %(verbose_name_plural)s not available because %(class_name)s."
+"allow_future is False."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\views\generic\dates.py:720
+#, python-format
+msgid "Invalid date string “%(datestr)s” given format “%(format)s”"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\views\generic\detail.py:56
+#, python-format
+msgid "No %(verbose_name)s found matching the query"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\views\generic\list.py:70
+msgid "Page is not “last”, nor can it be converted to an int."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\views\generic\list.py:77
+#, python-format
+msgid "Invalid page (%(page_number)s): %(message)s"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\views\generic\list.py:173
+#, python-format
+msgid "Empty list and “%(class_name)s.allow_empty” is False."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\views\static.py:49
+msgid "Directory indexes are not allowed here."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\views\static.py:51
+#, python-format
+msgid "“%(path)s” does not exist"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\views\static.py:68
+#: .\env\Lib\site-packages\django\views\templates\directory_index.html:8
+#: .\env\Lib\site-packages\django\views\templates\directory_index.html:11
+#, python-format
+msgid "Index of %(directory)s"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\views\templates\default_urlconf.html:7
+#: .\env\Lib\site-packages\django\views\templates\default_urlconf.html:204
+msgid "The install worked successfully! Congratulations!"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\views\templates\default_urlconf.html:206
+#, python-format
+msgid ""
+"View <a href=\"https://docs.djangoproject.com/en/%(version)s/releases/\" "
+"target=\"_blank\" rel=\"noopener\">release notes</a> for Django %(version)s"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\views\templates\default_urlconf.html:208
+#, python-format
+msgid ""
+"You are seeing this page because <a href=\"https://docs.djangoproject.com/en/"
+"%(version)s/ref/settings/#debug\" target=\"_blank\" "
+"rel=\"noopener\">DEBUG=True</a> is in your settings file and you have not "
+"configured any URLs."
+msgstr ""
+
+#: .\env\Lib\site-packages\django\views\templates\default_urlconf.html:217
+msgid "Django Documentation"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\views\templates\default_urlconf.html:218
+msgid "Topics, references, &amp; how-to’s"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\views\templates\default_urlconf.html:226
+msgid "Tutorial: A Polling App"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\views\templates\default_urlconf.html:227
+msgid "Get started with Django"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\views\templates\default_urlconf.html:235
+msgid "Django Community"
+msgstr ""
+
+#: .\env\Lib\site-packages\django\views\templates\default_urlconf.html:236
+msgid "Connect, get help, or contribute"
+msgstr ""
+
+#: .\pedidos\admin.py:14 .\pedidos\admin.py:52
+msgid "Ítem de pedido"
+msgstr ""
+
+#: .\pedidos\admin.py:15
+msgid "Ítems del pedido"
+msgstr ""
+
+#: .\pedidos\admin.py:25 .\pedidos\admin.py:65
+msgid "Pago"
+msgstr ""
+
+#: .\pedidos\admin.py:26 .\pedidos\admin.py:66
+msgid "Pagos"
+msgstr ""
+
+#: .\pedidos\admin.py:39
+msgid "Pedido"
+msgstr ""
+
+#: .\pedidos\admin.py:40 .\usuarios\templates\usuarios\admin_home.html:59
+#: .\usuarios\templates\usuarios\dashboard_admin.html:29
+msgid "Pedidos"
+msgstr ""
+
+#: .\pedidos\admin.py:53
+msgid "Ítems de pedidos"
+msgstr ""
+
+#: .\pedidos\forms.py:16
+msgid "Método de pago"
+msgstr ""
+
+#: .\pedidos\forms.py:19
+msgid "Selecciona el método de pago preferido."
+msgstr ""
+
+#: .\pedidos\models.py:12 .\pedidos\models.py:82
+msgid "Pendiente"
+msgstr ""
+
+#: .\pedidos\models.py:13
+msgid "Procesado"
+msgstr ""
+
+#: .\pedidos\models.py:14
+msgid "Entregado"
+msgstr ""
+
+#: .\pedidos\models.py:25
+msgid "estado"
+msgstr ""
+
+#: .\pedidos\models.py:27
+msgid "fecha"
+msgstr ""
+
+#: .\pedidos\models.py:29
+msgid "total"
+msgstr ""
+
+#: .\pedidos\models.py:32 .\pedidos\models.py:51 .\pedidos\models.py:87
+msgid "pedido"
+msgstr ""
+
+#: .\pedidos\models.py:33
+msgid "pedidos"
+msgstr ""
+
+#: .\pedidos\models.py:41
+msgid "Estado inválido para el pedido"
+msgstr ""
+
+#: .\pedidos\models.py:45
+#, python-format
+msgid "Pedido %(id)s - %(estado)s"
+msgstr ""
+
+#: .\pedidos\models.py:57 .\producto\models.py:21
+msgid "precio"
+msgstr ""
+
+#: .\pedidos\models.py:60
+msgid "ítem del pedido"
+msgstr ""
+
+#: .\pedidos\models.py:61
+msgid "ítems del pedido"
+msgstr ""
+
+#: .\pedidos\models.py:76
+msgid "Tarjeta"
+msgstr ""
+
+#: .\pedidos\models.py:77
+msgid "Paypal"
+msgstr ""
+
+#: .\pedidos\models.py:78
+msgid "Efectivo"
+msgstr ""
+
+#: .\pedidos\models.py:83
+msgid "Pagado"
+msgstr ""
+
+#: .\pedidos\models.py:88
+msgid "método de pago"
+msgstr ""
+
+#: .\pedidos\models.py:89
+msgid "fecha de pago"
+msgstr ""
+
+#: .\pedidos\models.py:90
+msgid "total pagado"
+msgstr ""
+
+#: .\pedidos\models.py:91
+msgid "estado del pago"
+msgstr ""
+
+#: .\pedidos\models.py:94
+msgid "pago"
+msgstr ""
+
+#: .\pedidos\models.py:95
+msgid "pagos"
+msgstr ""
+
+#: .\pedidos\models.py:103
+msgid "Estado inválido para el pago"
+msgstr ""
+
+#: .\pedidos\models.py:107
+#, python-format
+msgid "Pago %(id)s - %(estado)s"
+msgstr ""
+
+#: .\pedidos\services\excel_report_generator.py:13
+msgid "Pedidos Pagados"
+msgstr ""
+
+#: .\pedidos\services\excel_report_generator.py:17
+#: .\pedidos\templates\pedidos\lista_pedidos.html:27
+#: .\reservas\templates\reservas\lista_reservas.html:130
+#: .\usuarios\templates\usuarios\lista_usuarios.html:17
+msgid "ID"
+msgstr ""
+
+#: .\pedidos\services\excel_report_generator.py:18
+#: .\pedidos\templates\pedidos\detalle_pedido.html:18
+#: .\pedidos\templates\pedidos\lista_pedidos.html:28
+msgid "Cliente"
+msgstr ""
+
+#: .\pedidos\services\excel_report_generator.py:19
+#: .\pedidos\templates\pedidos\detalle_pedido.html:19
+#: .\pedidos\templates\pedidos\lista_pedidos.html:29
+#: .\usuarios\templates\usuarios\lista_usuarios.html:21
+msgid "Dirección"
+msgstr ""
+
+#: .\pedidos\services\excel_report_generator.py:20
+#: .\pedidos\templates\pedidos\detalle_pedido.html:21
+#: .\pedidos\templates\pedidos\lista_pedidos.html:31
+msgid "Fecha"
+msgstr ""
+
+#: .\pedidos\services\excel_report_generator.py:22
+#: .\pedidos\templates\pedidos\lista_pedidos.html:32
+msgid "Estado del Pedido"
+msgstr ""
+
+#: .\pedidos\services\excel_report_generator.py:23
+#: .\pedidos\templates\pedidos\detalle_pedido.html:25
+#: .\pedidos\templates\pedidos\lista_pedidos.html:30
+#: .\pedidos\templates\pedidos\pedido_pdf.html:28 .\producto\admin.py:19
+#: .\templates\base.html:51 .\usuarios\templates\usuarios\admin_home.html:47
+#: .\usuarios\templates\usuarios\dashboard_admin.html:20
+msgid "Productos"
+msgstr ""
+
+#: .\pedidos\services\excel_report_generator.py:34
+msgid "N/A"
+msgstr ""
+
+#: .\pedidos\services\pdf_report_generator.py:21
+msgid "Error al generar el PDF"
+msgstr ""
+
+#: .\pedidos\services\report_generator.py:17
+msgid "El método 'generate' debe ser implementado en la subclase."
+msgstr ""
+
+#: .\pedidos\templates\pedidos\detalle_pedido.html:12
+#, python-format
+msgid "Detalle del Pedido #%(id)s"
+msgstr ""
+
+#: .\pedidos\templates\pedidos\detalle_pedido.html:20
+msgid "Estado"
+msgstr ""
+
+#: .\pedidos\templates\pedidos\detalle_pedido.html:29
+#, python-format
+msgid "%(cantidad)s x %(nombre)s"
+msgstr ""
+
+#: .\pedidos\templates\pedidos\detalle_pedido.html:33
+msgid "No hay productos en este pedido."
+msgstr ""
+
+#: .\pedidos\templates\pedidos\detalle_pedido.html:39
+msgid "Pago - Estado:"
+msgstr ""
+
+#: .\pedidos\templates\pedidos\detalle_pedido.html:46
+#: .\pedidos\templates\pedidos\mis_pedidos.html:54
+msgid "Ir a Pagar"
+msgstr ""
+
+#: .\pedidos\templates\pedidos\detalle_pedido.html:59
+msgid "Volver a Productos"
+msgstr ""
+
+#: .\pedidos\templates\pedidos\lista_pedidos.html:5
+#: .\pedidos\templates\pedidos\lista_pedidos.html:11
+msgid "Lista de Pedidos"
+msgstr ""
+
+#: .\pedidos\templates\pedidos\lista_pedidos.html:16
+msgid "Descargar pedidos pagados"
+msgstr ""
+
+#: .\pedidos\templates\pedidos\lista_pedidos.html:33
+msgid "Estado del Pago"
+msgstr ""
+
+#: .\pedidos\templates\pedidos\lista_pedidos.html:35
+#: .\reservas\templates\reservas\lista_reservas.html:135
+msgid "Acciones"
+msgstr ""
+
+#: .\pedidos\templates\pedidos\lista_pedidos.html:46
+#, python-format
+msgid ""
+"\n"
+"                                %(producto)s (x%(cantidad)s)\n"
+"                            "
+msgstr ""
+
+#: .\pedidos\templates\pedidos\lista_pedidos.html:72
+msgid "Sin registro"
+msgstr ""
+
+#: .\pedidos\templates\pedidos\lista_pedidos.html:87
+msgid "Cambiar"
+msgstr ""
+
+#: .\pedidos\templates\pedidos\lista_pedidos.html:101
+msgid "No hay pedidos registrados."
+msgstr ""
+
+#: .\pedidos\templates\pedidos\mis_pedidos.html:7
+msgid "Mis Pedidos"
+msgstr ""
+
+#: .\pedidos\templates\pedidos\mis_pedidos.html:16
+#, python-format
+msgid "Pedido #%(pedido.id)s"
+msgstr ""
+
+#: .\pedidos\templates\pedidos\mis_pedidos.html:19
+#: .\pedidos\templates\pedidos\pedido_pdf.html:22
+msgid "Dirección:"
+msgstr ""
+
+#: .\pedidos\templates\pedidos\mis_pedidos.html:20
+#: .\pedidos\templates\pedidos\pedido_pdf.html:23
+#: .\pedidos\templates\pedidos\ver_pago.html:20
+msgid "Fecha:"
+msgstr ""
+
+#: .\pedidos\templates\pedidos\mis_pedidos.html:21
+#: .\pedidos\templates\pedidos\pedido_pdf.html:24
+#: .\pedidos\templates\pedidos\ver_pago.html:21
+msgid "Total:"
+msgstr ""
+
+#: .\pedidos\templates\pedidos\mis_pedidos.html:24
+msgid "Estado del Pedido:"
+msgstr ""
+
+#: .\pedidos\templates\pedidos\mis_pedidos.html:32
+msgid "Estado del Pago:"
+msgstr ""
+
+#: .\pedidos\templates\pedidos\mis_pedidos.html:60
+msgid "Descargar PDF"
+msgstr ""
+
+#: .\pedidos\templates\pedidos\mis_pedidos.html:70
+msgid "No tienes pedidos todavía."
+msgstr ""
+
+#: .\pedidos\templates\pedidos\pagar_pedido.html:12
+#, python-format
+msgid ""
+"\n"
+"                Pagar Pedido #%(pedido_id)s\n"
+"            "
+msgstr ""
+
+#: .\pedidos\templates\pedidos\pagar_pedido.html:33
+msgid "Pagar"
+msgstr ""
+
+#: .\pedidos\templates\pedidos\pedido_pdf.html:16
+#, python-format
+msgid ""
+"\n"
+"            Detalle del Pedido #%(pedido_id)s\n"
+"        "
+msgstr ""
+
+#: .\pedidos\templates\pedidos\pedido_pdf.html:21
+msgid "Usuario:"
+msgstr ""
+
+#: .\pedidos\templates\pedidos\pedido_pdf.html:25
+msgid "Estado Pedido:"
+msgstr ""
+
+#: .\pedidos\templates\pedidos\pedido_pdf.html:26
+msgid "Estado Pago:"
+msgstr ""
+
+#: .\pedidos\templates\pedidos\pedido_pdf.html:32 .\producto\admin.py:18
+msgid "Producto"
+msgstr ""
+
+#: .\pedidos\templates\pedidos\ver_pago.html:12
+#, python-format
+msgid ""
+"\n"
+"                Detalle de Pago #%(pago_id)s\n"
+"            "
+msgstr ""
+
+#: .\pedidos\templates\pedidos\ver_pago.html:19
+msgid "Método de pago:"
+msgstr ""
+
+#: .\pedidos\templates\pedidos\ver_pago.html:24
+msgid "Estado:"
+msgstr ""
+
+#: .\pedidos\templates\pedidos\ver_pago.html:45
+#: .\reservas\templates\reservas\confirmacion_reserva.html:31
+msgid "Volver al inicio"
+msgstr ""
+
+#: .\pedidos\views.py:34 .\pedidos\views.py:49
+msgid "pendiente"
+msgstr ""
+
+#: .\pedidos\views.py:47
+msgid "efectivo"
+msgstr ""
+
+#: .\pedidos\views.py:53
+msgid "Pedido creado correctamente."
+msgstr ""
+
+#: .\pedidos\views.py:74
+msgid "pagado"
+msgstr ""
+
+#: .\pedidos\views.py:76
+msgid "Pago realizado exitosamente."
+msgstr ""
+
+#: .\pedidos\views.py:104
+#, python-format
+msgid "El estado del pedido %(pedido_id)s cambió a %(estado)s."
+msgstr ""
+
+#: .\pedidos\views.py:110
+msgid "Estado no válido."
+msgstr ""
+
+#: .\pedidos\views.py:122
+#, python-format
+msgid "El estado del pago %(pago_id)s cambió a %(estado)s."
+msgstr ""
+
+#: .\producto\forms.py:12 .\usuarios\templates\usuarios\lista_usuarios.html:18
+msgid "Nombre"
+msgstr ""
+
+#: .\producto\forms.py:13
+msgid "Descripción"
+msgstr ""
+
+#: .\producto\forms.py:16
+msgid "Imagen"
+msgstr ""
+
+#: .\producto\forms.py:19
+msgid "Cantidad en gramos."
+msgstr ""
+
+#: .\producto\forms.py:20
+msgid "Introduce el precio con dos decimales."
+msgstr ""
+
+#: .\producto\forms.py:21
+msgid "Opcional: selecciona una imagen del producto."
+msgstr ""
+
+#: .\producto\models.py:9
+msgid "nombre"
+msgstr ""
+
+#: .\producto\models.py:11
+msgid "descripción"
+msgstr ""
+
+#: .\producto\models.py:14
+msgid "Cantidad en gramos"
+msgstr ""
+
+#: .\producto\models.py:15
+msgid "cantidad disponible"
+msgstr ""
+
+#: .\producto\models.py:28
+msgid "imagen del producto"
+msgstr ""
+
+#: .\producto\models.py:33
+msgid "productos"
+msgstr ""
+
+#: .\producto\templates\producto\confirmar_eliminar.html:58
+msgid "Advertencia"
+msgstr ""
+
+#: .\producto\templates\producto\confirmar_eliminar.html:60
+msgid "¿Estás seguro de eliminar este producto?"
+msgstr ""
+
+#: .\producto\templates\producto\confirmar_eliminar.html:61
+msgid "Una vez eliminado, no podrás recuperarlo."
+msgstr ""
+
+#: .\producto\templates\producto\detalle_producto.html:93
+msgid "Volver"
+msgstr ""
+
+#: .\producto\templates\producto\formulario_producto.html:86
+msgid "Nuevo Producto"
+msgstr ""
+
+#: .\producto\templates\producto\formulario_producto.html:115
+#: .\reservas\templates\reservas\form_reserva.html:47
+msgid "Guardar"
+msgstr ""
+
+#: .\producto\templates\producto\lista_productos.html:50
+msgid "Nuestros Productos"
+msgstr ""
+
+#: .\producto\templates\producto\lista_productos.html:53
+msgid "Agregar producto"
+msgstr ""
+
+#: .\producto\templates\producto\lista_productos.html:68
+msgid "Sin Imagen"
+msgstr ""
+
+#: .\producto\templates\producto\lista_productos.html:70
+msgid "Sin imagen"
+msgstr ""
+
+#: .\producto\templates\producto\lista_productos.html:83
+msgid "Ver detalle"
+msgstr ""
+
+#: .\producto\templates\producto\lista_productos.html:92
+msgid "Agregar al carrito"
+msgstr ""
+
+#: .\producto\templates\producto\lista_productos.html:101
+#: .\reservas\templates\reservas\lista_reservas.html:149
+msgid "Editar"
+msgstr ""
+
+#: .\producto\templates\producto\lista_productos.html:115
+msgid "No hay productos disponibles."
+msgstr ""
+
+#: .\producto\views.py:42
+msgid "Crear Producto"
+msgstr ""
+
+#: .\producto\views.py:64
+msgid "Editar Producto"
+msgstr ""
+
+#: .\producto\views.py:82
+msgid "Confirmar eliminación de producto"
+msgstr ""
+
+#: .\reservas\admin.py:19
+msgid "Reserva"
+msgstr ""
+
+#: .\reservas\admin.py:20 .\templates\base.html:58 .\templates\base.html:61
+msgid "Reservas"
+msgstr ""
+
+#: .\reservas\forms.py:28 .\reservas\templates\reservas\lista_reservas.html:114
+msgid "Tipo de plan"
+msgstr ""
+
+#: .\reservas\forms.py:29 .\reservas\templates\reservas\lista_reservas.html:102
+msgid "Fecha de llegada"
+msgstr ""
+
+#: .\reservas\forms.py:30
+msgid "Fecha de salida"
+msgstr ""
+
+#: .\reservas\forms.py:31
+msgid "Número de personas"
+msgstr ""
+
+#: .\reservas\forms.py:36
+msgid "Selecciona el plan que deseas reservar."
+msgstr ""
+
+#: .\reservas\forms.py:37
+msgid "Selecciona la fecha en que llegarás al parque."
+msgstr ""
+
+#: .\reservas\forms.py:38
+msgid "La fecha de salida se ajustará automáticamente según el plan."
+msgstr ""
+
+#: .\reservas\forms.py:39
+msgid "Número total de visitantes incluidos en la reserva."
+msgstr ""
+
+#: .\reservas\forms.py:70
+#, python-brace-format
+msgid "⚠️ Para el plan {plan}, la fecha de salida debe ser {salida_correcta}."
+msgstr ""
+
+#: .\reservas\models.py:12
+msgid "ID de la reserva"
+msgstr ""
+
+#: .\reservas\models.py:15
+msgid "fecha de llegada"
+msgstr ""
+
+#: .\reservas\models.py:18
+msgid "fecha de salida"
+msgstr ""
+
+#: .\reservas\models.py:22
+msgid "número de personas"
+msgstr ""
+
+#: .\reservas\models.py:23
+msgid "Cantidad total de personas incluidas en la reserva"
+msgstr ""
+
+#: .\reservas\models.py:28
+msgid "Básico"
+msgstr ""
+
+#: .\reservas\models.py:29
+msgid "Premium"
+msgstr ""
+
+#: .\reservas\models.py:30
+msgid "VIP"
+msgstr ""
+
+#: .\reservas\models.py:37
+msgid "tipo de plan"
+msgstr ""
+
+#: .\reservas\models.py:38
+msgid "Seleccione el tipo de plan para la reserva"
+msgstr ""
+
+#: .\reservas\models.py:42
+msgid "reserva"
+msgstr ""
+
+#: .\reservas\models.py:43
+msgid "reservas"
+msgstr ""
+
+#: .\reservas\templates\planes\plan.html:7
+msgid "Planes de Experiencia Apícola"
+msgstr ""
+
+#: .\reservas\templates\planes\plan.html:14
+msgid "Plan Básico"
+msgstr ""
+
+#: .\reservas\templates\planes\plan.html:16
+msgid ""
+"\n"
+"                        Duración: 1 día <br>\n"
+"                        Recorrido guiado por la finca y demostración de "
+"recolección de miel.<br>\n"
+"                        Degustación de miel artesanal.\n"
+"                        "
+msgstr ""
+
+#: .\reservas\templates\planes\plan.html:22
+msgid "Precio: $70.000 por persona"
+msgstr ""
+
+#: .\reservas\templates\planes\plan.html:23
+#: .\reservas\templates\planes\plan.html:41
+#: .\reservas\templates\planes\plan.html:60
+msgid "Reservar"
+msgstr ""
+
+#: .\reservas\templates\planes\plan.html:32
+msgid "Plan Premium"
+msgstr ""
+
+#: .\reservas\templates\planes\plan.html:34
+msgid ""
+"\n"
+"                        Duración: 2 días<br>\n"
+"                        Incluye recorrido completo, taller práctico de "
+"apicultura y almuerzo campestre y cena tipo picnic.<br>\n"
+"                        Hospedaje básico en habitación. Degustación de "
+"productos derivados de la miel.\n"
+"                        "
+msgstr ""
+
+#: .\reservas\templates\planes\plan.html:40
+msgid "Precio: $180.000 por persona"
+msgstr ""
+
+#: .\reservas\templates\planes\plan.html:50
+msgid "Plan VIP"
+msgstr ""
+
+#: .\reservas\templates\planes\plan.html:52
+msgid ""
+"\n"
+"                        Duración: 3 días<br>\n"
+"                        Experiencia inmersiva con hospedaje rural en "
+"cabañas, acceso a colmenas privadas,\n"
+"                        taller avanzado de apicultura. Incluye almuerzo, "
+"cena especial y desayuno campestre.<br>\n"
+"                        Kit de regalo con productos de la finca.\n"
+"                        "
+msgstr ""
+
+#: .\reservas\templates\planes\plan.html:59
+msgid "Precio: $300.000 por persona"
+msgstr ""
+
+#: .\reservas\templates\reservas\confirmacion_reserva.html:5
+msgid "Reserva Confirmada"
+msgstr ""
+
+#: .\reservas\templates\reservas\confirmacion_reserva.html:18
+msgid "¡Reserva Confirmada!"
+msgstr ""
+
+#: .\reservas\templates\reservas\confirmacion_reserva.html:20
+msgid ""
+"\n"
+"            Tu reserva ha sido registrada exitosamente.<br>\n"
+"            Nos pondremos en contacto contigo si es necesario. <br>\n"
+"            ¡Gracias por confiar en nosotros!\n"
+"            "
+msgstr ""
+
+#: .\reservas\templates\reservas\form_reserva.html:7
+#: .\reservas\templates\reservas\form_reserva.html:22 .\reservas\views.py:71
+msgid "Editar Reserva"
+msgstr ""
+
+#: .\reservas\templates\reservas\form_reserva.html:9
+#: .\reservas\templates\reservas\lista_reservas.html:171
+msgid "Crear Reserva"
+msgstr ""
+
+#: .\reservas\templates\reservas\form_reserva.html:24 .\reservas\views.py:71
+msgid "Nueva Reserva"
+msgstr ""
+
+#: .\reservas\templates\reservas\lista_reservas.html:5
+#: .\reservas\templates\reservas\lista_reservas.html:96
+msgid "Lista de Reservas"
+msgstr ""
+
+#: .\reservas\templates\reservas\lista_reservas.html:108
+#: .\reservas\templates\reservas\lista_reservas.html:133
+msgid "Personas"
+msgstr ""
+
+#: .\reservas\templates\reservas\lista_reservas.html:120
+msgid "Filtrar"
+msgstr ""
+
+#: .\reservas\templates\reservas\lista_reservas.html:131
+msgid "Llegada"
+msgstr ""
+
+#: .\reservas\templates\reservas\lista_reservas.html:132
+msgid "Salida"
+msgstr ""
+
+#: .\reservas\templates\reservas\lista_reservas.html:134
+msgid "Plan"
+msgstr ""
+
+#: .\reservas\templates\reservas\lista_reservas.html:160
+msgid "No hay reservas que coincidan con los filtros."
+msgstr ""
+
+#: .\reservas\views.py:32
+msgid "Lista de reservas"
+msgstr ""
+
+#: .\reservas\views.py:43
+msgid "No tienes permisos para editar reservas."
+msgstr ""
+
+#: .\reservas\views.py:57
+msgid "Reserva creada exitosamente."
+msgstr ""
+
+#: .\reservas\views.py:60
+msgid "Tu reserva fue registrada correctamente."
+msgstr ""
+
+#: .\reservas\views.py:63
+msgid "Reserva actualizada correctamente."
+msgstr ""
+
+#: .\reservas\views.py:82
+msgid "No tienes permiso para eliminar esta reserva."
+msgstr ""
+
+#: .\reservas\views.py:86
+msgid "Reserva eliminada correctamente."
+msgstr ""
+
+#: .\reservas\views.py:93
+msgid "Nuestros Planes Turísticos"
+msgstr ""
+
+#: .\templates\base.html:9 .\templates\base.html:39 .\templates\base.html:109
+msgid "Eterna Primavera"
+msgstr ""
+
+#: .\templates\base.html:38
+msgid "Logo"
+msgstr ""
+
+#: .\templates\base.html:72
+msgid "Mis pedidos"
+msgstr ""
+
+#: .\templates\base.html:78
+msgid "Cerrar sesión"
+msgstr ""
+
+#: .\templates\base.html:84 .\usuarios\views.py:84
+msgid "Iniciar sesión"
+msgstr ""
+
+#: .\templates\base.html:93
+msgid "Clima no disponible"
+msgstr ""
+
+#: .\templates\home.html:9
+msgid "¡Bienvenidos a Eterna Primavera!"
+msgstr ""
+
+#: .\templates\home.html:11
+msgid ""
+"Descubre la miel pura de nuestras colmenas y disfruta de experiencias únicas "
+"en nuestra finca en Barbosa, Antioquia."
+msgstr ""
+
+#: .\templates\home.html:21
+msgid "Colmenas de abejas"
+msgstr ""
+
+#: .\templates\home.html:24
+msgid "Colmenas Naturales 🐝"
+msgstr ""
+
+#: .\templates\home.html:25
+msgid "El hogar donde empieza la magia de nuestra miel pura."
+msgstr ""
+
+#: .\templates\home.html:33
+msgid "Tarro de miel artesanal"
+msgstr ""
+
+#: .\templates\home.html:36
+msgid "Miel Artesanal 🍯"
+msgstr ""
+
+#: .\templates\home.html:37
+msgid "Cosechada de manera natural y cuidando cada detalle."
+msgstr ""
+
+#: .\templates\home.html:45
+msgid "Finca en Barbosa Antioquia"
+msgstr ""
+
+#: .\templates\home.html:48
+msgid "Experiencias Únicas 🌿"
+msgstr ""
+
+#: .\templates\home.html:49
+msgid "Visita nuestra finca en Barbosa y vive la naturaleza."
+msgstr ""
+
+#: .\templates\home.html:69
+msgid "Miel Natural"
+msgstr ""
+
+#: .\templates\home.html:70
+msgid "Extraída directamente de nuestras colmenas, sin aditivos ni químicos."
+msgstr ""
+
+#: .\templates\home.html:74
+msgid "Experiencias Únicas"
+msgstr ""
+
+#: .\templates\home.html:75
+msgid "Recorre nuestra finca y aprende sobre la apicultura y la naturaleza."
+msgstr ""
+
+#: .\templates\home.html:79
+msgid "Sostenibilidad"
+msgstr ""
+
+#: .\templates\home.html:80
+msgid "Protegemos a las abejas y apoyamos un ecosistema saludable."
+msgstr ""
+
+#: .\usuarios\admin.py:18
+msgid "Información personal"
+msgstr ""
+
+#: .\usuarios\admin.py:19
+msgid "Permisos"
+msgstr ""
+
+#: .\usuarios\admin.py:20
+msgid "Fechas importantes"
+msgstr ""
+
+#: .\usuarios\forms.py:19 .\usuarios\forms.py:73
+msgid "Contraseña"
+msgstr ""
+
+#: .\usuarios\forms.py:29
+msgid "Nombre completo"
+msgstr ""
+
+#: .\usuarios\forms.py:30 .\usuarios\forms.py:68
+msgid "Correo electrónico"
+msgstr ""
+
+#: .\usuarios\forms.py:31
+msgid "Número de teléfono"
+msgstr ""
+
+#: .\usuarios\forms.py:32
+msgid "Dirección de residencia"
+msgstr ""
+
+#: .\usuarios\forms.py:37
+msgid "Introduce una dirección de correo válida."
+msgstr ""
+
+#: .\usuarios\forms.py:38
+msgid "Ejemplo: +57 3001234567"
+msgstr ""
+
+#: .\usuarios\models.py:23
+msgid "El usuario debe tener un correo electrónico"
+msgstr ""
+
+#: .\usuarios\models.py:40
+msgid "El superusuario debe tener is_staff=True."
+msgstr ""
+
+#: .\usuarios\models.py:42
+msgid "El superusuario debe tener is_superuser=True."
+msgstr ""
+
+#: .\usuarios\models.py:57
+msgid "ID de usuario"
+msgstr ""
+
+#: .\usuarios\models.py:58
+msgid "nombre completo"
+msgstr ""
+
+#: .\usuarios\models.py:59
+msgid "correo electrónico"
+msgstr ""
+
+#: .\usuarios\models.py:64
+msgid "teléfono"
+msgstr ""
+
+#: .\usuarios\models.py:65
+msgid "Número de contacto del usuario"
+msgstr ""
+
+#: .\usuarios\models.py:70
+msgid "dirección"
+msgstr ""
+
+#: .\usuarios\models.py:71
+msgid "Dirección de residencia del usuario"
+msgstr ""
+
+#: .\usuarios\models.py:75
+msgid "activo"
+msgstr ""
+
+#: .\usuarios\models.py:76
+msgid "miembro del staff"
+msgstr ""
+
+#: .\usuarios\models.py:87
+msgid "usuarios"
+msgstr ""
+
+#: .\usuarios\templates\usuarios\admin_home.html:7
+msgid "Panel de Administración"
+msgstr ""
+
+#: .\usuarios\templates\usuarios\admin_home.html:8
+msgid "Bienvenido,"
+msgstr ""
+
+#: .\usuarios\templates\usuarios\admin_home.html:15
+msgid "Dashboard General"
+msgstr ""
+
+#: .\usuarios\templates\usuarios\admin_home.html:27
+msgid "Gestión Rápida"
+msgstr ""
+
+#: .\usuarios\templates\usuarios\admin_home.html:35
+#: .\usuarios\templates\usuarios\dashboard_admin.html:11
+msgid "Usuarios"
+msgstr ""
+
+#: .\usuarios\templates\usuarios\admin_home.html:36
+msgid "Administra los usuarios registrados en el sistema."
+msgstr ""
+
+#: .\usuarios\templates\usuarios\admin_home.html:37
+#: .\usuarios\templates\usuarios\admin_home.html:49
+#: .\usuarios\templates\usuarios\admin_home.html:61
+msgid "Ir"
+msgstr ""
+
+#: .\usuarios\templates\usuarios\admin_home.html:48
+msgid "Gestiona los productos disponibles en la tienda."
+msgstr ""
+
+#: .\usuarios\templates\usuarios\admin_home.html:60
+msgid "Administra los pedidos realizados en la tienda online."
+msgstr ""
+
+#: .\usuarios\templates\usuarios\admin_home.html:71
+msgid "Reportes"
+msgstr ""
+
+#: .\usuarios\templates\usuarios\admin_home.html:72
+msgid "Visualiza métricas y estadísticas detalladas."
+msgstr ""
+
+#: .\usuarios\templates\usuarios\admin_home.html:73
+msgid "Ver más"
+msgstr ""
+
+#: .\usuarios\templates\usuarios\dashboard_admin.html:38
+msgid "Total Pagos"
+msgstr ""
+
+#: .\usuarios\templates\usuarios\lista_usuarios.html:10
+msgid "Lista de Usuarios"
+msgstr ""
+
+#: .\usuarios\templates\usuarios\lista_usuarios.html:19
+msgid "Correo"
+msgstr ""
+
+#: .\usuarios\templates\usuarios\lista_usuarios.html:20
+msgid "Teléfono"
+msgstr ""
+
+#: .\usuarios\templates\usuarios\lista_usuarios.html:35
+msgid "No hay usuarios registrados."
+msgstr ""
+
+#: .\usuarios\templates\usuarios\login.html:9
+msgid "Iniciar Sesión"
+msgstr ""
+
+#: .\usuarios\templates\usuarios\login.html:18
+msgid "Ingresar"
+msgstr ""
+
+#: .\usuarios\templates\usuarios\login.html:26
+msgid "¿No tienes cuenta?"
+msgstr ""
+
+#: .\usuarios\templates\usuarios\login.html:31
+msgid "Registrarse"
+msgstr ""
+
+#: .\usuarios\templates\usuarios\registrar_usuario.html:12
+msgid "Registrar Usuario"
+msgstr ""
+
+#: .\usuarios\templates\usuarios\registrar_usuario.html:41
+msgid "Registrar"
+msgstr ""
+
+#: .\usuarios\views.py:30
+msgid "Registro completado correctamente."
+msgstr ""
+
+#: .\usuarios\views.py:33
+msgid "Por favor, corrige los errores en el formulario."
+msgstr ""
+
+#: .\usuarios\views.py:39
+msgid "Registro de usuario"
+msgstr ""
+
+#: .\usuarios\views.py:53
+msgid "Lista de usuarios"
+msgstr ""
+
+#: .\usuarios\views.py:73
+msgid "Inicio de sesión exitoso."
+msgstr ""
+
+#: .\usuarios\views.py:78
+msgid "❌ Correo o contraseña incorrectos."
+msgstr ""
+
+#: .\usuarios\views.py:96
+msgid "Sesión cerrada correctamente."
+msgstr ""
+
+#: .\usuarios\views.py:118
+msgid "Panel de administración"
+msgstr ""
+
+#: .\usuarios\views.py:119
+msgid "Resumen general del sistema."
+msgstr ""
+
+#: .\usuarios\views.py:147
+msgid "Dashboard administrativo"
+msgstr ""
+
+#: .\usuarios\views.py:148
+msgid "Métricas generales de usuarios, productos y pedidos."
+msgstr ""

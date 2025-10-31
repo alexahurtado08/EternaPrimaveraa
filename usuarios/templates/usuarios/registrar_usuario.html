@@ -1,5 +1,6 @@
 <!-- Realizado por Mariana Valderrama -->
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block content %}
 <div class="container mt-5">
@@ -8,7 +9,7 @@
             <div class="card shadow-lg border-0 rounded-4">
                 <div class="card-header text-center fw-bold" 
                      style="background-color: #FFEE8C; font-size: 1.4rem; border-top-left-radius: 1rem; border-top-right-radius: 1rem;">
-                    Registrar Usuario
+                    {% trans "Registrar Usuario" %}
                 </div>
 
                 <div class="card-body p-4">
@@ -31,13 +32,13 @@
                         <div class="d-flex justify-content-between mt-4">
                             <!-- Botón Cancelar que regresa a la página anterior -->
                             <button type="button" class="btn btn-outline-secondary px-4" onclick="window.history.back();">
-                                Cancelar
+                                {% trans "Cancelar" %}
                             </button>
 
                             <!-- Botón Registrar con estilo amarillo -->
                             <button type="submit" class="btn px-4" 
                                     style="background-color: #f1c40f; color: #000; font-weight: bold; border: none; border-radius: 10px;">
-                                Registrar
+                                {% trans "Registrar" %}
                             </button>
                         </div>
                     </form>

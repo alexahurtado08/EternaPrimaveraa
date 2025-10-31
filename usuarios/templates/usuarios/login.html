@@ -1,11 +1,12 @@
 <!-- Realizado por Mariana Valderrama -->
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block content %}
 <div class="d-flex justify-content-center align-items-center vh-100 bg-light">
     <div class="card shadow-lg border-0" style="max-width: 400px; width: 100%; border-radius: 20px;">
         <div class="card-body p-4">
-            <h3 class="text-center mb-4" style="color: #f1c40f;">Iniciar Sesión</h3>
+            <h3 class="text-center mb-4" style="color: #f1c40f;">{% trans "Iniciar Sesión" %}</h3>
 
             <form method="post">
                 {% csrf_token %}
@@ -14,7 +15,7 @@
                 <div class="d-grid mt-3">
                     <button type="submit" class="btn" 
                             style="background-color: #f1c40f; color: #000; font-weight: bold; border: none; border-radius: 10px;">
-                        Ingresar
+                        {% trans "Ingresar" %}
                     </button>
                 </div>
             </form>
@@ -22,12 +23,12 @@
             <hr class="my-4">
 
             <p class="text-center mb-0">
-                ¿No tienes cuenta?
+                {% trans "¿No tienes cuenta?" %}
             </p>
             <div class="d-grid mt-2">
                 <a href="/usuarios/registrar/" class="btn btn-sm" 
                    style="background-color: #ffe066; color: #000; font-weight: bold; border-radius: 10px;">
-                    Registrarse
+                    {% trans "Registrarse" %}
                 </a>
             </div>
         </div>

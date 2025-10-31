@@ -1,5 +1,6 @@
 <!-- Realizado por Alexandra Hurtado -->
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block content %}
 <style>
@@ -82,7 +83,7 @@
             
             <!-- Header -->
             <div class="card-header text-center fw-bold fs-4">
-                Nuevo Producto
+                {% trans "Nuevo Producto" %}
             </div>
 
             <!-- Body -->
@@ -108,10 +109,10 @@
                     <!-- Botones -->
                     <div class="d-flex justify-content-between mt-4">
                         <a href="{% url 'producto:lista_productos' %}" class="btn btn-outline-gold px-4 rounded-pill">
-                            Cancelar
+                            {% trans "Cancelar" %}
                         </a>
                         <button type="submit" class="btn btn-gold px-4 rounded-pill">
-                            Guardar
+                            {% trans "Guardar" %}
                         </button>
                     </div>
                 </form>

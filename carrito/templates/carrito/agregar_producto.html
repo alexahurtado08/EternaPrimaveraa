@@ -1,14 +1,15 @@
 <!-- Realizado por Alexandra Hurtado -->
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block content %}
-<h2>Agregar {{ producto.nombre }} al carrito</h2>
+<h2>{% trans "Agregar" %} {{ producto.nombre }} {% trans "al carrito" %}</h2>
 
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Agregar</button>
+    <button type="submit">{% trans "Agregar" %}</button>
 </form>
 
-<a href="{% url 'ver_carrito' %}">Volver al carrito</a>
+<a href="{% url 'ver_carrito' %}">{% trans "Volver al carrito" %}</a>
 {% endblock %}
