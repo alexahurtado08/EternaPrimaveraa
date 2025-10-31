@@ -83,6 +83,15 @@
                             <a class="nav-link" href="{% url 'usuarios:login_usuario' %}">Login</a>
                         </li>
                     {% endif %}
+                    <li class="nav-item">
+                        {% if temperatura %}
+                            <span class="nav-link fw-semibold">
+                                🌤️ {{ ciudad }}: {{ temperatura }}°C, {{ descripcion }}
+                            </span>
+                        {% else %}
+                            <span class="nav-link fw-semibold">Clima no disponible</span>
+                        {% endif %}
+                    </li>
                 </ul>
             </div>
         </div>
