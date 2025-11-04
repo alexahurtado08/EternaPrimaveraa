@@ -6,8 +6,8 @@ services:
       - "80:80"
     environment:
       - DEBUG=0
-      - SECRET_KEY=changeme123456   # reemplaza por un secreto real en producción
+      - SECRET_KEY=changeme123456   
       - ALLOWED_HOSTS=0.0.0.0
     volumes:
-      - .:/app     # útil para desarrollo (si prefieres que el contenedor use el código local)
+      - .:/app     
     restart: unless-stopped
