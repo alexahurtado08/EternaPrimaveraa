@@ -3,7 +3,7 @@ services:
   web:
     build: .
     ports:
-      - "8000:8000"
+      - "80:80"
     environment:
       - DEBUG=0
       - SECRET_KEY=changeme123456   # reemplaza por un secreto real en producción
