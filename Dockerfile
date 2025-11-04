@@ -36,7 +36,7 @@ RUN pip install -r requirements.txt
 COPY . .
 
 # Exponer puerto para Gunicorn
-EXPOSE 8000
+EXPOSE 80
 
 # Comando para correr la app
 CMD ["gunicorn", "EternaPrimavera.wsgi:application", "--bind", "0.0.0.0:80"]
