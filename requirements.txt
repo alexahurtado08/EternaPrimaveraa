@@ -4,3 +4,4 @@ openpyxl
 xhtml2pdf
 faker
 gunicorn
+whitenoise
