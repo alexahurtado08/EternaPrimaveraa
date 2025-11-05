@@ -1,0 +1,31 @@
+/* forms.css */
+
+/* Estilo general para inputs, selects y textareas */
+input, select, textarea {
+    border-radius: 0.6rem !important;
+    border: 1px solid #ccc !important;
+    padding: 10px !important;
+    transition: all 0.2s ease-in-out;
+}
+
+/* Estilo al enfocar (focus) */
+input:focus, select:focus, textarea:focus {
+    border-color: #198754 !important; /* Verde Bootstrap */
+    box-shadow: 0 0 5px rgba(25, 135, 84, 0.4) !important;
+}
+
+/* Estilo general para botones de formularios */
+button.btn-success {
+    background: linear-gradient(90deg, #198754, #28a745);
+    border: none;
+    transition: transform 0.2s ease-in-out;
+}
+
+button.btn-success:hover {
+    transform: scale(1.05);
+}
+
+/* Estilo para las tarjetas de formularios */
+.card {
+    background-color: #fffdf5; /* Blanco cálido */
+}
