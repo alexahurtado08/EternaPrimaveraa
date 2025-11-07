@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-h%h6d2nbw%9&q9c%c6hqhy^$hikru=jgmp7hs69#4m=2ismo@0
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '54.164.174.48',
+    '54.234.157.166',
     'localhost',
     '127.0.0.1',
     '0.0.0.0',  # Para Docker
